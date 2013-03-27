@@ -4,75 +4,69 @@ using System.Linq;
 using System.Text;
 
 using Project.Models;
-
+using System.Transactions;
+using Project.Controllers.enumsController;
 
 namespace Project.Controllers
 {
-    public static class entityController
+    public  class entityController
     {
         protected void New(int entityTypeID)
         {
-            using (var ctx = new AccContexts())
+            using (var ctx = new accountingEntities())
             {
-                var newEntity = new AccountingLib.Models.entity()
+                var newEntity = new entity()
                 {
                     entityTypeID = entityTypeID
                 };
-                ctx.entity.AddObject(newEntity);
+                ctx.entities.AddObject(newEntity);
                 ctx.SaveChanges();
-
-                /*reload entity*/
-                this.ENTITYID = newEntity.ID;
             }
         }
         
 
-        public void addCard(int cardID)
+        public void addCard(int cardID,int entityID)
         {
-            int entityID = (int)this.ENTITYID;
-
-            using (var ctx = new AccContexts())
+            using (var ctx = new accountingEntities())
             {
-                var person = ctx.person.Where(x => x.entityID == entityID).SingleOrDefault();
-                var newEntityCard = new AccountingLib.Models.entityCard()
+                var person = ctx.people.Where(x => x.entityID == entityID).SingleOrDefault();
+                var newEntityCard = new entityCard()
                 {
-                    entityID = this.ENTITYID,
-                    CardID = cardID
+                    entityID = entityID,
+                    cardID = cardID
                 };
-                ctx.entityCard.AddObject(newEntityCard);
+                ctx.entityCards.AddObject(newEntityCard);
                 ctx.SaveChanges();
 
             }
         }
 
-        public List<card> fetchCards()
+        public List<card> fetchCards(int entityID)
         {
-            using (var ctx = new AccContexts())
+            using (var ctx = new accountingEntities())
             {
-                var cardsList = ctx.entityCard
-                    .Where(x => x.entityID == this.ENTITYID)
+                var cardsList = ctx.entityCards
+                    .Where(x => x.entityID == entityID)
                     .Select(x => x.card).ToList();
-
-                this.cards = cardsList;
 
                 return cardsList;
             }
         }
 
-        protected void addWalletMoney(decimal amount, string title, int currencyID)
+        protected static void addWalletMoney(decimal amount, string title, int currencyID, int entityID)
         {
+            using (var ctx = new accountingEntities())
             using (var ts = new TransactionScope())
-            using (var ctx = new AccountingLib.Models.AccContexts())
             {
                 //Record related transctions
                 List<int> transactions = new List<int>();
-                var trans1 = Transaction.createNew(this.ENTITYID, (int)AssetCategories.W, +1 * (decimal)amount, currencyID);
+                var trans1 = Transaction.createNew(entityID, (int)AssetCategories.W, +1 * (decimal)amount, currencyID);
                 transactions.Add(trans1);
                 var trans2 = Transaction.createNew(this.ENTITYID, (int)AssetCategories.CCCASH, -1 * (decimal)amount, currencyID);
                 transactions.Add(trans2);
 
                 //Record Wallet entity and walletEntityTransaction
-                var entityWallet = new AccountingLib.Models.entityWallet()
+                var entityWallet = new entityWallet()
                 {
                     entityID = this.ENTITYID,
                     amount = amount,
@@ -84,7 +78,7 @@ namespace Project.Controllers
 
                 foreach (var txn in transactions)
                 {
-                    var entityWalletTxn = new AccountingLib.Models.entityWalletTransaction()
+                    var entityWalletTxn = new entityWalletTransaction()
                     {
                         entityWalletID = entityWallet.ID,
                         transactionID = txn

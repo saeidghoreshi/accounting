@@ -74,6 +74,8 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_sysActionTransaction_transaction", "transaction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transaction), "sysActionTransaction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.sysActionTransaction), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_entity_lu_entityType", "lu_entityType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_entityType), "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.entity), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_externalTransfer_lu_externalTsfrType", "lu_externalTsfrType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_externalTsfrType), "externalTransfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.externalTransfer), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_transfer_entity2", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.entity), "transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.transfer), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_sysAction_lu_sysActionType", "lu_sysActionType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_sysActionType), "sysAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.sysAction), true)]
 
 #endregion
 
@@ -844,6 +846,22 @@ namespace Project.Models
             }
         }
         private ObjectSet<lu_externalTsfrType> _lu_externalTsfrType;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<lu_sysActionType> lu_sysActionType
+        {
+            get
+            {
+                if ((_lu_sysActionType == null))
+                {
+                    _lu_sysActionType = base.CreateObjectSet<lu_sysActionType>("lu_sysActionType");
+                }
+                return _lu_sysActionType;
+            }
+        }
+        private ObjectSet<lu_sysActionType> _lu_sysActionType;
 
         #endregion
 
@@ -1207,6 +1225,14 @@ namespace Project.Models
         public void AddTolu_externalTsfrType(lu_externalTsfrType lu_externalTsfrType)
         {
             base.AddObject("lu_externalTsfrType", lu_externalTsfrType);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the lu_sysActionType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTolu_sysActionType(lu_sysActionType lu_sysActionType)
+        {
+            base.AddObject("lu_sysActionType", lu_sysActionType);
         }
 
         #endregion
@@ -4236,6 +4262,28 @@ namespace Project.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transfer_entity2", "transfer")]
+        public EntityCollection<transfer> transfers2
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<transfer>("accountingModel.FK_transfer_entity2", "transfer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<transfer>("accountingModel.FK_transfer_entity2", "transfer", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -6794,6 +6842,113 @@ namespace Project.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="accountingModel", Name="lu_sysActionType")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class lu_sysActionType : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new lu_sysActionType object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static lu_sysActionType Createlu_sysActionType(global::System.Int32 id)
+        {
+            lu_sysActionType lu_sysActionType = new lu_sysActionType();
+            lu_sysActionType.ID = id;
+            return lu_sysActionType;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                OnnameChanging(value);
+                ReportPropertyChanging("name");
+                _name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("name");
+                OnnameChanged();
+            }
+        }
+        private global::System.String _name;
+        partial void OnnameChanging(global::System.String value);
+        partial void OnnameChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_sysAction_lu_sysActionType", "sysAction")]
+        public EntityCollection<sysAction> sysActions
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<sysAction>("accountingModel.FK_sysAction_lu_sysActionType", "sysAction");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<sysAction>("accountingModel.FK_sysAction_lu_sysActionType", "sysAction", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="accountingModel", Name="lu_transferStatus")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -8477,6 +8632,30 @@ namespace Project.Models
         private global::System.String _name;
         partial void OnnameChanging(global::System.String value);
         partial void OnnameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> sysActionTypeID
+        {
+            get
+            {
+                return _sysActionTypeID;
+            }
+            set
+            {
+                OnsysActionTypeIDChanging(value);
+                ReportPropertyChanging("sysActionTypeID");
+                _sysActionTypeID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("sysActionTypeID");
+                OnsysActionTypeIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _sysActionTypeID;
+        partial void OnsysActionTypeIDChanging(Nullable<global::System.Int32> value);
+        partial void OnsysActionTypeIDChanged();
 
         #endregion
 
@@ -8545,6 +8724,44 @@ namespace Project.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<transferAction>("accountingModel.FK_transferAction_sysAction", "transferAction", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_sysAction_lu_sysActionType", "lu_sysActionType")]
+        public lu_sysActionType lu_sysActionType
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_sysActionType>("accountingModel.FK_sysAction_lu_sysActionType", "lu_sysActionType").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_sysActionType>("accountingModel.FK_sysAction_lu_sysActionType", "lu_sysActionType").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<lu_sysActionType> lu_sysActionTypeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_sysActionType>("accountingModel.FK_sysAction_lu_sysActionType", "lu_sysActionType");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<lu_sysActionType>("accountingModel.FK_sysAction_lu_sysActionType", "lu_sysActionType", value);
                 }
             }
         }
@@ -9102,6 +9319,30 @@ namespace Project.Models
         private global::System.String _description;
         partial void OndescriptionChanging(global::System.String value);
         partial void OndescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> entityID
+        {
+            get
+            {
+                return _entityID;
+            }
+            set
+            {
+                OnentityIDChanging(value);
+                ReportPropertyChanging("entityID");
+                _entityID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("entityID");
+                OnentityIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _entityID;
+        partial void OnentityIDChanging(Nullable<global::System.Int32> value);
+        partial void OnentityIDChanged();
 
         #endregion
 
@@ -9322,6 +9563,44 @@ namespace Project.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<lu_transferType>("accountingModel.FK_transfer_lu_transferType", "lu_transferType", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transfer_entity2", "entity")]
+        public entity entity2
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<entity>("accountingModel.FK_transfer_entity2", "entity").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<entity>("accountingModel.FK_transfer_entity2", "entity").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<entity> entity2Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<entity>("accountingModel.FK_transfer_entity2", "entity");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<entity>("accountingModel.FK_transfer_entity2", "entity", value);
                 }
             }
         }

@@ -5,123 +5,78 @@ using System.Text;
 
 namespace Project.Controllers
 {
-    public class enumsController
+    public class glType
     {
-        public class ACCOUTTYPE
-        {
-        }
-        public class ASSET : ACCOUTTYPE
-        {
-            /// <summary>
-            /// static value
-            /// </summary>
-            public static readonly int Value = 1;
-        }
-        public class OE : ACCOUTTYPE
-        {
-            /// <summary>
-            /// static value
-            /// </summary>
-            public static readonly int Value = 2;
-        }
-        public class LIB : ACCOUTTYPE
-        {
-            /// <summary>
-            /// static value
-            /// </summary>
-            public static readonly int Value = 3;
-        }
+        public int ID { get; set; }
+        public string name { get; set; }
+    }
+    public class catType
+    {
+        public int ID { get; set; }
+        public string name { get; set; }
+        public int glTypeID { get; set; }
+    }
 
-        public class AssetCategories : ASSET
+    public static class enumsController
+    {
+        public static List<glType> glTypes = new List<glType>() 
         {
-            /// <summary>
-            /// static value
-            /// </summary>
-            public static readonly int AR = 1;
-            public static readonly int W = 2;
-            public static readonly int DBCASH = 3;
-            public static readonly int CCCASH = 4;
-
-
-            public static readonly Dictionary<int, string> list = new Dictionary<int, string>() 
-        {
-           {1,"AR"},
-           {2,"W"},
-           {3,"DBCASH"},
-           {4,"CCCASH"}
+            new glType{ID=1,name="ASSET"},
+            new glType{ID=2,name="OE"},
+            new glType{ID=3,name="LIB"}
         };
-        }
-        public class OECategories : OE
-        {
-            /// <summary>
-            /// static value
-            /// </summary>
-            public static readonly int INC = 8;
-            public static readonly int EXP = 9;
 
-            public static readonly Dictionary<int, string> list = new Dictionary<int, string>() 
+        public static List<catType> catTypes = new List<catType>() 
         {
-           {8,"INC"},
-           {9,"EXP"}
+            new catType{ID=1,name="AR",glTypeID=1},
+            new catType{ID=2,name="W",glTypeID=1},
+            new catType{ID=3,name="DBCASH",glTypeID=1},
+            new catType{ID=4,name="CCASH",glTypeID=1},
+
+            new catType{ID=8,name="INC",glTypeID=2},
+            new catType{ID=9,name="EXP",glTypeID=2},
+
+            new catType{ID=10,name="AP",glTypeID=3}
         };
-        }
-        public class LibCategories : LIB
-        {
-            /// <summary>
-            /// static value
-            /// </summary>
-            public static readonly int AP = 10;
 
-            public static readonly Dictionary<int, string> list = new Dictionary<int, string>() 
-        {
-           {10,"AP"}
-        };
-        }
-
+        
         public enum entityType
         {
             Organization = 1,
-            Office = 2,
-            Person = 3,
-            bank = 4
+            Person = 2,
+            Card=3,
+            invoice=4,
+            transfer=5
         }
-        public enum officeType
-        {
-            TemporaryOffice = 1,
-            HeadOffice = 2,
-            BankBranch = 3
-        }
-        public enum userType
-        {
-            AppUser = 1,
-            SysUser = 2
-        }
-        public enum sysUserType
-        {
-            NormalsysUser = 1,
-            AdminSysUser = 2
-        }
-        public enum paymentType
+        public enum transferType
         {
             External = 1,
             Internal = 2
         }
-        public enum extPaymentType
+        public enum extTransferType
         {
             CreditPayment = 1,
             InteracPayment = 2
-        }
-        public enum ccCardType
-        {
-            MASTERCARD = 1,
-            VISACARD = 2
         }
         public enum cardType
         {
             DebitCard = 1,
             CreditCard = 2
         }
-        public enum invoiceStat
+        public enum ccCardType
+        {
+            MASTERCARD = 1,
+            VISACARD = 2
+        }
+        public enum invoiceAction 
+        {
+            CancelInvoice=1,
+            CancelPayment = 2,
+            Delete=3,
+            Finalize=4,
+            payment=5
+        }
+        public enum invoiceStatus
         {
             Generated = 1,
             Finalized = 2,
@@ -137,7 +92,7 @@ namespace Project.Controllers
             partialInteracPaymantCancelled = 10,
             partialCreditCardPaymantCancelled = 11
         }
-        public enum paymentStat
+        public enum transferStatus
         {
             PaidApproved = 1,
             VoidApproved = 2,
@@ -146,10 +101,15 @@ namespace Project.Controllers
             NotApprovedVoid = 5,
             NotApprovedRefund = 6
         }
-        public enum paymentAction
+        public enum transferAction
         {
             Void = 1,
             Refund = 2
+        }
+        public enum sysAction
+        {
+            transfer=1,
+            invoice=2
         }
         public enum currencyType
         {
