@@ -1,0 +1,1253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="accountingModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="accountingModelStoreContainer">
+    <EntitySet Name="account" EntityType="accountingModel.Store.account" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="address" EntityType="accountingModel.Store.address" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="card" EntityType="accountingModel.Store.card" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="carrier" EntityType="accountingModel.Store.carrier" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="carrierContact" EntityType="accountingModel.Store.carrierContact" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="ccCard" EntityType="accountingModel.Store.ccCard" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="contact" EntityType="accountingModel.Store.contact" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="creditTransfer" EntityType="accountingModel.Store.creditTransfer" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="currency" EntityType="accountingModel.Store.currency" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="customer" EntityType="accountingModel.Store.customer" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="debitCard" EntityType="accountingModel.Store.debitCard" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="debitTransfer" EntityType="accountingModel.Store.debitTransfer" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="deliverable" EntityType="accountingModel.Store.deliverable" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="entity" EntityType="accountingModel.Store.entity" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="entityCard" EntityType="accountingModel.Store.entityCard" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="externalTransfer" EntityType="accountingModel.Store.externalTransfer" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="internalTransfer" EntityType="accountingModel.Store.internalTransfer" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="invoice" EntityType="accountingModel.Store.invoice" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="invoiceAction" EntityType="accountingModel.Store.invoiceAction" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="invoiceTransfer" EntityType="accountingModel.Store.invoiceTransfer" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="lu_cardType" EntityType="accountingModel.Store.lu_cardType" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="lu_catType" EntityType="accountingModel.Store.lu_catType" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="lu_ccCardType" EntityType="accountingModel.Store.lu_ccCardType" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="lu_contactType" EntityType="accountingModel.Store.lu_contactType" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="lu_currencyType" EntityType="accountingModel.Store.lu_currencyType" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="lu_deliverableType" EntityType="accountingModel.Store.lu_deliverableType" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="lu_glType" EntityType="accountingModel.Store.lu_glType" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="lu_invoiceStatus" EntityType="accountingModel.Store.lu_invoiceStatus" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="lu_transferStatus" EntityType="accountingModel.Store.lu_transferStatus" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="lu_transferType" EntityType="accountingModel.Store.lu_transferType" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="order" EntityType="accountingModel.Store.order" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="orderDetail" EntityType="accountingModel.Store.orderDetail" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="organization" EntityType="accountingModel.Store.organization" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="person" EntityType="accountingModel.Store.person" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="product" EntityType="accountingModel.Store.product" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="service" EntityType="accountingModel.Store.service" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="supplier" EntityType="accountingModel.Store.supplier" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="sysAction" EntityType="accountingModel.Store.sysAction" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="sysActionTransaction" EntityType="accountingModel.Store.sysActionTransaction" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="transaction" EntityType="accountingModel.Store.transaction" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="transfer" EntityType="accountingModel.Store.transfer" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="transferAction" EntityType="accountingModel.Store.transferAction" store:Type="Tables" Schema="Accounting" />
+    <EntitySet Name="user" EntityType="accountingModel.Store.user" store:Type="Tables" Schema="Accounting" />
+    <AssociationSet Name="FK_account_currency" Association="accountingModel.Store.FK_account_currency">
+      <End Role="currency" EntitySet="currency" />
+      <End Role="account" EntitySet="account" />
+    </AssociationSet>
+    <AssociationSet Name="FK_account_entity" Association="accountingModel.Store.FK_account_entity">
+      <End Role="entity" EntitySet="entity" />
+      <End Role="account" EntitySet="account" />
+    </AssociationSet>
+    <AssociationSet Name="FK_account_lu_catType" Association="accountingModel.Store.FK_account_lu_catType">
+      <End Role="lu_catType" EntitySet="lu_catType" />
+      <End Role="account" EntitySet="account" />
+    </AssociationSet>
+    <AssociationSet Name="FK_card_entity" Association="accountingModel.Store.FK_card_entity">
+      <End Role="entity" EntitySet="entity" />
+      <End Role="card" EntitySet="card" />
+    </AssociationSet>
+    <AssociationSet Name="FK_card_lu_cardType" Association="accountingModel.Store.FK_card_lu_cardType">
+      <End Role="lu_cardType" EntitySet="lu_cardType" />
+      <End Role="card" EntitySet="card" />
+    </AssociationSet>
+    <AssociationSet Name="FK_carrier_organization" Association="accountingModel.Store.FK_carrier_organization">
+      <End Role="organization" EntitySet="organization" />
+      <End Role="carrier" EntitySet="carrier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_carrierContact_carrier" Association="accountingModel.Store.FK_carrierContact_carrier">
+      <End Role="carrier" EntitySet="carrier" />
+      <End Role="carrierContact" EntitySet="carrierContact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_carrierContact_contact" Association="accountingModel.Store.FK_carrierContact_contact">
+      <End Role="contact" EntitySet="contact" />
+      <End Role="carrierContact" EntitySet="carrierContact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ccCard_card" Association="accountingModel.Store.FK_ccCard_card">
+      <End Role="card" EntitySet="card" />
+      <End Role="ccCard" EntitySet="ccCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ccCard_lu_ccCardType" Association="accountingModel.Store.FK_ccCard_lu_ccCardType">
+      <End Role="lu_ccCardType" EntitySet="lu_ccCardType" />
+      <End Role="ccCard" EntitySet="ccCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contact_lu_contactType" Association="accountingModel.Store.FK_contact_lu_contactType">
+      <End Role="lu_contactType" EntitySet="lu_contactType" />
+      <End Role="contact" EntitySet="contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_creditTransfer_externalTransfer" Association="accountingModel.Store.FK_creditTransfer_externalTransfer">
+      <End Role="externalTransfer" EntitySet="externalTransfer" />
+      <End Role="creditTransfer" EntitySet="creditTransfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_currency_lu_currencyType" Association="accountingModel.Store.FK_currency_lu_currencyType">
+      <End Role="lu_currencyType" EntitySet="lu_currencyType" />
+      <End Role="currency" EntitySet="currency" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_organization" Association="accountingModel.Store.FK_customer_organization">
+      <End Role="organization" EntitySet="organization" />
+      <End Role="customer" EntitySet="customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_debitCard_card" Association="accountingModel.Store.FK_debitCard_card">
+      <End Role="card" EntitySet="card" />
+      <End Role="debitCard" EntitySet="debitCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_debitCard_lu_ccCardType" Association="accountingModel.Store.FK_debitCard_lu_ccCardType">
+      <End Role="lu_ccCardType" EntitySet="lu_ccCardType" />
+      <End Role="debitCard" EntitySet="debitCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_debitTransfer_externalTransfer" Association="accountingModel.Store.FK_debitTransfer_externalTransfer">
+      <End Role="externalTransfer" EntitySet="externalTransfer" />
+      <End Role="debitTransfer" EntitySet="debitTransfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_deliverable_lu_deliverableType" Association="accountingModel.Store.FK_deliverable_lu_deliverableType">
+      <End Role="lu_deliverableType" EntitySet="lu_deliverableType" />
+      <End Role="deliverable" EntitySet="deliverable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_deliverable_supplier" Association="accountingModel.Store.FK_deliverable_supplier">
+      <End Role="supplier" EntitySet="supplier" />
+      <End Role="deliverable" EntitySet="deliverable" />
+    </AssociationSet>
+    <AssociationSet Name="FK_entityCard_card" Association="accountingModel.Store.FK_entityCard_card">
+      <End Role="card" EntitySet="card" />
+      <End Role="entityCard" EntitySet="entityCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_entityCard_entity" Association="accountingModel.Store.FK_entityCard_entity">
+      <End Role="entity" EntitySet="entity" />
+      <End Role="entityCard" EntitySet="entityCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_externalTransfer_card" Association="accountingModel.Store.FK_externalTransfer_card">
+      <End Role="card" EntitySet="card" />
+      <End Role="externalTransfer" EntitySet="externalTransfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_externalTransfer_entity" Association="accountingModel.Store.FK_externalTransfer_entity">
+      <End Role="entity" EntitySet="entity" />
+      <End Role="externalTransfer" EntitySet="externalTransfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_externalTransfer_transfer" Association="accountingModel.Store.FK_externalTransfer_transfer">
+      <End Role="transfer" EntitySet="transfer" />
+      <End Role="externalTransfer" EntitySet="externalTransfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_internalTransfer_transfer" Association="accountingModel.Store.FK_internalTransfer_transfer">
+      <End Role="transfer" EntitySet="transfer" />
+      <End Role="internalTransfer" EntitySet="internalTransfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_invoice_currency" Association="accountingModel.Store.FK_invoice_currency">
+      <End Role="currency" EntitySet="currency" />
+      <End Role="invoice" EntitySet="invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_invoice_entity" Association="accountingModel.Store.FK_invoice_entity">
+      <End Role="entity" EntitySet="entity" />
+      <End Role="invoice" EntitySet="invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_invoice_entity1" Association="accountingModel.Store.FK_invoice_entity1">
+      <End Role="entity" EntitySet="entity" />
+      <End Role="invoice" EntitySet="invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_invoiceAction_lu_invoiceStatus" Association="accountingModel.Store.FK_invoiceAction_lu_invoiceStatus">
+      <End Role="lu_invoiceStatus" EntitySet="lu_invoiceStatus" />
+      <End Role="invoiceAction" EntitySet="invoiceAction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_invoiceAction_sysAction" Association="accountingModel.Store.FK_invoiceAction_sysAction">
+      <End Role="sysAction" EntitySet="sysAction" />
+      <End Role="invoiceAction" EntitySet="invoiceAction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_invoiceTransfer_invoice" Association="accountingModel.Store.FK_invoiceTransfer_invoice">
+      <End Role="invoice" EntitySet="invoice" />
+      <End Role="invoiceTransfer" EntitySet="invoiceTransfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_invoiceTransfer_transfer" Association="accountingModel.Store.FK_invoiceTransfer_transfer">
+      <End Role="transfer" EntitySet="transfer" />
+      <End Role="invoiceTransfer" EntitySet="invoiceTransfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_lu_catType_lu_glType" Association="accountingModel.Store.FK_lu_catType_lu_glType">
+      <End Role="lu_glType" EntitySet="lu_glType" />
+      <End Role="lu_catType" EntitySet="lu_catType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_address" Association="accountingModel.Store.FK_order_address">
+      <End Role="address" EntitySet="address" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_carrier" Association="accountingModel.Store.FK_order_carrier">
+      <End Role="carrier" EntitySet="carrier" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_entity" Association="accountingModel.Store.FK_order_entity">
+      <End Role="entity" EntitySet="entity" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_entity1" Association="accountingModel.Store.FK_order_entity1">
+      <End Role="entity" EntitySet="entity" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orderDetail_deliverable" Association="accountingModel.Store.FK_orderDetail_deliverable">
+      <End Role="deliverable" EntitySet="deliverable" />
+      <End Role="orderDetail" EntitySet="orderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_organization_entity" Association="accountingModel.Store.FK_organization_entity">
+      <End Role="entity" EntitySet="entity" />
+      <End Role="organization" EntitySet="organization" />
+    </AssociationSet>
+    <AssociationSet Name="FK_person_entity" Association="accountingModel.Store.FK_person_entity">
+      <End Role="entity" EntitySet="entity" />
+      <End Role="person" EntitySet="person" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_deliverable" Association="accountingModel.Store.FK_product_deliverable">
+      <End Role="deliverable" EntitySet="deliverable" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_service_deliverable" Association="accountingModel.Store.FK_service_deliverable">
+      <End Role="deliverable" EntitySet="deliverable" />
+      <End Role="service" EntitySet="service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_supplier_organization" Association="accountingModel.Store.FK_supplier_organization">
+      <End Role="organization" EntitySet="organization" />
+      <End Role="supplier" EntitySet="supplier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sysActionTransaction_sysAction" Association="accountingModel.Store.FK_sysActionTransaction_sysAction">
+      <End Role="sysAction" EntitySet="sysAction" />
+      <End Role="sysActionTransaction" EntitySet="sysActionTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sysActionTransaction_transaction" Association="accountingModel.Store.FK_sysActionTransaction_transaction">
+      <End Role="transaction" EntitySet="transaction" />
+      <End Role="sysActionTransaction" EntitySet="sysActionTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transaction_account" Association="accountingModel.Store.FK_transaction_account">
+      <End Role="account" EntitySet="account" />
+      <End Role="transaction" EntitySet="transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transfer_currency" Association="accountingModel.Store.FK_transfer_currency">
+      <End Role="currency" EntitySet="currency" />
+      <End Role="transfer" EntitySet="transfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transfer_entity" Association="accountingModel.Store.FK_transfer_entity">
+      <End Role="entity" EntitySet="entity" />
+      <End Role="transfer" EntitySet="transfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transfer_entity1" Association="accountingModel.Store.FK_transfer_entity1">
+      <End Role="entity" EntitySet="entity" />
+      <End Role="transfer" EntitySet="transfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transfer_lu_transferType" Association="accountingModel.Store.FK_transfer_lu_transferType">
+      <End Role="lu_transferType" EntitySet="lu_transferType" />
+      <End Role="transfer" EntitySet="transfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transferAction_lu_transferStatus" Association="accountingModel.Store.FK_transferAction_lu_transferStatus">
+      <End Role="lu_transferStatus" EntitySet="lu_transferStatus" />
+      <End Role="transferAction" EntitySet="transferAction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transferAction_sysAction" Association="accountingModel.Store.FK_transferAction_sysAction">
+      <End Role="sysAction" EntitySet="sysAction" />
+      <End Role="transferAction" EntitySet="transferAction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_person" Association="accountingModel.Store.FK_user_person">
+      <End Role="person" EntitySet="person" />
+      <End Role="user" EntitySet="user" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="accountNo" Type="varchar" MaxLength="50" />
+    <Property Name="catTypeID" Type="int" />
+    <Property Name="ownerEntityID" Type="int" />
+    <Property Name="currencyID" Type="int" />
+    <Property Name="balance" Type="decimal" Scale="18" />
+  </EntityType>
+  <EntityType Name="address">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="countryID" Type="int" />
+    <Property Name="provinceID" Type="int" />
+    <Property Name="cityID" Type="int" />
+    <Property Name="streetNo" Type="varchar" MaxLength="500" />
+    <Property Name="aptNo" Type="varchar" MaxLength="200" />
+    <Property Name="postalcode" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="card">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="entityID" Type="int" />
+    <Property Name="cardNo" Type="varchar" MaxLength="200" />
+    <Property Name="expiryDate" Type="datetime" />
+    <Property Name="cardTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="carrier">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="orgID" Type="int" />
+  </EntityType>
+  <EntityType Name="carrierContact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="carrierID" Type="int" />
+    <Property Name="contactID" Type="int" />
+  </EntityType>
+  <EntityType Name="ccCard">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="cardID" Type="int" />
+    <Property Name="ccCardTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="300" />
+    <Property Name="contactTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="creditTransfer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="externalTransferID" Type="int" />
+  </EntityType>
+  <EntityType Name="currency">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="currencyTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="orgID" Type="int" />
+  </EntityType>
+  <EntityType Name="debitCard">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="cardID" Type="int" />
+    <Property Name="ccCardTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="debitTransfer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="externalTransferID" Type="int" />
+  </EntityType>
+  <EntityType Name="deliverable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="deliverableTypeID" Type="int" />
+    <Property Name="supplierID" Type="int" />
+  </EntityType>
+  <EntityType Name="entity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="entityCard">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="entityID" Type="int" />
+    <Property Name="cardID" Type="int" />
+  </EntityType>
+  <EntityType Name="externalTransfer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="entityID" Type="int" />
+    <Property Name="transferID" Type="int" />
+    <Property Name="cardID" Type="int" />
+    <Property Name="externalTsfrTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="internalTransfer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="transferID" Type="int" />
+    <Property Name="description" Type="text" />
+  </EntityType>
+  <EntityType Name="invoice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="entityID" Type="int" />
+    <Property Name="issuerEntityID" Type="int" />
+    <Property Name="receiverEntityID" Type="int" />
+    <Property Name="currencyID" Type="int" />
+    <Property Name="note" Type="text" />
+  </EntityType>
+  <EntityType Name="invoiceAction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="invoiceStatusID" Type="int" />
+    <Property Name="sysActionID" Type="int" />
+  </EntityType>
+  <EntityType Name="invoiceTransfer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="invoiceID" Type="int" />
+    <Property Name="transferID" Type="int" />
+  </EntityType>
+  <EntityType Name="lu_cardType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="lu_catType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="glTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="lu_ccCardType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="lu_contactType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="lu_currencyType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="lu_deliverableType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="lu_glType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="lu_invoiceStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="lu_transferStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="lu_transferType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="issuerEntityID" Type="int" />
+    <Property Name="receiverEntityID" Type="int" />
+    <Property Name="orderDate" Type="datetime" />
+    <Property Name="shippedDate" Type="datetime" />
+    <Property Name="carrierID" Type="int" />
+    <Property Name="addressID" Type="int" />
+  </EntityType>
+  <EntityType Name="orderDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="deliverableID" Type="int" />
+    <Property Name="unitPrice" Type="decimal" Scale="2" />
+    <Property Name="quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="organization">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="entityID" Type="int" />
+  </EntityType>
+  <EntityType Name="person">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="firstname" Type="varchar" MaxLength="200" />
+    <Property Name="lastname" Type="varchar" MaxLength="200" />
+    <Property Name="entityID" Type="int" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="deliverableID" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="service">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="int" />
+    <Property Name="deliverableID" Type="int" />
+  </EntityType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="orgID" Type="int" />
+  </EntityType>
+  <EntityType Name="sysAction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="sysActionTransaction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="sysActionID" Type="int" />
+    <Property Name="transactionID" Type="int" />
+  </EntityType>
+  <EntityType Name="transaction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="accountID" Type="int" />
+    <Property Name="amount" Type="decimal" Scale="18" />
+  </EntityType>
+  <EntityType Name="transfer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="issuerEntityID" Type="int" />
+    <Property Name="receiverEntityID" Type="int" />
+    <Property Name="transferTypeID" Type="int" />
+    <Property Name="currencyID" Type="int" />
+    <Property Name="amount" Type="decimal" Scale="2" />
+    <Property Name="description" Type="text" />
+  </EntityType>
+  <EntityType Name="transferAction">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="varchar" MaxLength="200" />
+    <Property Name="transferStatusID" Type="int" />
+    <Property Name="sysActionID" Type="int" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="personID" Type="int" />
+    <Property Name="username" Type="varchar" MaxLength="200" />
+    <Property Name="password" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <Association Name="FK_account_currency">
+    <End Role="currency" Type="accountingModel.Store.currency" Multiplicity="0..1" />
+    <End Role="account" Type="accountingModel.Store.account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="account">
+        <PropertyRef Name="currencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_account_entity">
+    <End Role="entity" Type="accountingModel.Store.entity" Multiplicity="0..1" />
+    <End Role="account" Type="accountingModel.Store.account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="account">
+        <PropertyRef Name="ownerEntityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_account_lu_catType">
+    <End Role="lu_catType" Type="accountingModel.Store.lu_catType" Multiplicity="0..1" />
+    <End Role="account" Type="accountingModel.Store.account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_catType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="account">
+        <PropertyRef Name="catTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_card_entity">
+    <End Role="entity" Type="accountingModel.Store.entity" Multiplicity="0..1" />
+    <End Role="card" Type="accountingModel.Store.card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="card">
+        <PropertyRef Name="entityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_card_lu_cardType">
+    <End Role="lu_cardType" Type="accountingModel.Store.lu_cardType" Multiplicity="0..1" />
+    <End Role="card" Type="accountingModel.Store.card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_cardType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="card">
+        <PropertyRef Name="cardTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_carrier_organization">
+    <End Role="organization" Type="accountingModel.Store.organization" Multiplicity="0..1" />
+    <End Role="carrier" Type="accountingModel.Store.carrier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="organization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="carrier">
+        <PropertyRef Name="orgID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_carrierContact_carrier">
+    <End Role="carrier" Type="accountingModel.Store.carrier" Multiplicity="0..1" />
+    <End Role="carrierContact" Type="accountingModel.Store.carrierContact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="carrier">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="carrierContact">
+        <PropertyRef Name="carrierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_carrierContact_contact">
+    <End Role="contact" Type="accountingModel.Store.contact" Multiplicity="0..1" />
+    <End Role="carrierContact" Type="accountingModel.Store.carrierContact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="contact">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="carrierContact">
+        <PropertyRef Name="contactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ccCard_card">
+    <End Role="card" Type="accountingModel.Store.card" Multiplicity="0..1" />
+    <End Role="ccCard" Type="accountingModel.Store.ccCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="card">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ccCard">
+        <PropertyRef Name="cardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ccCard_lu_ccCardType">
+    <End Role="lu_ccCardType" Type="accountingModel.Store.lu_ccCardType" Multiplicity="0..1" />
+    <End Role="ccCard" Type="accountingModel.Store.ccCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_ccCardType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ccCard">
+        <PropertyRef Name="ccCardTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contact_lu_contactType">
+    <End Role="lu_contactType" Type="accountingModel.Store.lu_contactType" Multiplicity="0..1" />
+    <End Role="contact" Type="accountingModel.Store.contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_contactType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="contact">
+        <PropertyRef Name="contactTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_creditTransfer_externalTransfer">
+    <End Role="externalTransfer" Type="accountingModel.Store.externalTransfer" Multiplicity="0..1" />
+    <End Role="creditTransfer" Type="accountingModel.Store.creditTransfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="externalTransfer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="creditTransfer">
+        <PropertyRef Name="externalTransferID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_currency_lu_currencyType">
+    <End Role="lu_currencyType" Type="accountingModel.Store.lu_currencyType" Multiplicity="0..1" />
+    <End Role="currency" Type="accountingModel.Store.currency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_currencyType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="currency">
+        <PropertyRef Name="currencyTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_organization">
+    <End Role="organization" Type="accountingModel.Store.organization" Multiplicity="0..1" />
+    <End Role="customer" Type="accountingModel.Store.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="organization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="orgID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_debitCard_card">
+    <End Role="card" Type="accountingModel.Store.card" Multiplicity="0..1" />
+    <End Role="debitCard" Type="accountingModel.Store.debitCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="card">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="debitCard">
+        <PropertyRef Name="cardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_debitCard_lu_ccCardType">
+    <End Role="lu_ccCardType" Type="accountingModel.Store.lu_ccCardType" Multiplicity="0..1" />
+    <End Role="debitCard" Type="accountingModel.Store.debitCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_ccCardType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="debitCard">
+        <PropertyRef Name="ccCardTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_debitTransfer_externalTransfer">
+    <End Role="externalTransfer" Type="accountingModel.Store.externalTransfer" Multiplicity="0..1" />
+    <End Role="debitTransfer" Type="accountingModel.Store.debitTransfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="externalTransfer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="debitTransfer">
+        <PropertyRef Name="externalTransferID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_deliverable_lu_deliverableType">
+    <End Role="lu_deliverableType" Type="accountingModel.Store.lu_deliverableType" Multiplicity="0..1" />
+    <End Role="deliverable" Type="accountingModel.Store.deliverable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_deliverableType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="deliverable">
+        <PropertyRef Name="deliverableTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_deliverable_supplier">
+    <End Role="supplier" Type="accountingModel.Store.supplier" Multiplicity="0..1" />
+    <End Role="deliverable" Type="accountingModel.Store.deliverable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplier">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="deliverable">
+        <PropertyRef Name="supplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_entityCard_card">
+    <End Role="card" Type="accountingModel.Store.card" Multiplicity="0..1" />
+    <End Role="entityCard" Type="accountingModel.Store.entityCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="card">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="entityCard">
+        <PropertyRef Name="cardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_entityCard_entity">
+    <End Role="entity" Type="accountingModel.Store.entity" Multiplicity="0..1" />
+    <End Role="entityCard" Type="accountingModel.Store.entityCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="entityCard">
+        <PropertyRef Name="entityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_externalTransfer_card">
+    <End Role="card" Type="accountingModel.Store.card" Multiplicity="0..1" />
+    <End Role="externalTransfer" Type="accountingModel.Store.externalTransfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="card">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="externalTransfer">
+        <PropertyRef Name="cardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_externalTransfer_entity">
+    <End Role="entity" Type="accountingModel.Store.entity" Multiplicity="0..1" />
+    <End Role="externalTransfer" Type="accountingModel.Store.externalTransfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="externalTransfer">
+        <PropertyRef Name="entityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_externalTransfer_transfer">
+    <End Role="transfer" Type="accountingModel.Store.transfer" Multiplicity="0..1" />
+    <End Role="externalTransfer" Type="accountingModel.Store.externalTransfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transfer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="externalTransfer">
+        <PropertyRef Name="transferID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_internalTransfer_transfer">
+    <End Role="transfer" Type="accountingModel.Store.transfer" Multiplicity="0..1" />
+    <End Role="internalTransfer" Type="accountingModel.Store.internalTransfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transfer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="internalTransfer">
+        <PropertyRef Name="transferID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_invoice_currency">
+    <End Role="currency" Type="accountingModel.Store.currency" Multiplicity="0..1" />
+    <End Role="invoice" Type="accountingModel.Store.invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="invoice">
+        <PropertyRef Name="currencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_invoice_entity">
+    <End Role="entity" Type="accountingModel.Store.entity" Multiplicity="0..1" />
+    <End Role="invoice" Type="accountingModel.Store.invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="invoice">
+        <PropertyRef Name="issuerEntityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_invoice_entity1">
+    <End Role="entity" Type="accountingModel.Store.entity" Multiplicity="0..1" />
+    <End Role="invoice" Type="accountingModel.Store.invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="invoice">
+        <PropertyRef Name="receiverEntityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_invoiceAction_lu_invoiceStatus">
+    <End Role="lu_invoiceStatus" Type="accountingModel.Store.lu_invoiceStatus" Multiplicity="0..1" />
+    <End Role="invoiceAction" Type="accountingModel.Store.invoiceAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_invoiceStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="invoiceAction">
+        <PropertyRef Name="invoiceStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_invoiceAction_sysAction">
+    <End Role="sysAction" Type="accountingModel.Store.sysAction" Multiplicity="0..1" />
+    <End Role="invoiceAction" Type="accountingModel.Store.invoiceAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sysAction">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="invoiceAction">
+        <PropertyRef Name="sysActionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_invoiceTransfer_invoice">
+    <End Role="invoice" Type="accountingModel.Store.invoice" Multiplicity="0..1" />
+    <End Role="invoiceTransfer" Type="accountingModel.Store.invoiceTransfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="invoice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="invoiceTransfer">
+        <PropertyRef Name="invoiceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_invoiceTransfer_transfer">
+    <End Role="transfer" Type="accountingModel.Store.transfer" Multiplicity="0..1" />
+    <End Role="invoiceTransfer" Type="accountingModel.Store.invoiceTransfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transfer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="invoiceTransfer">
+        <PropertyRef Name="transferID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_lu_catType_lu_glType">
+    <End Role="lu_glType" Type="accountingModel.Store.lu_glType" Multiplicity="0..1" />
+    <End Role="lu_catType" Type="accountingModel.Store.lu_catType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_glType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="lu_catType">
+        <PropertyRef Name="glTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_address">
+    <End Role="address" Type="accountingModel.Store.address" Multiplicity="0..1" />
+    <End Role="order" Type="accountingModel.Store.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="address">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="addressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_carrier">
+    <End Role="carrier" Type="accountingModel.Store.carrier" Multiplicity="0..1" />
+    <End Role="order" Type="accountingModel.Store.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="carrier">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="carrierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_entity">
+    <End Role="entity" Type="accountingModel.Store.entity" Multiplicity="0..1" />
+    <End Role="order" Type="accountingModel.Store.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="issuerEntityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_entity1">
+    <End Role="entity" Type="accountingModel.Store.entity" Multiplicity="0..1" />
+    <End Role="order" Type="accountingModel.Store.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="receiverEntityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orderDetail_deliverable">
+    <End Role="deliverable" Type="accountingModel.Store.deliverable" Multiplicity="0..1" />
+    <End Role="orderDetail" Type="accountingModel.Store.orderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="deliverable">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="orderDetail">
+        <PropertyRef Name="deliverableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_organization_entity">
+    <End Role="entity" Type="accountingModel.Store.entity" Multiplicity="0..1" />
+    <End Role="organization" Type="accountingModel.Store.organization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="organization">
+        <PropertyRef Name="entityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_person_entity">
+    <End Role="entity" Type="accountingModel.Store.entity" Multiplicity="0..1" />
+    <End Role="person" Type="accountingModel.Store.person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="person">
+        <PropertyRef Name="entityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_deliverable">
+    <End Role="deliverable" Type="accountingModel.Store.deliverable" Multiplicity="0..1" />
+    <End Role="product" Type="accountingModel.Store.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="deliverable">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="deliverableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_service_deliverable">
+    <End Role="deliverable" Type="accountingModel.Store.deliverable" Multiplicity="0..1" />
+    <End Role="service" Type="accountingModel.Store.service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="deliverable">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="service">
+        <PropertyRef Name="deliverableID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_supplier_organization">
+    <End Role="organization" Type="accountingModel.Store.organization" Multiplicity="0..1" />
+    <End Role="supplier" Type="accountingModel.Store.supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="organization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="supplier">
+        <PropertyRef Name="orgID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sysActionTransaction_sysAction">
+    <End Role="sysAction" Type="accountingModel.Store.sysAction" Multiplicity="0..1" />
+    <End Role="sysActionTransaction" Type="accountingModel.Store.sysActionTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sysAction">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="sysActionTransaction">
+        <PropertyRef Name="sysActionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sysActionTransaction_transaction">
+    <End Role="transaction" Type="accountingModel.Store.transaction" Multiplicity="0..1" />
+    <End Role="sysActionTransaction" Type="accountingModel.Store.sysActionTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transaction">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="sysActionTransaction">
+        <PropertyRef Name="transactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transaction_account">
+    <End Role="account" Type="accountingModel.Store.account" Multiplicity="0..1" />
+    <End Role="transaction" Type="accountingModel.Store.transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="account">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="transaction">
+        <PropertyRef Name="accountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transfer_currency">
+    <End Role="currency" Type="accountingModel.Store.currency" Multiplicity="0..1" />
+    <End Role="transfer" Type="accountingModel.Store.transfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="currency">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="transfer">
+        <PropertyRef Name="currencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transfer_entity">
+    <End Role="entity" Type="accountingModel.Store.entity" Multiplicity="0..1" />
+    <End Role="transfer" Type="accountingModel.Store.transfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="transfer">
+        <PropertyRef Name="issuerEntityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transfer_entity1">
+    <End Role="entity" Type="accountingModel.Store.entity" Multiplicity="0..1" />
+    <End Role="transfer" Type="accountingModel.Store.transfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="transfer">
+        <PropertyRef Name="receiverEntityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transfer_lu_transferType">
+    <End Role="lu_transferType" Type="accountingModel.Store.lu_transferType" Multiplicity="0..1" />
+    <End Role="transfer" Type="accountingModel.Store.transfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_transferType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="transfer">
+        <PropertyRef Name="transferTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transferAction_lu_transferStatus">
+    <End Role="lu_transferStatus" Type="accountingModel.Store.lu_transferStatus" Multiplicity="0..1" />
+    <End Role="transferAction" Type="accountingModel.Store.transferAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_transferStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="transferAction">
+        <PropertyRef Name="transferStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transferAction_sysAction">
+    <End Role="sysAction" Type="accountingModel.Store.sysAction" Multiplicity="0..1" />
+    <End Role="transferAction" Type="accountingModel.Store.transferAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sysAction">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="transferAction">
+        <PropertyRef Name="sysActionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_person">
+    <End Role="person" Type="accountingModel.Store.person" Multiplicity="0..1" />
+    <End Role="user" Type="accountingModel.Store.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="personID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

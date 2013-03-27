@@ -1,0 +1,6 @@
+K:\Accounting\Project\Project\bin\Debug\Project.exe.config
+K:\Accounting\Project\Project\bin\Debug\Project.exe
+K:\Accounting\Project\Project\bin\Debug\Project.pdb
+K:\Accounting\Project\Project\obj\x86\Debug\Project.exe
+K:\Accounting\Project\Project\obj\x86\Debug\Project.pdb
+K:\Accounting\Project\Project\obj\x86\Debug\Project.csprojResolveAssemblyReference.cache
