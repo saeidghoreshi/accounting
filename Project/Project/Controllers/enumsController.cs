@@ -5,12 +5,12 @@ using System.Text;
 
 namespace Project.Controllers
 {
-    public class glType
+    public class GLType
     {
         public int ID { get; set; }
         public string name { get; set; }
     }
-    public class catType
+    public class CATType
     {
         public int ID { get; set; }
         public string name { get; set; }
@@ -19,27 +19,42 @@ namespace Project.Controllers
 
     public static class enumsController
     {
-        public static List<glType> glTypes = new List<glType>() 
+        public static List<GLType> glTypes = new List<GLType>() 
         {
-            new glType{ID=1,name="ASSET"},
-            new glType{ID=2,name="OE"},
-            new glType{ID=3,name="LIB"}
+            new GLType{ID=1,name="ASSET"},
+            new GLType{ID=2,name="OE"},
+            new GLType{ID=3,name="LIB"}
         };
 
-        public static List<catType> catTypes = new List<catType>() 
+        public static List<CATType> catTypes = new List<CATType>() 
         {
-            new catType{ID=1,name="AR",glTypeID=1},
-            new catType{ID=2,name="W",glTypeID=1},
-            new catType{ID=3,name="DBCASH",glTypeID=1},
-            new catType{ID=4,name="CCASH",glTypeID=1},
+            new CATType{ID=1,name=catType.AR.ToString(),glTypeID=(int)glType.ASSET},
+            new CATType{ID=2,name=catType.W.ToString(),glTypeID=(int)glType.ASSET},
+            new CATType{ID=3,name=catType.DBCASH.ToString(),glTypeID=(int)glType.ASSET},
+            new CATType{ID=4,name=catType.CCCASH.ToString(),glTypeID=(int)glType.ASSET},
 
-            new catType{ID=8,name="INC",glTypeID=2},
-            new catType{ID=9,name="EXP",glTypeID=2},
+            new CATType{ID=5,name=catType.INC.ToString(),glTypeID=(int)glType.OE},
+            new CATType{ID=6,name=catType.EXP.ToString(),glTypeID=(int)glType.OE},
 
-            new catType{ID=10,name="AP",glTypeID=3}
+            new CATType{ID=7,name=catType.AP.ToString(),glTypeID=(int)glType.LIB}
         };
 
-        
+        public enum glType 
+        {
+            ASSET=1,
+            OE=2,
+            LIB=3
+        }
+        public enum catType
+        {
+            AR = 1,
+            W = 2,
+            DBCASH = 3,
+            CCCASH=4,
+            INC=5,
+            EXP=6,
+            AP=7
+        }
         public enum entityType
         {
             Organization = 1,
