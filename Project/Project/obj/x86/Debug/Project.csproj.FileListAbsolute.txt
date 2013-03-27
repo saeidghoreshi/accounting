@@ -4,3 +4,6 @@ K:\Accounting\Project\Project\bin\Debug\Project.pdb
 K:\Accounting\Project\Project\obj\x86\Debug\Project.exe
 K:\Accounting\Project\Project\obj\x86\Debug\Project.pdb
 K:\Accounting\Project\Project\obj\x86\Debug\Project.csprojResolveAssemblyReference.cache
+E:\Repository\accounting\Project\Project\bin\Debug\Project.exe.config
+E:\Repository\accounting\Project\Project\obj\x86\Debug\Project.exe
+E:\Repository\accounting\Project\Project\obj\x86\Debug\Project.pdb

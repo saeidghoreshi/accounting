@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace Project.Controllers
             {
                 account = ctx.accounts.Where(x => x.catTypeID == catTypeID && x.ownerEntityID == entityID && x.currencyID == currencyID).SingleOrDefault();
             }
+
             return account;
         }
     }
