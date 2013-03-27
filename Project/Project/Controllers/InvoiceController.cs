@@ -76,6 +76,7 @@ namespace Project.Controllers
                 var invoice = ctx.invoices.Where(x => x.ID.Equals(invoiceID)).SingleOrDefault();
                 if (invoice == null)
                     throw new Exception();
+                var invoiceServicesAmt = 0;
                 //var invoiceServicesAmt = ctx.orderDetails.Where(x => x.or invoiceID.equals(invoiceID)).Sum(x => x.amount);
                 return (decimal)invoiceServicesAmt;
             }
@@ -92,39 +93,30 @@ namespace Project.Controllers
             using (var ctx = new accountingEntities())
             using (var ts = new TransactionScope())
             {
-
+                
                 //Get Sum of Invoice Services added
                 decimal invoiceServicesAmt = InvoiceController.getInvoiceServicesSumAmt(invoiceID);
 
                 //Record related transctions
-                List<int> transactions = new List<int>();
-                var trans1 = Transaction.createNew((int)invoice.receiverEntityID, (int)enumsController.catTypes. LibCategories.AP, -1 * (decimal)invoiceServicesAmt, (int)this.currencyID);
+                List<transaction> transactions = new List<transaction>();
+                var trans1 = transactionController.createNew((int)invoice.receiverEntityID, (int)enumsController.catType.AP, -1 * (decimal)invoiceServicesAmt, (int)invoice.currencyID);
                 transactions.Add(trans1);
-                var trans2 = Transaction.createNew((int)this.issuerEntityID, (int)AssetCategories.AR, +1 * (decimal)invoiceServicesAmt, (int)this.currencyID);
+                var trans2 = transactionController.createNew((int)invoice.issuerEntityID, (int)enumsController.catType.AR, +1 * (decimal)invoiceServicesAmt, (int)invoice.currencyID);
                 transactions.Add(trans2);
 
                 /*Record Invoice Transaction*/
-                this.RecordInvoiceTransaction(transactions, enums.invoiceStat.Finalized);
+                InvoiceController.RecordInvoiceTransaction(transactions, enumsController.invoiceStatus.Finalized);
 
                 ts.Complete();
             }
         }
 
-        public static invoiceInvoiceItems addService(int serviceID, decimal amount)
+        public static void addInvoiceDetail(orderDetail newOrderDetail)
         {
             using (var ctx = new accountingEntities())
-            {
-                var newInvoiceService = new invoiceService()
-                {
-                    invoiceID = this.invoiceID,
-                    serviceID = serviceID,
-                    currencyID = this.currencyID,
-                    amount = amount
-                };
-                ctx.invoiceService.AddObject(newInvoiceService);
+            {   
+                ctx.orderDetails.AddObject(newOrderDetail);
                 ctx.SaveChanges();
-
-                return newInvoiceService;
             }
         }
 
@@ -380,7 +372,7 @@ namespace Project.Controllers
             }
         }
 
-        public static void RecordInvoiceTransaction(List<int> transactions, enums.invoiceStat invoiceStat)
+        public static void RecordInvoiceTransaction(List<transaction> transactions, enumsController.invoiceStatus invoiceStat)
         {
             using (var ctx = new accountingEntities())
             using (var ts = new TransactionScope())
