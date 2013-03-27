@@ -72,6 +72,8 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_sysActionTransaction_sysAction", "sysAction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.sysAction), "sysActionTransaction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.sysActionTransaction), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_transferAction_sysAction", "sysAction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.sysAction), "transferAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.transferAction), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_sysActionTransaction_transaction", "transaction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transaction), "sysActionTransaction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.sysActionTransaction), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_entity_lu_entityType", "lu_entityType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_entityType), "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.entity), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_externalTransfer_lu_externalTsfrType", "lu_externalTsfrType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_externalTsfrType), "externalTransfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.externalTransfer), true)]
 
 #endregion
 
@@ -810,6 +812,38 @@ namespace Project.Models
             }
         }
         private ObjectSet<user> _users;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<lu_entityType> lu_entityType
+        {
+            get
+            {
+                if ((_lu_entityType == null))
+                {
+                    _lu_entityType = base.CreateObjectSet<lu_entityType>("lu_entityType");
+                }
+                return _lu_entityType;
+            }
+        }
+        private ObjectSet<lu_entityType> _lu_entityType;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<lu_externalTsfrType> lu_externalTsfrType
+        {
+            get
+            {
+                if ((_lu_externalTsfrType == null))
+                {
+                    _lu_externalTsfrType = base.CreateObjectSet<lu_externalTsfrType>("lu_externalTsfrType");
+                }
+                return _lu_externalTsfrType;
+            }
+        }
+        private ObjectSet<lu_externalTsfrType> _lu_externalTsfrType;
 
         #endregion
 
@@ -1157,6 +1191,22 @@ namespace Project.Models
         public void AddTousers(user user)
         {
             base.AddObject("users", user);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the lu_entityType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTolu_entityType(lu_entityType lu_entityType)
+        {
+            base.AddObject("lu_entityType", lu_entityType);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the lu_externalTsfrType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTolu_externalTsfrType(lu_externalTsfrType lu_externalTsfrType)
+        {
+            base.AddObject("lu_externalTsfrType", lu_externalTsfrType);
         }
 
         #endregion
@@ -3855,6 +3905,30 @@ namespace Project.Models
         private global::System.Int32 _ID;
         partial void OnIDChanging(global::System.Int32 value);
         partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> entityTypeID
+        {
+            get
+            {
+                return _entityTypeID;
+            }
+            set
+            {
+                OnentityTypeIDChanging(value);
+                ReportPropertyChanging("entityTypeID");
+                _entityTypeID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("entityTypeID");
+                OnentityTypeIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _entityTypeID;
+        partial void OnentityTypeIDChanging(Nullable<global::System.Int32> value);
+        partial void OnentityTypeIDChanged();
 
         #endregion
 
@@ -4121,6 +4195,44 @@ namespace Project.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<transfer>("accountingModel.FK_transfer_entity1", "transfer", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_entity_lu_entityType", "lu_entityType")]
+        public lu_entityType lu_entityType
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_entityType>("accountingModel.FK_entity_lu_entityType", "lu_entityType").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_entityType>("accountingModel.FK_entity_lu_entityType", "lu_entityType").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<lu_entityType> lu_entityTypeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_entityType>("accountingModel.FK_entity_lu_entityType", "lu_entityType");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<lu_entityType>("accountingModel.FK_entity_lu_entityType", "lu_entityType", value);
                 }
             }
         }
@@ -4621,6 +4733,44 @@ namespace Project.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<transfer>("accountingModel.FK_externalTransfer_transfer", "transfer", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_externalTransfer_lu_externalTsfrType", "lu_externalTsfrType")]
+        public lu_externalTsfrType lu_externalTsfrType
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_externalTsfrType>("accountingModel.FK_externalTransfer_lu_externalTsfrType", "lu_externalTsfrType").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_externalTsfrType>("accountingModel.FK_externalTransfer_lu_externalTsfrType", "lu_externalTsfrType").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<lu_externalTsfrType> lu_externalTsfrTypeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_externalTsfrType>("accountingModel.FK_externalTransfer_lu_externalTsfrType", "lu_externalTsfrType");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<lu_externalTsfrType>("accountingModel.FK_externalTransfer_lu_externalTsfrType", "lu_externalTsfrType", value);
                 }
             }
         }
@@ -6205,6 +6355,220 @@ namespace Project.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<deliverable>("accountingModel.FK_deliverable_lu_deliverableType", "deliverable", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="accountingModel", Name="lu_entityType")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class lu_entityType : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new lu_entityType object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static lu_entityType Createlu_entityType(global::System.Int32 id)
+        {
+            lu_entityType lu_entityType = new lu_entityType();
+            lu_entityType.ID = id;
+            return lu_entityType;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                OnnameChanging(value);
+                ReportPropertyChanging("name");
+                _name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("name");
+                OnnameChanged();
+            }
+        }
+        private global::System.String _name;
+        partial void OnnameChanging(global::System.String value);
+        partial void OnnameChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_entity_lu_entityType", "entity")]
+        public EntityCollection<entity> entities
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<entity>("accountingModel.FK_entity_lu_entityType", "entity");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<entity>("accountingModel.FK_entity_lu_entityType", "entity", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="accountingModel", Name="lu_externalTsfrType")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class lu_externalTsfrType : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new lu_externalTsfrType object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static lu_externalTsfrType Createlu_externalTsfrType(global::System.Int32 id)
+        {
+            lu_externalTsfrType lu_externalTsfrType = new lu_externalTsfrType();
+            lu_externalTsfrType.ID = id;
+            return lu_externalTsfrType;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                OnnameChanging(value);
+                ReportPropertyChanging("name");
+                _name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("name");
+                OnnameChanged();
+            }
+        }
+        private global::System.String _name;
+        partial void OnnameChanging(global::System.String value);
+        partial void OnnameChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_externalTransfer_lu_externalTsfrType", "externalTransfer")]
+        public EntityCollection<externalTransfer> externalTransfers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<externalTransfer>("accountingModel.FK_externalTransfer_lu_externalTsfrType", "externalTransfer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<externalTransfer>("accountingModel.FK_externalTransfer_lu_externalTsfrType", "externalTransfer", value);
                 }
             }
         }
