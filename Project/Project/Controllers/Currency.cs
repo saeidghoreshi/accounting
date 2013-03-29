@@ -5,9 +5,9 @@ using System.Text;
 
 using Project.Models;
 
-namespace Project.Controllers
+namespace Project.Structure
 {
-    public static class currencyController
+    public class Currency
     {
         public void create(string CurrencyName, int currencyTypeID)
         {
@@ -18,7 +18,7 @@ namespace Project.Controllers
                     currencyTypeID = currencyTypeID,
                     name = CurrencyName
                 };
-                var result = ctx.currencies.FirstOrDefault(x => x.name == CurrencyName && x.currencyType.ID == currencyTypeID);
+                var result = ctx.currencies.FirstOrDefault(x => x.name.Equals(CurrencyName) &&  x.currencyTypeID.Equals(currencyTypeID));
                 if (result != null)
                     throw new Exception("Currency Duplicated");
                 else

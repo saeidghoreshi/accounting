@@ -5,7 +5,7 @@ using System.Text;
 
 using Project.Models;
 
-namespace Project.Controllers
+namespace Project.Structure
 {
     public class transferController
     {

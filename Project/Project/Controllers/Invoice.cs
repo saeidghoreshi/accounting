@@ -6,9 +6,9 @@ using System.Text;
 using Project.Models;
 using System.Transactions;
 
-namespace Project.Controllers
+namespace Project.Structure
 {
-    public class InvoiceController
+    public class Invoice
     {
         public static invoice New(invoice inv)
         {
@@ -28,7 +28,7 @@ namespace Project.Controllers
                     issuerEntityID = inv.issuerEntityID,
                     receiverEntityID = inv.receiverEntityID,
                     currencyID = inv.currencyID,
-                    entityID=e.ID
+                    ID=e.ID
                 };
 
                 //sys Action
@@ -41,8 +41,8 @@ namespace Project.Controllers
                 //sys Action Invoice
                 var sysActionInvoice = new invoiceAction
                 {
+                    ID = sysaction.ID,
                     invoiceStatusID= (int)enumsController.invoiceStatus.Generated,
-                    sysActionID=sysaction.ID,
                     name="Invoice Generated at "+DateTime.Now.ToLongTimeString()
                 };
                 ctx.invoiceActions.AddObject(sysActionInvoice);
@@ -52,7 +52,7 @@ namespace Project.Controllers
                 ts.Complete();
             }
         }
-        public static invoice InvoiceByID(int invoiceID)
+        public static invoice getInvoiceByID(int invoiceID)
         {
             invoice inv;
             using (var ctx = new accountingEntities())
@@ -99,9 +99,9 @@ namespace Project.Controllers
 
                 //Record related transctions
                 List<transaction> transactions = new List<transaction>();
-                var trans1 = transactionController.createNew((int)invoice.receiverEntityID, (int)enumsController.catType.AP, -1 * (decimal)invoiceServicesAmt, (int)invoice.currencyID);
+                var trans1 = Transaction.createNew((int)invoice.receiverEntityID, (int)enumsController.catType.AP, -1 * (decimal)invoiceServicesAmt, (int)invoice.currencyID);
                 transactions.Add(trans1);
-                var trans2 = transactionController.createNew((int)invoice.issuerEntityID, (int)enumsController.catType.AR, +1 * (decimal)invoiceServicesAmt, (int)invoice.currencyID);
+                var trans2 = Transaction.createNew((int)invoice.issuerEntityID, (int)enumsController.catType.AR, +1 * (decimal)invoiceServicesAmt, (int)invoice.currencyID);
                 transactions.Add(trans2);
 
                 /*Record Invoice Transaction*/

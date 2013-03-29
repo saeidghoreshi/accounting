@@ -5,11 +5,11 @@ using System.Text;
 
 using Project.Models;
 using System.Transactions;
-using Project.Controllers.enumsController;
+using Project.Structure.enumsController;
 
-namespace Project.Controllers
+namespace Project.Structure
 {
-    public  class entityController
+    public class Entity
     {
         protected void New(int entityTypeID)
         {
@@ -29,7 +29,7 @@ namespace Project.Controllers
         {
             using (var ctx = new accountingEntities())
             {
-                var person = ctx.people.Where(x => x.entityID == entityID).SingleOrDefault();
+                var person = ctx.people.Where(x => x.ID.Equals(entityID)).SingleOrDefault();
                 var newEntityCard = new entityCard()
                 {
                     entityID = entityID,
@@ -37,7 +37,6 @@ namespace Project.Controllers
                 };
                 ctx.entityCards.AddObject(newEntityCard);
                 ctx.SaveChanges();
-
             }
         }
 
@@ -60,7 +59,7 @@ namespace Project.Controllers
             {
                 //Record related transctions
                 List<int> transactions = new List<int>();
-                var trans1 = Transaction.createNew(entityID, (int)AssetCategories.W, +1 * (decimal)amount, currencyID);
+                var trans1 = new Transaction(entityID, (int)AssetCategories.W, +1 * (decimal)amount, currencyID);
                 transactions.Add(trans1);
                 var trans2 = Transaction.createNew(this.ENTITYID, (int)AssetCategories.CCCASH, -1 * (decimal)amount, currencyID);
                 transactions.Add(trans2);
