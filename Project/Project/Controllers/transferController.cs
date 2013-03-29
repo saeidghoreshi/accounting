@@ -33,7 +33,7 @@ namespace Project.Structure
             //First check this payment is able to be cancelled  ************
 
             //get Related transacions and input reveres ones
-            using (var ctx = new AccContexts())
+            using (var ctx = new accountingEntities())
             {
                 //get Payment details
                 var payment = ctx.payment
@@ -77,7 +77,7 @@ namespace Project.Structure
 
         protected void loadByPaymentID(int paymentID)
         {
-            using (var ctx = new AccContexts())
+            using (var ctx = new accountingEntities())
             {
                 var paymentRecord = ctx.payment
                     .Where(x => x.ID == paymentID)

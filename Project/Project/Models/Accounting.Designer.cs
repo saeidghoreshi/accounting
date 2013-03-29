@@ -82,6 +82,8 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_transferAction_transfer", "transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.transfer), "transferAction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transferAction), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceOrder_invoice", "invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.invoice), "invoiceOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceOrder), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceOrder_order", "order", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.order), "invoiceOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceOrder), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_service_entity1", "deliverable", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.deliverable), "service", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.service), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoice_order", "order", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.order), "invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoice), true)]
 
 #endregion
 
@@ -3839,6 +3841,44 @@ namespace Project.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_service_entity1", "service")]
+        public service service
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<service>("accountingModel.FK_service_entity1", "service").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<service>("accountingModel.FK_service_entity1", "service").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<service> serviceReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<service>("accountingModel.FK_service_entity1", "service");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<service>("accountingModel.FK_service_entity1", "service", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -5215,6 +5255,30 @@ namespace Project.Models
         private global::System.String _note;
         partial void OnnoteChanging(global::System.String value);
         partial void OnnoteChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> orderID
+        {
+            get
+            {
+                return _orderID;
+            }
+            set
+            {
+                OnorderIDChanging(value);
+                ReportPropertyChanging("orderID");
+                _orderID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("orderID");
+                OnorderIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _orderID;
+        partial void OnorderIDChanging(Nullable<global::System.Int32> value);
+        partial void OnorderIDChanged();
 
         #endregion
 
@@ -5413,6 +5477,44 @@ namespace Project.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<invoiceOrder>("accountingModel.FK_invoiceOrder_invoice", "invoiceOrder", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoice_order", "order")]
+        public order order
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<order>("accountingModel.FK_invoice_order", "order").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<order>("accountingModel.FK_invoice_order", "order").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<order> orderReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<order>("accountingModel.FK_invoice_order", "order");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<order>("accountingModel.FK_invoice_order", "order", value);
                 }
             }
         }
@@ -7885,6 +7987,28 @@ namespace Project.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoice_order", "invoice")]
+        public EntityCollection<invoice> invoices
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<invoice>("accountingModel.FK_invoice_order", "invoice");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<invoice>("accountingModel.FK_invoice_order", "invoice", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -8767,6 +8891,44 @@ namespace Project.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<entity>("accountingModel.FK_service_entity", "entity", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_service_entity1", "deliverable")]
+        public deliverable deliverable
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<deliverable>("accountingModel.FK_service_entity1", "deliverable").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<deliverable>("accountingModel.FK_service_entity1", "deliverable").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<deliverable> deliverableReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<deliverable>("accountingModel.FK_service_entity1", "deliverable");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<deliverable>("accountingModel.FK_service_entity1", "deliverable", value);
                 }
             }
         }

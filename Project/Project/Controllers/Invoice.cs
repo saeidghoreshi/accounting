@@ -10,8 +10,12 @@ namespace Project.Structure
 {
     public class Invoice
     {
-        public static invoice New(invoice inv)
+        public invoice INV { get; set; }
+        
+        public void New(invoice inv)
         {
+            INV = inv;
+
             using (var ctx = new accountingEntities())
             using (var ts = new TransactionScope())
             {
@@ -52,66 +56,66 @@ namespace Project.Structure
                 ts.Complete();
             }
         }
-        public static invoice getInvoiceByID(int invoiceID)
+        public void loadInvoiceByID(int invoiceID)
         {
-            invoice inv;
             using (var ctx = new accountingEntities())
             {
-                inv = ctx.invoices.Where(x => x.ID.Equals(invoiceID)).FirstOrDefault();
-                if (inv == null)
+                INV = ctx.invoices.Where(x => x.ID.Equals(invoiceID)).FirstOrDefault();
+                if (INV == null)
                     throw new Exception("Invoice does not exists");
             }
-            return inv;
         }
 
-        /// <summary>
-        /// //Get Sum of Invoice Services added 
-        /// </summary>
-        /// <param name="invoiceID"></param>
-        /// <returns></returns>
-        public static decimal getInvoiceServicesSumAmt(int invoiceID)
+        
+        public decimal getInvoiceServicesSumAmt()
         {
             using (var ctx = new accountingEntities())
             {
-                var invoice = ctx.invoices.Where(x => x.ID.Equals(invoiceID)).SingleOrDefault();
-                if (invoice == null)
+                var inv = ctx.invoices.Where(x => x.ID.Equals(INV.ID)).SingleOrDefault();
+                if (inv == null)
                     throw new Exception();
-                var invoiceServicesAmt = 0;
-                //var invoiceServicesAmt = ctx.orderDetails.Where(x => x.or invoiceID.equals(invoiceID)).Sum(x => x.amount);
+
+                decimal invoiceServicesAmt = 0;
+
+                invoiceServicesAmt = ctx.orderDetails
+                    .Where(x=>x.orderID.Equals(inv.orderID))
+                    .Sum(x => x.unitPrice*x.quantity).Value;
+
                 return (decimal)invoiceServicesAmt;
             }
         }
 
-        /// <summary>
-        /// 1-Records related transactions
-        /// 2-record Invoice Tranactions
-        /// </summary>
-        /// <param name="invoiceID"></param>
-        public static void finalizeInvoice(int invoiceID)
+        public void finalizeInvoice()
         {
-            var invoice = InvoiceController.InvoiceByID(invoiceID);
             using (var ctx = new accountingEntities())
             using (var ts = new TransactionScope())
             {
                 
                 //Get Sum of Invoice Services added
-                decimal invoiceServicesAmt = InvoiceController.getInvoiceServicesSumAmt(invoiceID);
+                decimal invoiceServicesAmt = this.getInvoiceServicesSumAmt();
 
+
+                
                 //Record related transctions
                 List<transaction> transactions = new List<transaction>();
-                var trans1 = Transaction.createNew((int)invoice.receiverEntityID, (int)enumsController.catType.AP, -1 * (decimal)invoiceServicesAmt, (int)invoice.currencyID);
-                transactions.Add(trans1);
-                var trans2 = Transaction.createNew((int)invoice.issuerEntityID, (int)enumsController.catType.AR, +1 * (decimal)invoiceServicesAmt, (int)invoice.currencyID);
-                transactions.Add(trans2);
+
+                account acc_AP = Account.getAccount((int)INV.receiverEntityID, (int)enumsController.catType.AP, (int)INV.currencyID);
+                var trans1 = new Transaction(-1 * (decimal)invoiceServicesAmt, acc_AP);
+                transactions.Add(trans1.txn);
+
+
+                account acc_AR = Account.getAccount((int)INV.issuerEntityID, (int)enumsController.catType.AR, (int)INV.currencyID);
+                var trans2 = new Transaction(+1 * (decimal)invoiceServicesAmt, acc_AR);
+                transactions.Add(trans2.txn);
 
                 /*Record Invoice Transaction*/
-                InvoiceController.RecordInvoiceTransaction(transactions, enumsController.invoiceStatus.Finalized);
+                this.RecordInvoiceTransaction(transactions, enumsController.invoiceStatus.Finalized);
 
                 ts.Complete();
             }
         }
 
-        public static void addInvoiceDetail(orderDetail newOrderDetail)
+        public void addInvoiceOrderDetail(orderDetail newOrderDetail)
         {
             using (var ctx = new accountingEntities())
             {   
@@ -119,12 +123,6 @@ namespace Project.Structure
                 ctx.SaveChanges();
             }
         }
-
-        /// <summary>
-        /// this function records INVOICEACTION and INVOICEACTIONTRANSACTIONS
-        /// </summary>
-        /// <param name="invoiceID"></param>
-        /// <param name="transactions"></param>
 
         /*Payment for Invoice*/
         public static void doINTERNALTransfer(decimal amount)
@@ -372,7 +370,7 @@ namespace Project.Structure
             }
         }
 
-        public static void RecordInvoiceTransaction(List<transaction> transactions, enumsController.invoiceStatus invoiceStat)
+        public void RecordInvoiceTransaction(List<transaction> transactions, enumsController.invoiceStatus invoiceStat)
         {
             using (var ctx = new accountingEntities())
             using (var ts = new TransactionScope())
