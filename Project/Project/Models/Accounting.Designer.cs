@@ -80,6 +80,8 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_sysActionTransaction_sysAction", "sysAction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.sysAction), "sysActionTransaction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.sysActionTransaction), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_sysActionTransaction_transaction", "transaction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transaction), "sysActionTransaction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.sysActionTransaction), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_transferAction_transfer", "transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.transfer), "transferAction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transferAction), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceOrder_invoice", "invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.invoice), "invoiceOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceOrder), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceOrder_order", "order", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.order), "invoiceOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceOrder), true)]
 
 #endregion
 
@@ -866,6 +868,22 @@ namespace Project.Models
             }
         }
         private ObjectSet<user> _users;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<invoiceOrder> invoiceOrders
+        {
+            get
+            {
+                if ((_invoiceOrders == null))
+                {
+                    _invoiceOrders = base.CreateObjectSet<invoiceOrder>("invoiceOrders");
+                }
+                return _invoiceOrders;
+            }
+        }
+        private ObjectSet<invoiceOrder> _invoiceOrders;
 
         #endregion
 
@@ -1237,6 +1255,14 @@ namespace Project.Models
         public void AddTousers(user user)
         {
             base.AddObject("users", user);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the invoiceOrders EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToinvoiceOrders(invoiceOrder invoiceOrder)
+        {
+            base.AddObject("invoiceOrders", invoiceOrder);
         }
 
         #endregion
@@ -5368,6 +5394,28 @@ namespace Project.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceOrder_invoice", "invoiceOrder")]
+        public EntityCollection<invoiceOrder> invoiceOrders
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<invoiceOrder>("accountingModel.FK_invoiceOrder_invoice", "invoiceOrder");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<invoiceOrder>("accountingModel.FK_invoiceOrder_invoice", "invoiceOrder", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -5550,6 +5598,191 @@ namespace Project.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<sysAction>("accountingModel.FK_invoiceAction_sysAction", "sysAction", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="accountingModel", Name="invoiceOrder")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class invoiceOrder : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new invoiceOrder object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static invoiceOrder CreateinvoiceOrder(global::System.Int32 id)
+        {
+            invoiceOrder invoiceOrder = new invoiceOrder();
+            invoiceOrder.ID = id;
+            return invoiceOrder;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> invoiceID
+        {
+            get
+            {
+                return _invoiceID;
+            }
+            set
+            {
+                OninvoiceIDChanging(value);
+                ReportPropertyChanging("invoiceID");
+                _invoiceID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("invoiceID");
+                OninvoiceIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _invoiceID;
+        partial void OninvoiceIDChanging(Nullable<global::System.Int32> value);
+        partial void OninvoiceIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> orderID
+        {
+            get
+            {
+                return _orderID;
+            }
+            set
+            {
+                OnorderIDChanging(value);
+                ReportPropertyChanging("orderID");
+                _orderID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("orderID");
+                OnorderIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _orderID;
+        partial void OnorderIDChanging(Nullable<global::System.Int32> value);
+        partial void OnorderIDChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceOrder_invoice", "invoice")]
+        public invoice invoice
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<invoice>("accountingModel.FK_invoiceOrder_invoice", "invoice").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<invoice>("accountingModel.FK_invoiceOrder_invoice", "invoice").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<invoice> invoiceReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<invoice>("accountingModel.FK_invoiceOrder_invoice", "invoice");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<invoice>("accountingModel.FK_invoiceOrder_invoice", "invoice", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceOrder_order", "order")]
+        public order order
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<order>("accountingModel.FK_invoiceOrder_order", "order").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<order>("accountingModel.FK_invoiceOrder_order", "order").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<order> orderReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<order>("accountingModel.FK_invoiceOrder_order", "order");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<order>("accountingModel.FK_invoiceOrder_order", "order", value);
                 }
             }
         }
@@ -7627,6 +7860,28 @@ namespace Project.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<orderDetail>("accountingModel.FK_orderDetail_order", "orderDetail", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceOrder_order", "invoiceOrder")]
+        public EntityCollection<invoiceOrder> invoiceOrders
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<invoiceOrder>("accountingModel.FK_invoiceOrder_order", "invoiceOrder");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<invoiceOrder>("accountingModel.FK_invoiceOrder_order", "invoiceOrder", value);
                 }
             }
         }

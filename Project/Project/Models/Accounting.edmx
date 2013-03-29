@@ -25,6 +25,7 @@
           <EntitySet Name="internalTransfer" EntityType="accountingModel.Store.internalTransfer" store:Type="Tables" Schema="Accounting" />
           <EntitySet Name="invoice" EntityType="accountingModel.Store.invoice" store:Type="Tables" Schema="Accounting" />
           <EntitySet Name="invoiceAction" EntityType="accountingModel.Store.invoiceAction" store:Type="Tables" Schema="Accounting" />
+          <EntitySet Name="invoiceOrder" EntityType="accountingModel.Store.invoiceOrder" store:Type="Tables" Schema="Accounting" />
           <EntitySet Name="invoiceTransfer" EntityType="accountingModel.Store.invoiceTransfer" store:Type="Tables" Schema="Accounting" />
           <EntitySet Name="lu_cardType" EntityType="accountingModel.Store.lu_cardType" store:Type="Tables" Schema="Accounting" />
           <EntitySet Name="lu_catType" EntityType="accountingModel.Store.lu_catType" store:Type="Tables" Schema="Accounting" />
@@ -183,6 +184,14 @@
           <AssociationSet Name="FK_invoiceAction_sysAction" Association="accountingModel.Store.FK_invoiceAction_sysAction">
             <End Role="sysAction" EntitySet="sysAction" />
             <End Role="invoiceAction" EntitySet="invoiceAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoiceOrder_invoice" Association="accountingModel.Store.FK_invoiceOrder_invoice">
+            <End Role="invoice" EntitySet="invoice" />
+            <End Role="invoiceOrder" EntitySet="invoiceOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoiceOrder_order" Association="accountingModel.Store.FK_invoiceOrder_order">
+            <End Role="order" EntitySet="order" />
+            <End Role="invoiceOrder" EntitySet="invoiceOrder" />
           </AssociationSet>
           <AssociationSet Name="FK_invoiceTransfer_invoice" Association="accountingModel.Store.FK_invoiceTransfer_invoice">
             <End Role="invoice" EntitySet="invoice" />
@@ -434,7 +443,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="issuerEntityID" Type="int" />
           <Property Name="receiverEntityID" Type="int" />
           <Property Name="currencyID" Type="int" />
@@ -447,6 +456,14 @@
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="200" />
           <Property Name="invoiceStatusID" Type="int" />
+        </EntityType>
+        <EntityType Name="invoiceOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="invoiceID" Type="int" />
+          <Property Name="orderID" Type="int" />
         </EntityType>
         <EntityType Name="invoiceTransfer">
           <Key>
@@ -1051,6 +1068,30 @@
             </Principal>
             <Dependent Role="invoiceAction">
               <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoiceOrder_invoice">
+          <End Role="invoice" Type="accountingModel.Store.invoice" Multiplicity="0..1" />
+          <End Role="invoiceOrder" Type="accountingModel.Store.invoiceOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="invoice">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="invoiceOrder">
+              <PropertyRef Name="invoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoiceOrder_order">
+          <End Role="order" Type="accountingModel.Store.order" Multiplicity="0..1" />
+          <End Role="invoiceOrder" Type="accountingModel.Store.invoiceOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="invoiceOrder">
+              <PropertyRef Name="orderID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1685,6 +1726,15 @@
             <End Role="transfer" EntitySet="transfers" />
             <End Role="transferAction" EntitySet="transferActions" />
           </AssociationSet>
+          <EntitySet Name="invoiceOrders" EntityType="accountingModel.invoiceOrder" />
+          <AssociationSet Name="FK_invoiceOrder_invoice" Association="accountingModel.FK_invoiceOrder_invoice">
+            <End Role="invoice" EntitySet="invoices" />
+            <End Role="invoiceOrder" EntitySet="invoiceOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_invoiceOrder_order" Association="accountingModel.FK_invoiceOrder_order">
+            <End Role="order" EntitySet="orders" />
+            <End Role="invoiceOrder" EntitySet="invoiceOrders" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="account">
           <Key>
@@ -1894,6 +1944,7 @@
           <NavigationProperty Name="entity1" Relationship="accountingModel.FK_invoice_entity1" FromRole="invoice" ToRole="entity" />
           <NavigationProperty Name="entity2" Relationship="accountingModel.FK_invoice_entity2" FromRole="invoice" ToRole="entity" />
           <NavigationProperty Name="invoiceTransfers" Relationship="accountingModel.FK_invoiceTransfer_invoice" FromRole="invoice" ToRole="invoiceTransfer" />
+          <NavigationProperty Name="invoiceOrders" Relationship="accountingModel.FK_invoiceOrder_invoice" FromRole="invoice" ToRole="invoiceOrder" />
         </EntityType>
         <EntityType Name="invoiceAction">
           <Key>
@@ -2039,6 +2090,7 @@
           <NavigationProperty Name="entity1" Relationship="accountingModel.FK_order_entity1" FromRole="order" ToRole="entity" />
           <NavigationProperty Name="entity2" Relationship="accountingModel.FK_order_entity2" FromRole="order" ToRole="entity" />
           <NavigationProperty Name="orderDetails" Relationship="accountingModel.FK_orderDetail_order" FromRole="order" ToRole="orderDetail" />
+          <NavigationProperty Name="invoiceOrders" Relationship="accountingModel.FK_invoiceOrder_order" FromRole="order" ToRole="invoiceOrder" />
         </EntityType>
         <EntityType Name="orderDetail">
           <Key>
@@ -2901,6 +2953,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="invoiceOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="invoiceID" />
+          <Property Type="Int32" Name="orderID" />
+          <NavigationProperty Name="invoice" Relationship="accountingModel.FK_invoiceOrder_invoice" FromRole="invoiceOrder" ToRole="invoice" />
+          <NavigationProperty Name="order" Relationship="accountingModel.FK_invoiceOrder_order" FromRole="invoiceOrder" ToRole="order" />
+        </EntityType>
+        <Association Name="FK_invoiceOrder_invoice">
+          <End Type="accountingModel.invoice" Role="invoice" Multiplicity="0..1" />
+          <End Type="accountingModel.invoiceOrder" Role="invoiceOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="invoice">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="invoiceOrder">
+              <PropertyRef Name="invoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_invoiceOrder_order">
+          <End Type="accountingModel.order" Role="order" Multiplicity="0..1" />
+          <End Type="accountingModel.invoiceOrder" Role="invoiceOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="invoiceOrder">
+              <PropertyRef Name="orderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3314,6 +3400,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="invoiceOrders">
+            <EntityTypeMapping TypeName="accountingModel.invoiceOrder">
+              <MappingFragment StoreEntitySet="invoiceOrder">
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="invoiceID" ColumnName="invoiceID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -3419,16 +3514,14 @@
           <ConnectorPoint PointX="9.5416666666666661" PointY="24.5" />
           <ConnectorPoint PointX="9.7083333333333339" PointY="24.5" />
           <ConnectorPoint PointX="10" PointY="24.5" />
-          <ConnectorPoint PointX="10" PointY="28.25" />
-          <ConnectorPoint PointX="10.135416666666666" PointY="28.25" />
-          <ConnectorPoint PointX="10.302083333333334" PointY="28.25" />
-          <ConnectorPoint PointX="10.5" PointY="28.25" />
-          <ConnectorPoint PointX="10.5" PointY="28.625" />
+          <ConnectorPoint PointX="10" PointY="27.875" />
+          <ConnectorPoint PointX="10.765627" PointY="27.875" />
+          <ConnectorPoint PointX="10.765627" PointY="28.625" />
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_card_entity1" >
           <ConnectorPoint PointX="4.5" PointY="28.376852213541667" />
-          <ConnectorPoint PointX="4.666666666666667" PointY="28.376852213541667" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="28.376852213541667" />
+          <ConnectorPoint PointX="4.7083333333333339" PointY="28.376852213541667" />
+          <ConnectorPoint PointX="4.9583333333333339" PointY="28.376852213541667" />
           <ConnectorPoint PointX="8.96875" PointY="28.376852213541667" />
           <ConnectorPoint PointX="8.96875" PointY="27.691793619791667" />
         </AssociationConnector>
@@ -3492,10 +3585,10 @@
         <AssociationConnector Association="accountingModel.FK_order_carrier" >
           <ConnectorPoint PointX="9.0000000000000018" PointY="39.125" />
           <ConnectorPoint PointX="9.375" PointY="38.75" />
-          <ConnectorPoint PointX="9.375" PointY="30.384348958333334" />
-          <ConnectorPoint PointX="9.4166666666666661" PointY="30.384348958333334" />
-          <ConnectorPoint PointX="9.5833333333333339" PointY="30.384348958333334" />
-          <ConnectorPoint PointX="9.75" PointY="30.384348958333334" />
+          <ConnectorPoint PointX="9.375" PointY="30.480499674479169" />
+          <ConnectorPoint PointX="9.4166666666666661" PointY="30.480499674479169" />
+          <ConnectorPoint PointX="9.5833333333333339" PointY="30.480499674479169" />
+          <ConnectorPoint PointX="9.75" PointY="30.480499674479169" />
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_carrierContact_contact" >
           <ConnectorPoint PointX="9" PointY="53.115143229166677" />
@@ -3522,10 +3615,10 @@
           <ConnectorPoint PointX="3" PointY="21.297841796874991" />
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_invoice_currency" >
-          <ConnectorPoint PointX="4.5" PointY="21.588692161458312" />
-          <ConnectorPoint PointX="4.979166666666667" PointY="21.588692161458312" />
-          <ConnectorPoint PointX="5.145833333333333" PointY="21.588692161458312" />
-          <ConnectorPoint PointX="5.25" PointY="21.588692161458312" />
+          <ConnectorPoint PointX="4.5" PointY="21.560422430689073" />
+          <ConnectorPoint PointX="4.979166666666667" PointY="21.560422430689073" />
+          <ConnectorPoint PointX="5.145833333333333" PointY="21.560422430689073" />
+          <ConnectorPoint PointX="5.25" PointY="21.560422430689073" />
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_transfer_currency" >
           <ConnectorPoint PointX="4.47576923076923" PointY="22.489889322916611" />
@@ -3558,10 +3651,8 @@
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_deliverable_entity" >
           <ConnectorPoint PointX="4.5" PointY="24.579259881510367" />
-          <ConnectorPoint PointX="4.75" PointY="24.579259881510367" />
-          <ConnectorPoint PointX="4.75" PointY="28.625" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="24.579259881510367" />
           <ConnectorPoint PointX="4.791666666666667" PointY="28.625" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="28.625" />
           <ConnectorPoint PointX="9.5" PointY="28.625" />
           <ConnectorPoint PointX="9.5" PointY="33.25" />
           <ConnectorPoint PointX="10.5" PointY="33.25" />
@@ -3615,38 +3706,38 @@
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_invoice_entity" >
           <ConnectorPoint PointX="4.5" PointY="23.788075923076921" />
-          <ConnectorPoint PointX="4.78125" PointY="23.506825923076921" />
-          <ConnectorPoint PointX="4.78125" PointY="24.198619542868592" />
-          <ConnectorPoint PointX="4.81607443490112" PointY="24.16379510796747" />
-          <ConnectorPoint PointX="5.1214255650988791" PointY="23.858443977769713" />
-          <ConnectorPoint PointX="5.2880759230769234" PointY="23.691793619791667" />
+          <ConnectorPoint PointX="4.81607443490112" PointY="23.4720014881758" />
+          <ConnectorPoint PointX="5.1214255650988791" PointY="23.166650357978043" />
+          <ConnectorPoint PointX="5.21875" PointY="23.069325923076921" />
+          <ConnectorPoint PointX="5.21875" PointY="23.953420975160263" />
+          <ConnectorPoint PointX="5.288075923076927" PointY="23.884095052083335" />
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_invoice_entity1" >
           <ConnectorPoint PointX="4.5" PointY="23.751152846153843" />
-          <ConnectorPoint PointX="4.71875" PointY="23.532402846153843" />
-          <ConnectorPoint PointX="4.71875" PointY="24.224196465945514" />
-          <ConnectorPoint PointX="4.81607443490112" PointY="24.126872031044389" />
-          <ConnectorPoint PointX="5.1214255650988791" PointY="23.821520900846632" />
-          <ConnectorPoint PointX="5.2511528461538459" PointY="23.691793619791667" />
+          <ConnectorPoint PointX="4.81607443490112" PointY="23.435078411252722" />
+          <ConnectorPoint PointX="5.1214255650988791" PointY="23.129727281054965" />
+          <ConnectorPoint PointX="5.1875" PointY="23.063652846153843" />
+          <ConnectorPoint PointX="5.1875" PointY="23.947747898237186" />
+          <ConnectorPoint PointX="5.2511528461538495" PointY="23.884095052083335" />
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_invoice_entity2" >
           <ConnectorPoint PointX="4.4942307692307688" PointY="23.75" />
-          <ConnectorPoint PointX="4.65625" PointY="23.587980769230768" />
-          <ConnectorPoint PointX="4.65625" PointY="24.24862054286859" />
-          <ConnectorPoint PointX="4.81607443490112" PointY="24.088796107967468" />
-          <ConnectorPoint PointX="5.1214255650988791" PointY="23.783444977769712" />
-          <ConnectorPoint PointX="5.25" PointY="23.65487054286859" />
+          <ConnectorPoint PointX="4.81607443490112" PointY="23.428156334329646" />
+          <ConnectorPoint PointX="5.1214255650988791" PointY="23.12280520413189" />
+          <ConnectorPoint PointX="5.15625" PointY="23.087980769230768" />
+          <ConnectorPoint PointX="5.15625" PointY="23.940921975160261" />
+          <ConnectorPoint PointX="5.25" PointY="23.847171975160261" />
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_order_entity" >
-          <ConnectorPoint PointX="4.5" PointY="28.098297526041677" />
-          <ConnectorPoint PointX="4.666666666666667" PointY="28.098297526041677" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="28.098297526041677" />
-          <ConnectorPoint PointX="8.8854166666666661" PointY="28.098297526041677" />
-          <ConnectorPoint PointX="9.0520833333333339" PointY="28.098297526041677" />
-          <ConnectorPoint PointX="9.8229166666666661" PointY="28.098297526041677" />
-          <ConnectorPoint PointX="10.083333333333334" PointY="28.098297526041677" />
-          <ConnectorPoint PointX="10.21875" PointY="28.098297526041677" />
-          <ConnectorPoint PointX="10.21875" PointY="28.625" />
+          <ConnectorPoint PointX="4.5" PointY="28.044745657552127" />
+          <ConnectorPoint PointX="4.7083333333333339" PointY="28.044745657552127" />
+          <ConnectorPoint PointX="4.9583333333333339" PointY="28.044745657552127" />
+          <ConnectorPoint PointX="8.8854166666666661" PointY="28.044745657552127" />
+          <ConnectorPoint PointX="9.0520833333333339" PointY="28.044745657552127" />
+          <ConnectorPoint PointX="9.8229166666666661" PointY="28.044745657552127" />
+          <ConnectorPoint PointX="9.9895833333333339" PointY="28.044745657552127" />
+          <ConnectorPoint PointX="10.28125" PointY="28.044745657552127" />
+          <ConnectorPoint PointX="10.28125" PointY="28.625" />
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_order_entity1" >
           <ConnectorPoint PointX="4.5" PointY="24.4375" />
@@ -3662,15 +3753,15 @@
           <ConnectorPoint PointX="9.90625" PointY="28.625" />
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_order_entity2" >
-          <ConnectorPoint PointX="4.5" PointY="28.205401263020889" />
-          <ConnectorPoint PointX="4.666666666666667" PointY="28.205401263020889" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="28.205401263020889" />
-          <ConnectorPoint PointX="8.8854166666666661" PointY="28.205401263020889" />
-          <ConnectorPoint PointX="9.0520833333333339" PointY="28.205401263020889" />
-          <ConnectorPoint PointX="9.8229166666666661" PointY="28.205401263020889" />
-          <ConnectorPoint PointX="9.9895833333333339" PointY="28.205401263020889" />
-          <ConnectorPoint PointX="10.0781225" PointY="28.205401263020889" />
-          <ConnectorPoint PointX="10.0781225" PointY="28.625" />
+          <ConnectorPoint PointX="4.5" PointY="28.210798935546897" />
+          <ConnectorPoint PointX="4.7083333333333339" PointY="28.210798935546897" />
+          <ConnectorPoint PointX="4.9583333333333339" PointY="28.210798935546897" />
+          <ConnectorPoint PointX="8.8854166666666661" PointY="28.210798935546897" />
+          <ConnectorPoint PointX="9.0520833333333339" PointY="28.210798935546897" />
+          <ConnectorPoint PointX="9.8229166666666661" PointY="28.210798935546897" />
+          <ConnectorPoint PointX="9.9895833333333339" PointY="28.210798935546897" />
+          <ConnectorPoint PointX="10.0625" PointY="28.210798935546897" />
+          <ConnectorPoint PointX="10.0625" PointY="28.625" />
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_organization_entity" >
           <ConnectorPoint PointX="4.4884615384615376" PointY="28.807109374999982" />
@@ -3710,8 +3801,12 @@
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_transaction_entity" >
           <ConnectorPoint PointX="4.5" PointY="24.112790461538509" />
-          <ConnectorPoint PointX="4.572916666666667" PointY="24.112790461538506" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="24.112790461538509" />
           <ConnectorPoint PointX="5.145833333333333" PointY="24.112790461538509" />
+          <ConnectorPoint PointX="6.8953620761218373" PointY="24.112790461538509" />
+          <ConnectorPoint PointX="7.0620287427885033" PointY="24.112790461538509" />
+          <ConnectorPoint PointX="7.166666666666667" PointY="24.112790461538509" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="24.112790461538509" />
           <ConnectorPoint PointX="7.6406225" PointY="24.112790461538509" />
           <ConnectorPoint PointX="7.6406225" PointY="23.297587890624982" />
         </AssociationConnector>
@@ -3755,17 +3850,17 @@
           <ConnectorPoint PointX="7.5" PointY="31.201691080729177" />
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_invoiceTransfer_invoice" >
-          <ConnectorPoint PointX="6.75" PointY="23.691793619791667" />
-          <ConnectorPoint PointX="7" PointY="23.941793619791667" />
-          <ConnectorPoint PointX="7.5572891666666671" PointY="23.941793619791667" />
-          <ConnectorPoint PointX="7.7239558333333331" PointY="23.941793619791667" />
-          <ConnectorPoint PointX="7.760416666666667" PointY="23.941793619791667" />
-          <ConnectorPoint PointX="7.927083333333333" PointY="23.941793619791667" />
-          <ConnectorPoint PointX="9.1666666666666661" PointY="23.941793619791667" />
-          <ConnectorPoint PointX="9.3333333333333339" PointY="23.941793619791667" />
-          <ConnectorPoint PointX="9.4166666666666661" PointY="23.941793619791667" />
-          <ConnectorPoint PointX="9.7083333333333339" PointY="23.941793619791667" />
-          <ConnectorPoint PointX="10.125" PointY="23.941793619791667" />
+          <ConnectorPoint PointX="6.7499999999999964" PointY="23.884095052083335" />
+          <ConnectorPoint PointX="7.0625" PointY="24.196595052083339" />
+          <ConnectorPoint PointX="7.166666666666667" PointY="24.196595052083339" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="24.196595052083339" />
+          <ConnectorPoint PointX="7.760416666666667" PointY="24.196595052083339" />
+          <ConnectorPoint PointX="7.927083333333333" PointY="24.196595052083339" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="24.196595052083339" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="24.196595052083339" />
+          <ConnectorPoint PointX="9.4166666666666661" PointY="24.196595052083339" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="24.196595052083339" />
+          <ConnectorPoint PointX="10.125" PointY="24.196595052083339" />
           <ConnectorPoint PointX="10.125" PointY="24.625" />
           <ConnectorPoint PointX="10.5" PointY="25" />
         </AssociationConnector>
@@ -3813,10 +3908,10 @@
           <ConnectorPoint PointX="5.25" PointY="31.711166992187486" />
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_orderDetail_order" >
-          <ConnectorPoint PointX="11.25" PointY="31.696848958333334" />
-          <ConnectorPoint PointX="11.541666666666666" PointY="31.696848958333334" />
-          <ConnectorPoint PointX="11.708333333333334" PointY="31.696848958333334" />
-          <ConnectorPoint PointX="12" PointY="31.696848958333334" />
+          <ConnectorPoint PointX="11.25" PointY="31.792999674479166" />
+          <ConnectorPoint PointX="11.541666666666666" PointY="31.792999674479166" />
+          <ConnectorPoint PointX="11.708333333333334" PointY="31.792999674479166" />
+          <ConnectorPoint PointX="12" PointY="31.792999674479166" />
         </AssociationConnector>
         <AssociationConnector Association="accountingModel.FK_supplier_organization1" >
           <ConnectorPoint PointX="6" PointY="43.672587890624982" />
@@ -3848,6 +3943,30 @@
           <ConnectorPoint PointX="7.125" PointY="33.527145935096136" />
           <ConnectorPoint PointX="7.125" PointY="32.875" />
           <ConnectorPoint PointX="7.5" PointY="33.25" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="accountingModel.invoiceOrder" Width="1.5" PointX="15" PointY="28.5" Height="1.9802864583333246" />
+        <AssociationConnector Association="accountingModel.FK_invoiceOrder_invoice" >
+          <ConnectorPoint PointX="6.75" PointY="22.285795526041674" />
+          <ConnectorPoint PointX="7.25" PointY="22.285795526041674" />
+          <ConnectorPoint PointX="7.25" PointY="24.412985026041667" />
+          <ConnectorPoint PointX="7.760416666666667" PointY="24.412985026041667" />
+          <ConnectorPoint PointX="7.927083333333333" PointY="24.412985026041667" />
+          <ConnectorPoint PointX="9.2916666666666661" PointY="24.412985026041667" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="24.412985026041667" />
+          <ConnectorPoint PointX="10.041666666666666" PointY="24.412985026041667" />
+          <ConnectorPoint PointX="10.208333333333334" PointY="24.412985026041667" />
+          <ConnectorPoint PointX="13.1875" PointY="24.412985026041667" />
+          <ConnectorPoint PointX="13.1875" PointY="24.739889322916611" />
+          <ConnectorPoint PointX="15.5" PointY="24.739889322916611" />
+          <ConnectorPoint PointX="15.5" PointY="25.278382161458353" />
+          <ConnectorPoint PointX="15.75" PointY="25.278382161458353" />
+          <ConnectorPoint PointX="15.75" PointY="28.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="accountingModel.FK_invoiceOrder_order" >
+          <ConnectorPoint PointX="11.25" PointY="30.386536458333339" />
+          <ConnectorPoint PointX="11.541666666666666" PointY="30.386536458333339" />
+          <ConnectorPoint PointX="11.708333333333334" PointY="30.386536458333339" />
+          <ConnectorPoint PointX="15" PointY="30.386536458333339" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
