@@ -510,7 +510,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="lu_entityType">
@@ -573,7 +573,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="order">

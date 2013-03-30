@@ -88,11 +88,11 @@ namespace Project.Structure
                 //Record related transctions
                 List<transaction> transactions = new List<transaction>();
 
-                account acc_AP = Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.AP, (int)INV.currencyID);
+                account acc_AP = Account.getAccount((int)INV.order.receiverEntityID, (int)projectEnums.catType.AP, (int)INV.currencyID);
                 var trans1 = new Transaction(-1 * (decimal)invoiceServicesAmt, acc_AP);
                 transactions.Add(trans1.TXN);
 
-                account acc_AR = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
+                account acc_AR = Account.getAccount((int)INV.order.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
                 var trans2 = new Transaction(+1 * (decimal)invoiceServicesAmt, acc_AR);
                 transactions.Add(trans2.TXN);
 
@@ -131,7 +131,7 @@ namespace Project.Structure
             {
                 //create new Internal Payment
                 InternalTransfer iPayment = new InternalTransfer();
-                iPayment.New((int)INV.receiverEntityID, (int)INV.issuerEntityID, amount, (int)INV.currencyID);
+                iPayment.New((int)INV.order.receiverEntityID, (int)INV.order.issuerEntityID, amount, (int)INV.currencyID);
 
                 /*Record New Invoice Payment*/
                 var NewInvTransfer= new invoiceTransfer()
@@ -146,19 +146,19 @@ namespace Project.Structure
                 //Record related transctions [for invoice payment]
                 List<transaction> transactions = new List<transaction>();
 
-                account acc_W = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.W, (int)INV.currencyID);
+                account acc_W = Account.getAccount((int)INV.order.issuerEntityID, (int)projectEnums.catType.W, (int)INV.currencyID);
                 var t1 = new Transaction(-1 * (decimal)amount, acc_W);
                 transactions.Add(t1.TXN);
 
-                account acc_AP = Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.AP, (int)INV.currencyID);
+                account acc_AP = Account.getAccount((int)INV.order.receiverEntityID, (int)projectEnums.catType.AP, (int)INV.currencyID);
                 var t2 = new Transaction(+1 * (decimal)amount, acc_AP);
                 transactions.Add(t2.TXN);
 
-                account acc_W2= Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.W, (int)INV.currencyID);
+                account acc_W2 = Account.getAccount((int)INV.order.receiverEntityID, (int)projectEnums.catType.W, (int)INV.currencyID);
                 var t3 = new Transaction(+1 * (decimal)amount, acc_W2);
                 transactions.Add(t3.TXN);
 
-                account acc_AR = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
+                account acc_AR = Account.getAccount((int)INV.order.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
                 var t4 = new Transaction(-1 * (decimal)amount, acc_AR);
                 transactions.Add(t4.TXN);
 
@@ -166,7 +166,7 @@ namespace Project.Structure
                 this.RecordInvoiceTransferTransactions(transactions, (int)iPayment.TRANSFER.ID, projectEnums.transferStatus.PaidApproved);
 
                 /*Record Invoice Transaction*/
-                this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.internalPaymant);
+                this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.internalTransfer);
 
                 ts.Complete();
             }
@@ -181,7 +181,7 @@ namespace Project.Structure
             {
                 //create new Internal Payment
                 CreditTransfer ccPayment = new CreditTransfer();
-                ccPayment.New((int)INV.receiverEntityID, (int)INV.issuerEntityID, amount, (int)INV.currencyID);
+                ccPayment.New((int)INV.order.receiverEntityID, (int)INV.order.issuerEntityID, amount, (int)INV.currencyID);
 
                 /*Record New Invoice Payment*/
                 var NewInvTransfer = new invoiceTransfer()
@@ -196,23 +196,23 @@ namespace Project.Structure
                 var FEE = 1;
                 List<transaction> transactions = new List<transaction>();
 
-                account acc_CCCASH = Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.CCCASH, (int)INV.currencyID);
+                account acc_CCCASH = Account.getAccount((int)INV.order.receiverEntityID, (int)projectEnums.catType.CCCASH, (int)INV.currencyID);
                 var t1 = new Transaction(-1 * (decimal)amount, acc_CCCASH);
                 transactions.Add(t1.TXN);
 
-                account acc_AP = Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.AP, (int)INV.currencyID);
+                account acc_AP = Account.getAccount((int)INV.order.receiverEntityID, (int)projectEnums.catType.AP, (int)INV.currencyID);
                 var t2 = new Transaction(+1 * (decimal)amount, acc_AP);
                 transactions.Add(t2.TXN);
 
-                account acc_W = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.W, (int)INV.currencyID);
+                account acc_W = Account.getAccount((int)INV.order.issuerEntityID, (int)projectEnums.catType.W, (int)INV.currencyID);
                 var t3 = new Transaction(+1 * (decimal)amount  -  FEE, acc_W);
                 transactions.Add(t3.TXN);
 
-                account acc_AR = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
+                account acc_AR = Account.getAccount((int)INV.order.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
                 var t4 = new Transaction(-1 * (decimal)amount, acc_AR);
                 transactions.Add(t4.TXN);
 
-                account acc_EXP = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
+                account acc_EXP = Account.getAccount((int)INV.order.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
                 var t5 = new Transaction(FEE, acc_EXP);
                 transactions.Add(t5.TXN);
 
@@ -225,10 +225,10 @@ namespace Project.Structure
                 switch (ccCardType)
                 {
                     case projectEnums.ccCardType.MASTERCARD:
-                        invoicestat = projectEnums.invoiceStatus.masterCardPaymant;
+                        invoicestat = projectEnums.invoiceStatus.masterCardTransfer;
                         break;
                     case projectEnums.ccCardType.VISACARD:
-                        invoicestat = projectEnums.invoiceStatus.visaCardPaymant;
+                        invoicestat = projectEnums.invoiceStatus.visaCardTransfer;
                         break;
                 }
 
@@ -250,7 +250,7 @@ namespace Project.Structure
             {
                 //create new Internal Payment
                 DebitTransfer dbPayment = new DebitTransfer();
-                dbPayment.New((int)INV.receiverEntityID, (int)INV.issuerEntityID, amount, (int)INV.currencyID);
+                dbPayment.New((int)INV.order.receiverEntityID, (int)INV.order.issuerEntityID, amount, (int)INV.currencyID);
 
                 /*Record New Invoice Payment*/
                 var NewInvTransfer = new invoiceTransfer()
@@ -265,23 +265,23 @@ namespace Project.Structure
                 var FEE = 1;
                 List<transaction> transactions = new List<transaction>();
 
-                account acc_CCCASH = Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.DBCASH, (int)INV.currencyID);
+                account acc_CCCASH = Account.getAccount((int)INV.order.receiverEntityID, (int)projectEnums.catType.DBCASH, (int)INV.currencyID);
                 var t1 = new Transaction(-1 * (decimal)amount, acc_CCCASH);
                 transactions.Add(t1.TXN);
 
-                account acc_AP = Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.AP, (int)INV.currencyID);
+                account acc_AP = Account.getAccount((int)INV.order.receiverEntityID, (int)projectEnums.catType.AP, (int)INV.currencyID);
                 var t2 = new Transaction(+1 * (decimal)amount, acc_AP);
                 transactions.Add(t2.TXN);
 
-                account acc_W = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.W, (int)INV.currencyID);
+                account acc_W = Account.getAccount((int)INV.order.issuerEntityID, (int)projectEnums.catType.W, (int)INV.currencyID);
                 var t3 = new Transaction(+1 * (decimal)amount - FEE, acc_W);
                 transactions.Add(t3.TXN);
 
-                account acc_AR = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
+                account acc_AR = Account.getAccount((int)INV.order.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
                 var t4 = new Transaction(-1 * (decimal)amount, acc_AR);
                 transactions.Add(t4.TXN);
 
-                account acc_EXP = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
+                account acc_EXP = Account.getAccount((int)INV.order.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
                 var t5 = new Transaction(FEE, acc_EXP);
                 transactions.Add(t5.TXN);
 
@@ -290,7 +290,7 @@ namespace Project.Structure
                 this.RecordInvoiceTransferTransactions(transactions, dbPayment.TRANSFER.ID, projectEnums.transferStatus.PaidApproved);
 
                 /*Record Invoice Transaction*/
-                this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.interacPaymant);
+                this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.interacTransfer);
 
                 ts.Complete();
             }
@@ -335,14 +335,14 @@ namespace Project.Structure
                 if (!extTransferTypeID.Equals(-1))
                 {
                     if (extTransferTypeID == (int)projectEnums.extTransferType.CreditPayment)
-                        this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.partialCreditCardPaymantCancelled);
+                        this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.partialCreditCardTransferCancelled);
 
                     if (extTransferTypeID == (int)projectEnums.extTransferType.InteracPayment)
-                        this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.partialInteracPaymantCancelled);
+                        this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.partialInteracTransferCancelled);
                 }
                 else 
                 {
-                    this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.partialInternalPaymantCancelled);
+                    this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.partialInternalTransferCancelled);
                 }
                 ts.Complete();
             }
@@ -382,11 +382,11 @@ namespace Project.Structure
                 //Record related transctions
                 List<transaction> transactions = new List<transaction>();
 
-                account acc_AP = Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.AP, (int)INV.currencyID);
+                account acc_AP = Account.getAccount((int)INV.order.receiverEntityID, (int)projectEnums.catType.AP, (int)INV.currencyID);
                 var txn1 = new Transaction(+1 * (decimal)invoiceServicesAmt, acc_AP);
                 transactions.Add(txn1.TXN);
 
-                account acc_AR = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
+                account acc_AR = Account.getAccount((int)INV.order.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
                 var txn2 = new Transaction(-1 * (decimal)invoiceServicesAmt, acc_AP);
                 transactions.Add(txn2.TXN);
 

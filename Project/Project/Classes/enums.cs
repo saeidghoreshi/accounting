@@ -57,11 +57,15 @@ namespace Project.Structure
         }
         public enum entityType
         {
-            Organization = 1,
-            Person = 2,
+            Person = 1,
+            Deliverable=2,
             Card=3,
-            invoice=4,
-            transfer=5
+            Organization = 4,
+            Account=5,
+            Order=6,
+            invoice=7,
+            Transaction=8,
+            transfer=9
         }
         public enum transferType
         {
@@ -98,14 +102,14 @@ namespace Project.Structure
             Deleted = 3       /*If no Payments of any kind ever happend*/,
             Cancelled = 4     /*if no payments occured or all payments voided or refunded*/,
 
-            internalPaymant = 5,
-            interacPaymant = 6,
-            visaCardPaymant = 7,
-            masterCardPaymant = 8,
+            internalTransfer = 5,
+            interacTransfer = 6,
+            visaCardTransfer = 7,
+            masterCardTransfer = 8,
 
-            partialInternalPaymantCancelled = 9,
-            partialInteracPaymantCancelled = 10,
-            partialCreditCardPaymantCancelled = 11
+            partialInternalTransferCancelled = 9,
+            partialInteracTransferCancelled = 10,
+            partialCreditCardTransferCancelled = 11
         }
         public enum transferStatus
         {

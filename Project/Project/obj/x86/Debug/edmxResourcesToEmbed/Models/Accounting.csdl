@@ -588,7 +588,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="deliverables" Relationship="accountingModel.FK_deliverable_lu_deliverableType" FromRole="lu_deliverableType" ToRole="deliverable" />
   </EntityType>
@@ -660,7 +660,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="transfers" Relationship="accountingModel.FK_transfer_lu_transferType" FromRole="lu_transferType" ToRole="transfer" />
   </EntityType>
