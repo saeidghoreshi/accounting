@@ -20,44 +20,35 @@ namespace Project.Structure
             using (var ts = new TransactionScope())
             {
                 //Entity
-                var e = new entity
-                {
-                    entityTypeID = (int)enumsController.entityType.invoice
-                };
+                var e = new entity{entityTypeID = (int)projectEnums.entityType.invoice};
                 ctx.entities.AddObject(e);
 
-                //new Invoice
+                //New Invoice
                 var newInvoice = new invoice()
                 {
-                    issuerEntityID = inv.issuerEntityID,
-                    receiverEntityID = inv.receiverEntityID,
                     currencyID = inv.currencyID,
                     ID=e.ID
                 };
 
                 //sys Action
-                var sysaction = new sysAction 
-                { 
-                    sysActionTypeID=(int)enumsController.sysAction.invoice
-                };
+                var sysaction = new sysAction{sysActionTypeID=(int)projectEnums.sysAction.invoice};
                 ctx.sysActions.AddObject(sysaction);
 
                 //sys Action Invoice
                 var sysActionInvoice = new invoiceAction
                 {
                     ID = sysaction.ID,
-                    invoiceStatusID= (int)enumsController.invoiceStatus.Generated,
+                    invoiceStatusID= (int)projectEnums.invoiceStatus.Generated,
                     name="Invoice Generated at "+DateTime.Now.ToLongTimeString()
                 };
                 ctx.invoiceActions.AddObject(sysActionInvoice);
 
                 ctx.SaveChanges();
-
                 ts.Complete();
             }
         }
         
-        public void loadInvoiceByID(int invoiceID)
+        public void Load(int invoiceID)
         {
             using (var ctx = new accountingEntities())
             {
@@ -91,35 +82,35 @@ namespace Project.Structure
             using (var ctx = new accountingEntities())
             using (var ts = new TransactionScope())
             {
-                
                 //Get Sum of Invoice Services added
                 decimal invoiceServicesAmt = this.getInvoiceServicesSumAmt();
 
-
-                
                 //Record related transctions
                 List<transaction> transactions = new List<transaction>();
 
-                account acc_AP = Account.getAccount((int)INV.receiverEntityID, (int)enumsController.catType.AP, (int)INV.currencyID);
+                account acc_AP = Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.AP, (int)INV.currencyID);
                 var trans1 = new Transaction(-1 * (decimal)invoiceServicesAmt, acc_AP);
                 transactions.Add(trans1.TXN);
 
-
-                account acc_AR = Account.getAccount((int)INV.issuerEntityID, (int)enumsController.catType.AR, (int)INV.currencyID);
+                account acc_AR = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
                 var trans2 = new Transaction(+1 * (decimal)invoiceServicesAmt, acc_AR);
                 transactions.Add(trans2.TXN);
 
                 /*Record Invoice Transaction*/
-                this.RecordInvoiceTransaction(transactions, enumsController.invoiceStatus.Finalized);
+                this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.Finalized);
 
                 ts.Complete();
             }
         }
 
-        public void addInvoiceOrderDetail(orderDetail newOrderDetail)
+        public void addInvoiceOrderDetail(deliverable newItem)
         {
             using (var ctx = new accountingEntities())
-            {   
+            {
+                var newOrderDetail = new orderDetail 
+                {
+                    deliverableID=newItem.ID
+                };
                 ctx.orderDetails.AddObject(newOrderDetail);
                 ctx.SaveChanges();
             }
@@ -129,267 +120,311 @@ namespace Project.Structure
 
 
         /*Payment for Invoice*/
-        public void doINTERNALTransfer(decimal amount)
+        public void Transfer_Internal(decimal amount)
         {
+            if (INV.Equals(null))
+                throw new Exception("No invocie set.pleae laod or create new Invoice");
+
+
             using (var ctx = new accountingEntities())
             using (var ts = new TransactionScope())
             {
-                classes.internalPayment internalPayment = new classes.internalPayment();
-                internalPayment.createNew(INV.receiverEntityID, INV.issuerEntityID, amount, INV.currencyID);
+                //create new Internal Payment
+                InternalTransfer iPayment = new InternalTransfer();
+                iPayment.New((int)INV.receiverEntityID, (int)INV.issuerEntityID, amount, (int)INV.currencyID);
 
                 /*Record New Invoice Payment*/
-                var NewInvoicePayment = new invoicePayment()
+                var NewInvTransfer= new invoiceTransfer()
                 {
-                    invoiceID = this.invoiceID,
-                    paymentID = internalPayment.paymentID
+                    invoiceID = INV.ID,
+                    transferID = iPayment.TRANSFER.ID
                 };
-                ctx.invoicePayment.AddObject(NewInvoicePayment);
+                ctx.invoiceTransfers.AddObject(NewInvTransfer);
                 ctx.SaveChanges();
 
+
                 //Record related transctions [for invoice payment]
-                List<int> transactions = new List<int>();
-                transactions.Add(Transaction.createNew(issuerEntityID, (int)AssetCategories.W, -1 * amount, this.currencyID));
-                transactions.Add(Transaction.createNew(receiverEntityID, (int)LibCategories.AP, +1 * amount, this.currencyID));
-                transactions.Add(Transaction.createNew(receiverEntityID, (int)AssetCategories.W, +1 * amount, this.currencyID));
-                transactions.Add(Transaction.createNew(issuerEntityID, (int)AssetCategories.AR, -1 * amount, this.currencyID));
+                List<transaction> transactions = new List<transaction>();
+
+                account acc_W = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.W, (int)INV.currencyID);
+                var t1 = new Transaction(-1 * (decimal)amount, acc_W);
+                transactions.Add(t1.TXN);
+
+                account acc_AP = Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.AP, (int)INV.currencyID);
+                var t2 = new Transaction(+1 * (decimal)amount, acc_AP);
+                transactions.Add(t2.TXN);
+
+                account acc_W2= Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.W, (int)INV.currencyID);
+                var t3 = new Transaction(+1 * (decimal)amount, acc_W2);
+                transactions.Add(t3.TXN);
+
+                account acc_AR = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
+                var t4 = new Transaction(-1 * (decimal)amount, acc_AR);
+                transactions.Add(t4.TXN);
 
                 /*Record Invoice Payment transactions*/
-                this.RecordInvoicePaymentTransactions(transactions, internalPayment.paymentID, enums.paymentStat.PaidApproved);
+                this.RecordInvoiceTransferTransactions(transactions, (int)iPayment.TRANSFER.ID, projectEnums.transferStatus.PaidApproved);
 
                 /*Record Invoice Transaction*/
-                this.RecordInvoiceTransaction(transactions, enums.invoiceStat.internalPaymant);
+                this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.internalPaymant);
 
                 ts.Complete();
             }
         }
-        public void doCCExtPayment(decimal amount, int cardID, enumsController.ccCardType ccCardType)
+        public void Transfer_Ext_Credit(decimal amount, int cardID, projectEnums.ccCardType ccCardType)
         {
-            //var ccFeeFor
+            if (INV.Equals(null))
+                throw new Exception("No invocie set.pleae laod or create new Invoice");
 
             using (var ctx = new accountingEntities())
             using (var ts = new TransactionScope())
             {
-                classes.ccPayment creditCardPayment = new ccPayment();
-                creditCardPayment.createNew(this.receiverEntityID, this.issuerEntityID, amount, this.currencyID, cardID);
-
+                //create new Internal Payment
+                CreditTransfer ccPayment = new CreditTransfer();
+                ccPayment.New((int)INV.receiverEntityID, (int)INV.issuerEntityID, amount, (int)INV.currencyID);
 
                 /*Record New Invoice Payment*/
-                var NewInvoicePayment = new invoicePayment()
+                var NewInvTransfer = new invoiceTransfer()
                 {
-                    invoiceID = invoiceID,
-                    paymentID = creditCardPayment.paymentID
+                    invoiceID = INV.ID,
+                    transferID = ccPayment.TRANSFER.ID
                 };
-                ctx.invoicePayment.AddObject(NewInvoicePayment);
+                ctx.invoiceTransfers.AddObject(NewInvTransfer);
                 ctx.SaveChanges();
 
-                //get Fee bank cardType
-                var card = new classes.card.CreditCard();
-                card.loadByCardID(cardID);
+                //Record related transctions [for invoice Transfer]
+                var FEE = 1;
+                List<transaction> transactions = new List<transaction>();
 
+                account acc_CCCASH = Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.CCCASH, (int)INV.currencyID);
+                var t1 = new Transaction(-1 * (decimal)amount, acc_CCCASH);
+                transactions.Add(t1.TXN);
 
-                ccFee ccfee = new ccFee();
-                ccfee.loadccFeeByBankCardTypeID((int)ccCardType, (card as Entity).getBankByCard(card.cardID).bankID);
+                account acc_AP = Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.AP, (int)INV.currencyID);
+                var t2 = new Transaction(+1 * (decimal)amount, acc_AP);
+                transactions.Add(t2.TXN);
 
-                //Record related transctions [for invoice payment]
-                List<int> transactions = new List<int>();
+                account acc_W = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.W, (int)INV.currencyID);
+                var t3 = new Transaction(+1 * (decimal)amount  -  FEE, acc_W);
+                transactions.Add(t3.TXN);
 
-                transactions.Add(Transaction.createNew(receiverEntityID, (int)AssetCategories.CCCASH, -1 * amount, this.currencyID));
-                transactions.Add(Transaction.createNew(receiverEntityID, (int)LibCategories.AP, +1 * amount, this.currencyID));
+                account acc_AR = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
+                var t4 = new Transaction(-1 * (decimal)amount, acc_AR);
+                transactions.Add(t4.TXN);
 
-                transactions.Add(Transaction.createNew(issuerEntityID, (int)AssetCategories.W, +1 * amount - (decimal)ccfee.amount, this.currencyID));
-                transactions.Add(Transaction.createNew(issuerEntityID, (int)AssetCategories.AR, -1 * amount, this.currencyID));
-                transactions.Add(Transaction.createNew(issuerEntityID, (int)OECategories.EXP, (decimal)ccfee.amount, this.currencyID));
+                account acc_EXP = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
+                var t5 = new Transaction(FEE, acc_EXP);
+                transactions.Add(t5.TXN);
+
 
                 /*Record Invoice Payment transactions*/
-                this.RecordInvoicePaymentTransactions(transactions, creditCardPayment.paymentID, enums.paymentStat.PaidApproved);
+                this.RecordInvoiceTransferTransactions(transactions, ccPayment.TRANSFER.ID, projectEnums.transferStatus.PaidApproved);
 
                 /*Record Invoice Transaction*/
-                enums.invoiceStat? invoicestat = null;
+                projectEnums.invoiceStatus? invoicestat = null;
                 switch (ccCardType)
                 {
-                    case enums.ccCardType.MASTERCARD:
-                        invoicestat = enums.invoiceStat.masterCardPaymant;
+                    case projectEnums.ccCardType.MASTERCARD:
+                        invoicestat = projectEnums.invoiceStatus.masterCardPaymant;
                         break;
-                    case enums.ccCardType.VISACARD:
-                        invoicestat = enums.invoiceStat.visaCardPaymant;
+                    case projectEnums.ccCardType.VISACARD:
+                        invoicestat = projectEnums.invoiceStatus.visaCardPaymant;
                         break;
                 }
-                this.RecordInvoiceTransaction(transactions, (enums.invoiceStat)invoicestat);
 
+                this.RecordInvoiceTransaction(transactions, (projectEnums.invoiceStatus)invoicestat);
 
                 ts.Complete();
             }
 
 
         }
-        public static void doINTERACPayment(decimal amount, int cardID)
+        public void Transfer_Ext_Debit(decimal amount, int cardID)
         {
+            if (INV.Equals(null))
+                throw new Exception("No invocie set.pleae laod or create new Invoice");
+
+
             using (var ctx = new accountingEntities())
             using (var ts = new TransactionScope())
             {
-                classes.dbPayment debitCardPayment = new dbPayment();
-                debitCardPayment.createNew(this.receiverEntityID, this.issuerEntityID, amount, this.currencyID, cardID);
+                //create new Internal Payment
+                DebitTransfer dbPayment = new DebitTransfer();
+                dbPayment.New((int)INV.receiverEntityID, (int)INV.issuerEntityID, amount, (int)INV.currencyID);
 
                 /*Record New Invoice Payment*/
-                var NewInvoicePayment = new invoicePayment()
+                var NewInvTransfer = new invoiceTransfer()
                 {
-                    invoiceID = this.invoiceID,
-                    paymentID = debitCardPayment.paymentID
+                    invoiceID = INV.ID,
+                    transferID = dbPayment.TRANSFER.ID
                 };
-                ctx.invoicePayment.AddObject(NewInvoicePayment);
+                ctx.invoiceTransfers.AddObject(NewInvTransfer);
                 ctx.SaveChanges();
 
+                //Record related transctions [for invoice Transfer]
+                var FEE = 1;
+                List<transaction> transactions = new List<transaction>();
 
-                //get Fee bank cardType
-                var card = new classes.card.DebitCard();
-                card.loadByCardID(cardID);
+                account acc_CCCASH = Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.DBCASH, (int)INV.currencyID);
+                var t1 = new Transaction(-1 * (decimal)amount, acc_CCCASH);
+                transactions.Add(t1.TXN);
 
+                account acc_AP = Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.AP, (int)INV.currencyID);
+                var t2 = new Transaction(+1 * (decimal)amount, acc_AP);
+                transactions.Add(t2.TXN);
 
-                Fee fee = new Fee();
-                fee.loadFeeByBankCardTypeID(card.cardTypeID, ((Entity)card).getBankByCard(cardID).bankID);
+                account acc_W = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.W, (int)INV.currencyID);
+                var t3 = new Transaction(+1 * (decimal)amount - FEE, acc_W);
+                transactions.Add(t3.TXN);
 
-                //Record related transctions [for invoice payment]
-                List<int> transactions = new List<int>();
-                transactions.Add(Transaction.createNew(receiverEntityID, (int)AssetCategories.DBCASH, -1 * amount, this.currencyID));
-                transactions.Add(Transaction.createNew(receiverEntityID, (int)LibCategories.AP, +1 * amount, this.currencyID));
+                account acc_AR = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
+                var t4 = new Transaction(-1 * (decimal)amount, acc_AR);
+                transactions.Add(t4.TXN);
 
-                transactions.Add(Transaction.createNew(issuerEntityID, (int)AssetCategories.W, +1 * amount - (decimal)fee.amount, this.currencyID));
-                transactions.Add(Transaction.createNew(issuerEntityID, (int)AssetCategories.AR, -1 * amount, this.currencyID));
-                transactions.Add(Transaction.createNew(issuerEntityID, (int)OECategories.EXP, (decimal)fee.amount, this.currencyID));
+                account acc_EXP = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
+                var t5 = new Transaction(FEE, acc_EXP);
+                transactions.Add(t5.TXN);
+
 
                 /*Record Invoice Payment transactions*/
-                this.RecordInvoicePaymentTransactions(transactions, debitCardPayment.paymentID, enums.paymentStat.PaidApproved);
+                this.RecordInvoiceTransferTransactions(transactions, dbPayment.TRANSFER.ID, projectEnums.transferStatus.PaidApproved);
 
                 /*Record Invoice Transaction*/
-                this.RecordInvoiceTransaction(transactions, enums.invoiceStat.interacPaymant);
-
+                this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.interacPaymant);
 
                 ts.Complete();
             }
-
-
         }
 
-        /*cancelling one payment od invoice at the time*/
-        public static void cancelInvoicePaymentEXT(int paymentID)
+
+
+
+        /*cancelling one Transfer OR invoice at the time*/
+        public void cancelInvoiceTransfer(int transferID)
         {
             using (var ctx = new accountingEntities())
             using (var ts = new TransactionScope())
             {
-                accounting.classes.externalPayment payment = new accounting.classes.externalPayment();
-                payment.loadByPaymentID(paymentID);
+                ITransfer invTrasfer=null;
 
-                List<int> transactions = payment.cancelPayment(enums.paymentAction.Void);
+                var extTransferTypeID = -1;
+                var transferTypeID = Transfer.getTransferType(transferID);
+
+                switch (transferID) 
+                {
+                    case 1:
+                        extTransferTypeID = ExternalTransfer.getExtTransferType(transferID);
+
+                        if(extTransferTypeID.Equals(1))
+                            invTrasfer  = (ITransfer)new CreditTransfer();
+                        else
+                            invTrasfer  = (ITransfer)new DebitTransfer();
+                        break;
+
+                    case 2:
+                        invTrasfer = (ITransfer)new InternalTransfer();
+                        break;
+                }
+                
+                List<transaction> transactions = invTrasfer.cancelTransfer(projectEnums.transferAction.Void);
 
                 /*Record Invoice Payment transactions*/
-                this.RecordInvoicePaymentTransactions(transactions, paymentID, enums.paymentStat.VoidApproved);
+                this.RecordInvoiceTransferTransactions(transactions, transferID, projectEnums.transferStatus.VoidApproved);
 
                 /*Record Invoice Transaction*/
-                if (payment.extPaymentTypeID == (int)enums.extPaymentType.CreditPayment)
-                    this.RecordInvoiceTransaction(transactions, enums.invoiceStat.partialCreditCardPaymantCancelled);
+                if (!extTransferTypeID.Equals(-1))
+                {
+                    if (extTransferTypeID == (int)projectEnums.extTransferType.CreditPayment)
+                        this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.partialCreditCardPaymantCancelled);
 
-                if (payment.extPaymentTypeID == (int)enums.extPaymentType.InteracPayment)
-                    this.RecordInvoiceTransaction(transactions, enums.invoiceStat.partialInteracPaymantCancelled);
-
+                    if (extTransferTypeID == (int)projectEnums.extTransferType.InteracPayment)
+                        this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.partialInteracPaymantCancelled);
+                }
+                else 
+                {
+                    this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.partialInternalPaymantCancelled);
+                }
                 ts.Complete();
             }
         }
-        public static void cancelInvoicePaymentINTERNAL(int paymentID)
+
+        public static List<transfer> getInvoiceAllTransfers(int invoiceID)
         {
             using (var ctx = new accountingEntities())
-            using (var ts = new TransactionScope())
             {
-                accounting.classes.internalPayment payment = new accounting.classes.internalPayment();
-                payment.loadByPaymentID(paymentID);
-
-                List<int> transactions = payment.cancelPayment(enums.paymentAction.Void);
-                /*Record Invoice Payment transactions*/
-                this.RecordInvoicePaymentTransactions(transactions, paymentID, enums.paymentStat.VoidApproved);
-
-                /*Record Invoice Transaction*/
-                this.RecordInvoiceTransaction(transactions, enums.invoiceStat.partialInternalPaymantCancelled);
-
-                ts.Complete();
+                var transfers = ctx.invoiceTransfers
+                    .Where(x => (int)x.invoiceID == invoiceID)
+                    .Select(x => x.transfer)
+                    .ToList();
+                return transfers;
             }
         }
-
         /*cancel invoice all payments*/
-        public static void cancelInvoice()
+        public void cancelInvoice()
         {
+            if (INV.Equals(null))
+                throw new Exception("Invoice Mot Loaded");
+
             using (var ctx = new accountingEntities())
             using (var ts = new TransactionScope())
             {
                 /*get all invoice payments*/
-                List<payment> payments = this.getAllPayments();
+                List<transfer> transfers = Invoice.getInvoiceAllTransfers(INV.ID);
 
                 /*cancel payments one by one*/
-                foreach (var item in payments)
-                {
-                    if (item.paymentTypeID == (int)enums.paymentType.Internal)
-                        cancelInvoicePaymentINTERNAL(item.ID);
-                    if (item.paymentTypeID == (int)enums.paymentType.External)
-                        cancelInvoicePaymentEXT(item.ID);
-                }
+                foreach (var tsfr in transfers)
+                    cancelInvoiceTransfer(tsfr.ID);
 
-                /*Cancel invoice*/
-                this.loadInvoiceByInvoiceID(invoiceID);
 
                 //Get Sum of Invoice Services added
                 decimal invoiceServicesAmt = this.getInvoiceServicesSumAmt();
 
                 //Record related transctions
-                List<int> transactions = new List<int>();
-                var trans1 = Transaction.createNew((int)this.receiverEntityID, (int)LibCategories.AP, +1 * (decimal)invoiceServicesAmt, (int)this.currencyID);
-                transactions.Add(trans1);
-                var trans2 = Transaction.createNew((int)this.issuerEntityID, (int)AssetCategories.AR, -1 * (decimal)invoiceServicesAmt, (int)this.currencyID);
-                transactions.Add(trans2);
+                List<transaction> transactions = new List<transaction>();
+
+                account acc_AP = Account.getAccount((int)INV.receiverEntityID, (int)projectEnums.catType.AP, (int)INV.currencyID);
+                var txn1 = new Transaction(+1 * (decimal)invoiceServicesAmt, acc_AP);
+                transactions.Add(txn1.TXN);
+
+                account acc_AR = Account.getAccount((int)INV.issuerEntityID, (int)projectEnums.catType.AR, (int)INV.currencyID);
+                var txn2 = new Transaction(-1 * (decimal)invoiceServicesAmt, acc_AP);
+                transactions.Add(txn2.TXN);
 
                 /*Record Invoice Transaction*/
-                this.RecordInvoiceTransaction(transactions, enums.invoiceStat.Cancelled);
+                this.RecordInvoiceTransaction(transactions, projectEnums.invoiceStatus.Cancelled);
 
                 ts.Complete();
-
             }
         }
+       
 
-        public static List<payment> getAllPayments()
+        public void RecordInvoiceTransaction(List<transaction> transactions, projectEnums.invoiceStatus invoiceStat)
         {
-            using (var ctx = new accountingEntities())
-            {
-                var payments = ctx.invoicePayment
-                    .Where(z => (int)z.invoiceID == this.invoiceID)
-                    //.Where(z=>z.invoice.in)
-                    .Select(x => x.payment)
-                    .ToList();
+            if (INV.Equals(null))
+                throw new Exception("Invoice does not exists");
 
-                return payments;
-            }
-        }
-
-        public void RecordInvoiceTransaction(List<transaction> transactions, enumsController.invoiceStatus invoiceStat)
-        {
             using (var ctx = new accountingEntities())
             using (var ts = new TransactionScope())
             {
                 //create invoice Action
                 var invAction = new invoiceAction()
                 {
-                    invoiceID = this.invoiceID,
-                    invoiceStatID = (int)invoiceStat
+                    invoiceID = INV.ID,
+                    invoiceStatusID = (int)invoiceStat
                 };
-                ctx.invoiceAction.AddObject(invAction);
+                ctx.invoiceActions.AddObject(invAction);
                 ctx.SaveChanges();
 
 
                 //create invoice Transactions and invoice action Transactions
                 foreach (var item in transactions)
                 {
-                    var invActionTrans = new invoiceActionTransaction()
+                    var invActionTrans = new sysActionTransaction()
                     {
-                        invoiceActionID = invAction.ID,
-                        transactionID = item
+                        sysActionID = invAction.ID,
+                        transactionID = item.ID
                     };
-                    ctx.invoiceActionTransaction.AddObject(invActionTrans);
+                    ctx.sysActionTransactions.AddObject(invActionTrans);
 
                     ctx.SaveChanges();
                 }
@@ -399,28 +434,28 @@ namespace Project.Structure
             }
         }
 
-        private void RecordInvoicePaymentTransactions(List<int> txns, int paymentID, enums.paymentStat payStat)
+        private void RecordInvoiceTransferTransactions(List<transaction> txns, int transferID, projectEnums.transferStatus transferStat)
         {
             using (var ctx = new accountingEntities())
             {
                 //Create Payment Action
-                var payAction = new paymentAction()
+                var transferAction = new transferAction()
                 {
-                    paymentID = paymentID,
-                    paymentStatID = (int)payStat
+                    transferID = transferID,
+                    transferStatusID = (int)transferStat
                 };
-                ctx.paymentAction.AddObject(payAction);
+                ctx.transferActions.AddObject(transferAction);
                 ctx.SaveChanges();
 
                 //Record Pyament Action TXNS
                 foreach (var txn in txns)
                 {
-                    var newPayActionTxn = new paymentActionTransaction()
+                    var NewsysActionTxn = new sysActionTransaction()
                     {
-                        paymentActionID = payAction.ID,
-                        transactionID = txn
+                        sysActionID = -1,
+                        transactionID = txn.ID
                     };
-                    ctx.paymentActionTransaction.AddObject(newPayActionTxn);
+                    ctx.sysActionTransactions.AddObject(NewsysActionTxn);
                     ctx.SaveChanges();
                 }
             }

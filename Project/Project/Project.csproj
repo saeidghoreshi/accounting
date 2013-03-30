@@ -48,20 +48,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Account.cs" />
-    <Compile Include="Classes\Card\Card.cs" />
-    <Compile Include="Classes\Card\CreditCard.cs" />
-    <Compile Include="Classes\Card\DebitCard.cs" />
-    <Compile Include="Classes\Card\MasterCard.cs" />
-    <Compile Include="Classes\Card\VisaCard.cs" />
     <Compile Include="Classes\Currency.cs" />
     <Compile Include="Classes\Entity.cs" />
     <Compile Include="Classes\enums.cs" />
     <Compile Include="Classes\Invoice.cs" />
-    <Compile Include="Classes\payment\CCTransfer.cs" />
-    <Compile Include="Classes\payment\DBTransfer.cs" />
-    <Compile Include="Classes\payment\externalTransfer.cs" />
-    <Compile Include="Classes\payment\internalTransfer.cs" />
-    <Compile Include="Classes\payment\Transfer.cs" />
+    <Compile Include="Classes\Transfer\CCTransfer.cs" />
+    <Compile Include="Classes\Transfer\DBTransfer.cs" />
+    <Compile Include="Classes\Transfer\ExternalTransfer.cs" />
+    <Compile Include="Classes\Transfer\InternalTransfer.cs" />
+    <Compile Include="Classes\Transfer\Transfer.cs" />
     <Compile Include="Classes\Transaction.cs" />
     <Compile Include="Models\Accounting.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -37,14 +37,14 @@ namespace Project.Structure
     }
     public abstract class AssetAccount : Account
     {
-        public readonly int accountTYPE = enumsController.glTypes.FindIndex(x => x.name.Equals("ASSET"));
+        public readonly int accountTYPE = projectEnums.glTypes.FindIndex(x => x.name.Equals("ASSET"));
     }
     public abstract class OEAccount : Account
     {
-        public readonly int accountTYPE = enumsController.glTypes.FindIndex(x => x.name.Equals("OE"));
+        public readonly int accountTYPE = projectEnums.glTypes.FindIndex(x => x.name.Equals("OE"));
     }
     public abstract class LibAccount : Account
     {
-        public readonly int accountTYPE = enumsController.glTypes.FindIndex(x => x.name.Equals("LIB"));
+        public readonly int accountTYPE = projectEnums.glTypes.FindIndex(x => x.name.Equals("LIB"));
     }
 }

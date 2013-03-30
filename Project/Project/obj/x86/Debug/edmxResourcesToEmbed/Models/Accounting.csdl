@@ -27,8 +27,13 @@
     <EntitySet Name="lu_contactType" EntityType="accountingModel.lu_contactType" />
     <EntitySet Name="lu_currencyType" EntityType="accountingModel.lu_currencyType" />
     <EntitySet Name="lu_deliverableType" EntityType="accountingModel.lu_deliverableType" />
+    <EntitySet Name="lu_entityType" EntityType="accountingModel.lu_entityType" />
+    <EntitySet Name="lu_externalTsfrType" EntityType="accountingModel.lu_externalTsfrType" />
     <EntitySet Name="lu_glType" EntityType="accountingModel.lu_glType" />
+    <EntitySet Name="lu_invoiceActionType" EntityType="accountingModel.lu_invoiceActionType" />
     <EntitySet Name="lu_invoiceStatus" EntityType="accountingModel.lu_invoiceStatus" />
+    <EntitySet Name="lu_sysActionType" EntityType="accountingModel.lu_sysActionType" />
+    <EntitySet Name="lu_transferActionType" EntityType="accountingModel.lu_transferActionType" />
     <EntitySet Name="lu_transferStatus" EntityType="accountingModel.lu_transferStatus" />
     <EntitySet Name="lu_transferType" EntityType="accountingModel.lu_transferType" />
     <EntitySet Name="orders" EntityType="accountingModel.order" />
@@ -52,6 +57,10 @@
       <End Role="entity" EntitySet="entities" />
       <End Role="account" EntitySet="accounts" />
     </AssociationSet>
+    <AssociationSet Name="FK_account_entity1" Association="accountingModel.FK_account_entity1">
+      <End Role="entity" EntitySet="entities" />
+      <End Role="account" EntitySet="accounts" />
+    </AssociationSet>
     <AssociationSet Name="FK_account_lu_catType" Association="accountingModel.FK_account_lu_catType">
       <End Role="lu_catType" EntitySet="lu_catType" />
       <End Role="account" EntitySet="accounts" />
@@ -64,7 +73,7 @@
       <End Role="address" EntitySet="addresses" />
       <End Role="order" EntitySet="orders" />
     </AssociationSet>
-    <AssociationSet Name="FK_card_entity" Association="accountingModel.FK_card_entity">
+    <AssociationSet Name="FK_card_entity1" Association="accountingModel.FK_card_entity1">
       <End Role="entity" EntitySet="entities" />
       <End Role="card" EntitySet="cards" />
     </AssociationSet>
@@ -72,11 +81,11 @@
       <End Role="lu_cardType" EntitySet="lu_cardType" />
       <End Role="card" EntitySet="cards" />
     </AssociationSet>
-    <AssociationSet Name="FK_ccCard_card" Association="accountingModel.FK_ccCard_card">
+    <AssociationSet Name="FK_ccCard_card1" Association="accountingModel.FK_ccCard_card1">
       <End Role="card" EntitySet="cards" />
       <End Role="ccCard" EntitySet="ccCards" />
     </AssociationSet>
-    <AssociationSet Name="FK_debitCard_card" Association="accountingModel.FK_debitCard_card">
+    <AssociationSet Name="FK_debitCard_card1" Association="accountingModel.FK_debitCard_card1">
       <End Role="card" EntitySet="cards" />
       <End Role="debitCard" EntitySet="debitCards" />
     </AssociationSet>
@@ -88,7 +97,7 @@
       <End Role="card" EntitySet="cards" />
       <End Role="externalTransfer" EntitySet="externalTransfers" />
     </AssociationSet>
-    <AssociationSet Name="FK_carrier_organization" Association="accountingModel.FK_carrier_organization">
+    <AssociationSet Name="FK_carrier_organization1" Association="accountingModel.FK_carrier_organization1">
       <End Role="organization" EntitySet="organizations" />
       <End Role="carrier" EntitySet="carriers" />
     </AssociationSet>
@@ -128,7 +137,7 @@
       <End Role="currency" EntitySet="currencies" />
       <End Role="transfer" EntitySet="transfers" />
     </AssociationSet>
-    <AssociationSet Name="FK_customer_organization" Association="accountingModel.FK_customer_organization">
+    <AssociationSet Name="FK_customer_organization1" Association="accountingModel.FK_customer_organization1">
       <End Role="organization" EntitySet="organizations" />
       <End Role="customer" EntitySet="customers" />
     </AssociationSet>
@@ -139,6 +148,10 @@
     <AssociationSet Name="FK_debitTransfer_externalTransfer" Association="accountingModel.FK_debitTransfer_externalTransfer">
       <End Role="externalTransfer" EntitySet="externalTransfers" />
       <End Role="debitTransfer" EntitySet="debitTransfers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_deliverable_entity" Association="accountingModel.FK_deliverable_entity">
+      <End Role="entity" EntitySet="entities" />
+      <End Role="deliverable" EntitySet="deliverables" />
     </AssociationSet>
     <AssociationSet Name="FK_deliverable_lu_deliverableType" Association="accountingModel.FK_deliverable_lu_deliverableType">
       <End Role="lu_deliverableType" EntitySet="lu_deliverableType" />
@@ -156,23 +169,19 @@
       <End Role="deliverable" EntitySet="deliverables" />
       <End Role="product" EntitySet="products" />
     </AssociationSet>
-    <AssociationSet Name="FK_service_deliverable" Association="accountingModel.FK_service_deliverable">
+    <AssociationSet Name="FK_service_entity" Association="accountingModel.FK_service_entity">
       <End Role="deliverable" EntitySet="deliverables" />
       <End Role="service" EntitySet="services" />
+    </AssociationSet>
+    <AssociationSet Name="FK_entity_lu_entityType" Association="accountingModel.FK_entity_lu_entityType">
+      <End Role="lu_entityType" EntitySet="lu_entityType" />
+      <End Role="entity" EntitySet="entities" />
     </AssociationSet>
     <AssociationSet Name="FK_entityCard_entity" Association="accountingModel.FK_entityCard_entity">
       <End Role="entity" EntitySet="entities" />
       <End Role="entityCard" EntitySet="entityCards" />
     </AssociationSet>
-    <AssociationSet Name="FK_externalTransfer_entity" Association="accountingModel.FK_externalTransfer_entity">
-      <End Role="entity" EntitySet="entities" />
-      <End Role="externalTransfer" EntitySet="externalTransfers" />
-    </AssociationSet>
     <AssociationSet Name="FK_invoice_entity" Association="accountingModel.FK_invoice_entity">
-      <End Role="entity" EntitySet="entities" />
-      <End Role="invoice" EntitySet="invoices" />
-    </AssociationSet>
-    <AssociationSet Name="FK_invoice_entity1" Association="accountingModel.FK_invoice_entity1">
       <End Role="entity" EntitySet="entities" />
       <End Role="invoice" EntitySet="invoices" />
     </AssociationSet>
@@ -184,13 +193,21 @@
       <End Role="entity" EntitySet="entities" />
       <End Role="order" EntitySet="orders" />
     </AssociationSet>
+    <AssociationSet Name="FK_order_entity2" Association="accountingModel.FK_order_entity2">
+      <End Role="entity" EntitySet="entities" />
+      <End Role="order" EntitySet="orders" />
+    </AssociationSet>
     <AssociationSet Name="FK_organization_entity" Association="accountingModel.FK_organization_entity">
       <End Role="entity" EntitySet="entities" />
       <End Role="organization" EntitySet="organizations" />
     </AssociationSet>
-    <AssociationSet Name="FK_person_entity" Association="accountingModel.FK_person_entity">
+    <AssociationSet Name="FK_person_entity1" Association="accountingModel.FK_person_entity1">
       <End Role="entity" EntitySet="entities" />
       <End Role="person" EntitySet="people" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transaction_entity" Association="accountingModel.FK_transaction_entity">
+      <End Role="entity" EntitySet="entities" />
+      <End Role="transaction" EntitySet="transactions" />
     </AssociationSet>
     <AssociationSet Name="FK_transfer_entity" Association="accountingModel.FK_transfer_entity">
       <End Role="entity" EntitySet="entities" />
@@ -200,6 +217,14 @@
       <End Role="entity" EntitySet="entities" />
       <End Role="transfer" EntitySet="transfers" />
     </AssociationSet>
+    <AssociationSet Name="FK_transfer_entity2" Association="accountingModel.FK_transfer_entity2">
+      <End Role="entity" EntitySet="entities" />
+      <End Role="transfer" EntitySet="transfers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_externalTransfer_lu_externalTsfrType" Association="accountingModel.FK_externalTransfer_lu_externalTsfrType">
+      <End Role="lu_externalTsfrType" EntitySet="lu_externalTsfrType" />
+      <End Role="externalTransfer" EntitySet="externalTransfers" />
+    </AssociationSet>
     <AssociationSet Name="FK_externalTransfer_transfer" Association="accountingModel.FK_externalTransfer_transfer">
       <End Role="transfer" EntitySet="transfers" />
       <End Role="externalTransfer" EntitySet="externalTransfers" />
@@ -208,9 +233,21 @@
       <End Role="transfer" EntitySet="transfers" />
       <End Role="internalTransfer" EntitySet="internalTransfers" />
     </AssociationSet>
+    <AssociationSet Name="FK_invoice_order" Association="accountingModel.FK_invoice_order">
+      <End Role="order" EntitySet="orders" />
+      <End Role="invoice" EntitySet="invoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_invoiceAction_invoice" Association="accountingModel.FK_invoiceAction_invoice">
+      <End Role="invoice" EntitySet="invoices" />
+      <End Role="invoiceAction" EntitySet="invoiceActions" />
+    </AssociationSet>
     <AssociationSet Name="FK_invoiceTransfer_invoice" Association="accountingModel.FK_invoiceTransfer_invoice">
       <End Role="invoice" EntitySet="invoices" />
       <End Role="invoiceTransfer" EntitySet="invoiceTransfers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_invoiceAction_invoiceAction" Association="accountingModel.FK_invoiceAction_invoiceAction">
+      <End Role="lu_invoiceActionType" EntitySet="lu_invoiceActionType" />
+      <End Role="invoiceAction" EntitySet="invoiceActions" />
     </AssociationSet>
     <AssociationSet Name="FK_invoiceAction_lu_invoiceStatus" Association="accountingModel.FK_invoiceAction_lu_invoiceStatus">
       <End Role="lu_invoiceStatus" EntitySet="lu_invoiceStatus" />
@@ -228,6 +265,14 @@
       <End Role="lu_glType" EntitySet="lu_glType" />
       <End Role="lu_catType" EntitySet="lu_catType" />
     </AssociationSet>
+    <AssociationSet Name="FK_sysAction_lu_sysActionType" Association="accountingModel.FK_sysAction_lu_sysActionType">
+      <End Role="lu_sysActionType" EntitySet="lu_sysActionType" />
+      <End Role="sysAction" EntitySet="sysActions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_transferAction_lu_transferActionType" Association="accountingModel.FK_transferAction_lu_transferActionType">
+      <End Role="lu_transferActionType" EntitySet="lu_transferActionType" />
+      <End Role="transferAction" EntitySet="transferActions" />
+    </AssociationSet>
     <AssociationSet Name="FK_transferAction_lu_transferStatus" Association="accountingModel.FK_transferAction_lu_transferStatus">
       <End Role="lu_transferStatus" EntitySet="lu_transferStatus" />
       <End Role="transferAction" EntitySet="transferActions" />
@@ -236,7 +281,11 @@
       <End Role="lu_transferType" EntitySet="lu_transferType" />
       <End Role="transfer" EntitySet="transfers" />
     </AssociationSet>
-    <AssociationSet Name="FK_supplier_organization" Association="accountingModel.FK_supplier_organization">
+    <AssociationSet Name="FK_orderDetail_order" Association="accountingModel.FK_orderDetail_order">
+      <End Role="order" EntitySet="orders" />
+      <End Role="orderDetail" EntitySet="orderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_supplier_organization1" Association="accountingModel.FK_supplier_organization1">
       <End Role="organization" EntitySet="organizations" />
       <End Role="supplier" EntitySet="suppliers" />
     </AssociationSet>
@@ -248,7 +297,7 @@
       <End Role="sysAction" EntitySet="sysActions" />
       <End Role="sysActionTransaction" EntitySet="sysActionTransactions" />
     </AssociationSet>
-    <AssociationSet Name="FK_transferAction_sysAction" Association="accountingModel.FK_transferAction_sysAction">
+    <AssociationSet Name="FK_transferAction_transfer" Association="accountingModel.FK_transferAction_transfer">
       <End Role="sysAction" EntitySet="sysActions" />
       <End Role="transferAction" EntitySet="transferActions" />
     </AssociationSet>
@@ -256,19 +305,24 @@
       <End Role="transaction" EntitySet="transactions" />
       <End Role="sysActionTransaction" EntitySet="sysActionTransactions" />
     </AssociationSet>
+    <AssociationSet Name="FK_transferAction_transfer1" Association="accountingModel.FK_transferAction_transfer1">
+      <End Role="transfer" EntitySet="transfers" />
+      <End Role="transferAction" EntitySet="transferActions" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="account">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="accountNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="catTypeID" Type="Int32" />
-    <Property Name="ownerEntityID" Type="Int32" />
-    <Property Name="currencyID" Type="Int32" />
-    <Property Name="balance" Type="Decimal" Precision="18" Scale="18" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="accountNo" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="catTypeID" />
+    <Property Type="Int32" Name="ownerEntityID" />
+    <Property Type="Int32" Name="currencyID" />
+    <Property Type="Decimal" Name="balance" Precision="18" Scale="18" />
     <NavigationProperty Name="currency" Relationship="accountingModel.FK_account_currency" FromRole="account" ToRole="currency" />
     <NavigationProperty Name="entity" Relationship="accountingModel.FK_account_entity" FromRole="account" ToRole="entity" />
+    <NavigationProperty Name="entity1" Relationship="accountingModel.FK_account_entity1" FromRole="account" ToRole="entity" />
     <NavigationProperty Name="lu_catType" Relationship="accountingModel.FK_account_lu_catType" FromRole="account" ToRole="lu_catType" />
     <NavigationProperty Name="transactions" Relationship="accountingModel.FK_transaction_account" FromRole="account" ToRole="transaction" />
   </EntityType>
@@ -276,28 +330,27 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="countryID" Type="Int32" />
-    <Property Name="provinceID" Type="Int32" />
-    <Property Name="cityID" Type="Int32" />
-    <Property Name="streetNo" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
-    <Property Name="aptNo" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="postalcode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="countryID" />
+    <Property Type="Int32" Name="provinceID" />
+    <Property Type="Int32" Name="cityID" />
+    <Property Type="String" Name="streetNo" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="aptNo" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="postalcode" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="orders" Relationship="accountingModel.FK_order_address" FromRole="address" ToRole="order" />
   </EntityType>
   <EntityType Name="card">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="entityID" Type="Int32" />
-    <Property Name="cardNo" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="expiryDate" Type="DateTime" />
-    <Property Name="cardTypeID" Type="Int32" />
-    <NavigationProperty Name="entity" Relationship="accountingModel.FK_card_entity" FromRole="card" ToRole="entity" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="cardNo" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="expiryDate" />
+    <Property Type="Int32" Name="cardTypeID" />
+    <NavigationProperty Name="entity" Relationship="accountingModel.FK_card_entity1" FromRole="card" ToRole="entity" />
     <NavigationProperty Name="lu_cardType" Relationship="accountingModel.FK_card_lu_cardType" FromRole="card" ToRole="lu_cardType" />
-    <NavigationProperty Name="ccCards" Relationship="accountingModel.FK_ccCard_card" FromRole="card" ToRole="ccCard" />
-    <NavigationProperty Name="debitCards" Relationship="accountingModel.FK_debitCard_card" FromRole="card" ToRole="debitCard" />
+    <NavigationProperty Name="ccCard" Relationship="accountingModel.FK_ccCard_card1" FromRole="card" ToRole="ccCard" />
+    <NavigationProperty Name="debitCard" Relationship="accountingModel.FK_debitCard_card1" FromRole="card" ToRole="debitCard" />
     <NavigationProperty Name="entityCards" Relationship="accountingModel.FK_entityCard_card" FromRole="card" ToRole="entityCard" />
     <NavigationProperty Name="externalTransfers" Relationship="accountingModel.FK_externalTransfer_card" FromRole="card" ToRole="externalTransfer" />
   </EntityType>
@@ -305,10 +358,9 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="orgID" Type="Int32" />
-    <NavigationProperty Name="organization" Relationship="accountingModel.FK_carrier_organization" FromRole="carrier" ToRole="organization" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="organization" Relationship="accountingModel.FK_carrier_organization1" FromRole="carrier" ToRole="organization" />
     <NavigationProperty Name="carrierContacts" Relationship="accountingModel.FK_carrierContact_carrier" FromRole="carrier" ToRole="carrierContact" />
     <NavigationProperty Name="orders" Relationship="accountingModel.FK_order_carrier" FromRole="carrier" ToRole="order" />
   </EntityType>
@@ -316,9 +368,9 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="carrierID" Type="Int32" />
-    <Property Name="contactID" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="carrierID" />
+    <Property Type="Int32" Name="contactID" />
     <NavigationProperty Name="carrier" Relationship="accountingModel.FK_carrierContact_carrier" FromRole="carrierContact" ToRole="carrier" />
     <NavigationProperty Name="contact" Relationship="accountingModel.FK_carrierContact_contact" FromRole="carrierContact" ToRole="contact" />
   </EntityType>
@@ -326,19 +378,18 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cardID" Type="Int32" />
-    <Property Name="ccCardTypeID" Type="Int32" />
-    <NavigationProperty Name="card" Relationship="accountingModel.FK_ccCard_card" FromRole="ccCard" ToRole="card" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ccCardTypeID" />
+    <NavigationProperty Name="card" Relationship="accountingModel.FK_ccCard_card1" FromRole="ccCard" ToRole="card" />
     <NavigationProperty Name="lu_ccCardType" Relationship="accountingModel.FK_ccCard_lu_ccCardType" FromRole="ccCard" ToRole="lu_ccCardType" />
   </EntityType>
   <EntityType Name="contact">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
-    <Property Name="contactTypeID" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="contactTypeID" />
     <NavigationProperty Name="carrierContacts" Relationship="accountingModel.FK_carrierContact_contact" FromRole="contact" ToRole="carrierContact" />
     <NavigationProperty Name="lu_contactType" Relationship="accountingModel.FK_contact_lu_contactType" FromRole="contact" ToRole="lu_contactType" />
   </EntityType>
@@ -346,17 +397,16 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="externalTransferID" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
     <NavigationProperty Name="externalTransfer" Relationship="accountingModel.FK_creditTransfer_externalTransfer" FromRole="creditTransfer" ToRole="externalTransfer" />
   </EntityType>
   <EntityType Name="currency">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="currencyTypeID" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="currencyTypeID" />
     <NavigationProperty Name="accounts" Relationship="accountingModel.FK_account_currency" FromRole="currency" ToRole="account" />
     <NavigationProperty Name="lu_currencyType" Relationship="accountingModel.FK_currency_lu_currencyType" FromRole="currency" ToRole="lu_currencyType" />
     <NavigationProperty Name="invoices" Relationship="accountingModel.FK_invoice_currency" FromRole="currency" ToRole="invoice" />
@@ -366,67 +416,70 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="orgID" Type="Int32" />
-    <NavigationProperty Name="organization" Relationship="accountingModel.FK_customer_organization" FromRole="customer" ToRole="organization" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="organization" Relationship="accountingModel.FK_customer_organization1" FromRole="customer" ToRole="organization" />
   </EntityType>
   <EntityType Name="debitCard">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="cardID" Type="Int32" />
-    <Property Name="ccCardTypeID" Type="Int32" />
-    <NavigationProperty Name="card" Relationship="accountingModel.FK_debitCard_card" FromRole="debitCard" ToRole="card" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ccCardTypeID" />
+    <NavigationProperty Name="card" Relationship="accountingModel.FK_debitCard_card1" FromRole="debitCard" ToRole="card" />
     <NavigationProperty Name="lu_ccCardType" Relationship="accountingModel.FK_debitCard_lu_ccCardType" FromRole="debitCard" ToRole="lu_ccCardType" />
   </EntityType>
   <EntityType Name="debitTransfer">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="externalTransferID" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
     <NavigationProperty Name="externalTransfer" Relationship="accountingModel.FK_debitTransfer_externalTransfer" FromRole="debitTransfer" ToRole="externalTransfer" />
   </EntityType>
   <EntityType Name="deliverable">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="deliverableTypeID" Type="Int32" />
-    <Property Name="supplierID" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="deliverableTypeID" />
+    <Property Type="Int32" Name="supplierID" />
+    <NavigationProperty Name="entity" Relationship="accountingModel.FK_deliverable_entity" FromRole="deliverable" ToRole="entity" />
     <NavigationProperty Name="lu_deliverableType" Relationship="accountingModel.FK_deliverable_lu_deliverableType" FromRole="deliverable" ToRole="lu_deliverableType" />
     <NavigationProperty Name="supplier" Relationship="accountingModel.FK_deliverable_supplier" FromRole="deliverable" ToRole="supplier" />
     <NavigationProperty Name="orderDetails" Relationship="accountingModel.FK_orderDetail_deliverable" FromRole="deliverable" ToRole="orderDetail" />
-    <NavigationProperty Name="products" Relationship="accountingModel.FK_product_deliverable" FromRole="deliverable" ToRole="product" />
-    <NavigationProperty Name="services" Relationship="accountingModel.FK_service_deliverable" FromRole="deliverable" ToRole="service" />
+    <NavigationProperty Name="product" Relationship="accountingModel.FK_product_deliverable" FromRole="deliverable" ToRole="product" />
+    <NavigationProperty Name="service" Relationship="accountingModel.FK_service_entity" FromRole="deliverable" ToRole="service" />
   </EntityType>
   <EntityType Name="entity">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="entityTypeID" />
     <NavigationProperty Name="accounts" Relationship="accountingModel.FK_account_entity" FromRole="entity" ToRole="account" />
-    <NavigationProperty Name="cards" Relationship="accountingModel.FK_card_entity" FromRole="entity" ToRole="card" />
+    <NavigationProperty Name="account" Relationship="accountingModel.FK_account_entity1" FromRole="entity" ToRole="account" />
+    <NavigationProperty Name="card" Relationship="accountingModel.FK_card_entity1" FromRole="entity" ToRole="card" />
+    <NavigationProperty Name="deliverable" Relationship="accountingModel.FK_deliverable_entity" FromRole="entity" ToRole="deliverable" />
+    <NavigationProperty Name="lu_entityType" Relationship="accountingModel.FK_entity_lu_entityType" FromRole="entity" ToRole="lu_entityType" />
     <NavigationProperty Name="entityCards" Relationship="accountingModel.FK_entityCard_entity" FromRole="entity" ToRole="entityCard" />
-    <NavigationProperty Name="externalTransfers" Relationship="accountingModel.FK_externalTransfer_entity" FromRole="entity" ToRole="externalTransfer" />
-    <NavigationProperty Name="invoices" Relationship="accountingModel.FK_invoice_entity" FromRole="entity" ToRole="invoice" />
-    <NavigationProperty Name="invoices1" Relationship="accountingModel.FK_invoice_entity1" FromRole="entity" ToRole="invoice" />
+    <NavigationProperty Name="invoice" Relationship="accountingModel.FK_invoice_entity" FromRole="entity" ToRole="invoice" />
     <NavigationProperty Name="orders" Relationship="accountingModel.FK_order_entity" FromRole="entity" ToRole="order" />
     <NavigationProperty Name="orders1" Relationship="accountingModel.FK_order_entity1" FromRole="entity" ToRole="order" />
-    <NavigationProperty Name="organizations" Relationship="accountingModel.FK_organization_entity" FromRole="entity" ToRole="organization" />
-    <NavigationProperty Name="people" Relationship="accountingModel.FK_person_entity" FromRole="entity" ToRole="person" />
+    <NavigationProperty Name="order" Relationship="accountingModel.FK_order_entity2" FromRole="entity" ToRole="order" />
+    <NavigationProperty Name="organization" Relationship="accountingModel.FK_organization_entity" FromRole="entity" ToRole="organization" />
+    <NavigationProperty Name="person" Relationship="accountingModel.FK_person_entity1" FromRole="entity" ToRole="person" />
+    <NavigationProperty Name="transaction" Relationship="accountingModel.FK_transaction_entity" FromRole="entity" ToRole="transaction" />
     <NavigationProperty Name="transfers" Relationship="accountingModel.FK_transfer_entity" FromRole="entity" ToRole="transfer" />
     <NavigationProperty Name="transfers1" Relationship="accountingModel.FK_transfer_entity1" FromRole="entity" ToRole="transfer" />
+    <NavigationProperty Name="transfer" Relationship="accountingModel.FK_transfer_entity2" FromRole="entity" ToRole="transfer" />
   </EntityType>
   <EntityType Name="entityCard">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="entityID" Type="Int32" />
-    <Property Name="cardID" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="entityID" />
+    <Property Type="Int32" Name="cardID" />
     <NavigationProperty Name="card" Relationship="accountingModel.FK_entityCard_card" FromRole="entityCard" ToRole="card" />
     <NavigationProperty Name="entity" Relationship="accountingModel.FK_entityCard_entity" FromRole="entityCard" ToRole="entity" />
   </EntityType>
@@ -434,49 +487,47 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="entityID" Type="Int32" />
-    <Property Name="transferID" Type="Int32" />
-    <Property Name="cardID" Type="Int32" />
-    <Property Name="externalTsfrTypeID" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="cardID" />
+    <Property Type="Int32" Name="externalTsfrTypeID" />
     <NavigationProperty Name="card" Relationship="accountingModel.FK_externalTransfer_card" FromRole="externalTransfer" ToRole="card" />
-    <NavigationProperty Name="creditTransfers" Relationship="accountingModel.FK_creditTransfer_externalTransfer" FromRole="externalTransfer" ToRole="creditTransfer" />
-    <NavigationProperty Name="debitTransfers" Relationship="accountingModel.FK_debitTransfer_externalTransfer" FromRole="externalTransfer" ToRole="debitTransfer" />
-    <NavigationProperty Name="entity" Relationship="accountingModel.FK_externalTransfer_entity" FromRole="externalTransfer" ToRole="entity" />
+    <NavigationProperty Name="creditTransfer" Relationship="accountingModel.FK_creditTransfer_externalTransfer" FromRole="externalTransfer" ToRole="creditTransfer" />
+    <NavigationProperty Name="debitTransfer" Relationship="accountingModel.FK_debitTransfer_externalTransfer" FromRole="externalTransfer" ToRole="debitTransfer" />
+    <NavigationProperty Name="lu_externalTsfrType" Relationship="accountingModel.FK_externalTransfer_lu_externalTsfrType" FromRole="externalTransfer" ToRole="lu_externalTsfrType" />
     <NavigationProperty Name="transfer" Relationship="accountingModel.FK_externalTransfer_transfer" FromRole="externalTransfer" ToRole="transfer" />
   </EntityType>
   <EntityType Name="internalTransfer">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="transferID" Type="Int32" />
-    <Property Name="description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="transfer" Relationship="accountingModel.FK_internalTransfer_transfer" FromRole="internalTransfer" ToRole="transfer" />
   </EntityType>
   <EntityType Name="invoice">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="entityID" Type="Int32" />
-    <Property Name="issuerEntityID" Type="Int32" />
-    <Property Name="receiverEntityID" Type="Int32" />
-    <Property Name="currencyID" Type="Int32" />
-    <Property Name="note" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="orderID" />
+    <Property Type="Int32" Name="currencyID" />
+    <Property Type="String" Name="note" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="currency" Relationship="accountingModel.FK_invoice_currency" FromRole="invoice" ToRole="currency" />
     <NavigationProperty Name="entity" Relationship="accountingModel.FK_invoice_entity" FromRole="invoice" ToRole="entity" />
-    <NavigationProperty Name="entity1" Relationship="accountingModel.FK_invoice_entity1" FromRole="invoice" ToRole="entity" />
+    <NavigationProperty Name="order" Relationship="accountingModel.FK_invoice_order" FromRole="invoice" ToRole="order" />
+    <NavigationProperty Name="invoiceActions" Relationship="accountingModel.FK_invoiceAction_invoice" FromRole="invoice" ToRole="invoiceAction" />
     <NavigationProperty Name="invoiceTransfers" Relationship="accountingModel.FK_invoiceTransfer_invoice" FromRole="invoice" ToRole="invoiceTransfer" />
   </EntityType>
   <EntityType Name="invoiceAction">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="invoiceStatusID" Type="Int32" />
-    <Property Name="sysActionID" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="invoiceID" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="invoiceStatusID" />
+    <Property Type="Int32" Name="invoiceActionTypeID" />
+    <NavigationProperty Name="invoice" Relationship="accountingModel.FK_invoiceAction_invoice" FromRole="invoiceAction" ToRole="invoice" />
+    <NavigationProperty Name="lu_invoiceActionType" Relationship="accountingModel.FK_invoiceAction_invoiceAction" FromRole="invoiceAction" ToRole="lu_invoiceActionType" />
     <NavigationProperty Name="lu_invoiceStatus" Relationship="accountingModel.FK_invoiceAction_lu_invoiceStatus" FromRole="invoiceAction" ToRole="lu_invoiceStatus" />
     <NavigationProperty Name="sysAction" Relationship="accountingModel.FK_invoiceAction_sysAction" FromRole="invoiceAction" ToRole="sysAction" />
   </EntityType>
@@ -484,9 +535,9 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="invoiceID" Type="Int32" />
-    <Property Name="transferID" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="invoiceID" />
+    <Property Type="Int32" Name="transferID" />
     <NavigationProperty Name="invoice" Relationship="accountingModel.FK_invoiceTransfer_invoice" FromRole="invoiceTransfer" ToRole="invoice" />
     <NavigationProperty Name="transfer" Relationship="accountingModel.FK_invoiceTransfer_transfer" FromRole="invoiceTransfer" ToRole="transfer" />
   </EntityType>
@@ -494,17 +545,17 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="cards" Relationship="accountingModel.FK_card_lu_cardType" FromRole="lu_cardType" ToRole="card" />
   </EntityType>
   <EntityType Name="lu_catType">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="glTypeID" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="glTypeID" />
     <NavigationProperty Name="accounts" Relationship="accountingModel.FK_account_lu_catType" FromRole="lu_catType" ToRole="account" />
     <NavigationProperty Name="lu_glType" Relationship="accountingModel.FK_lu_catType_lu_glType" FromRole="lu_catType" ToRole="lu_glType" />
   </EntityType>
@@ -512,8 +563,8 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ccCards" Relationship="accountingModel.FK_ccCard_lu_ccCardType" FromRole="lu_ccCardType" ToRole="ccCard" />
     <NavigationProperty Name="debitCards" Relationship="accountingModel.FK_debitCard_lu_ccCardType" FromRole="lu_ccCardType" ToRole="debitCard" />
   </EntityType>
@@ -521,152 +572,193 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="contacts" Relationship="accountingModel.FK_contact_lu_contactType" FromRole="lu_contactType" ToRole="contact" />
   </EntityType>
   <EntityType Name="lu_currencyType">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="currencies" Relationship="accountingModel.FK_currency_lu_currencyType" FromRole="lu_currencyType" ToRole="currency" />
   </EntityType>
   <EntityType Name="lu_deliverableType">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="deliverables" Relationship="accountingModel.FK_deliverable_lu_deliverableType" FromRole="lu_deliverableType" ToRole="deliverable" />
+  </EntityType>
+  <EntityType Name="lu_entityType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="name" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="entities" Relationship="accountingModel.FK_entity_lu_entityType" FromRole="lu_entityType" ToRole="entity" />
+  </EntityType>
+  <EntityType Name="lu_externalTsfrType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="externalTransfers" Relationship="accountingModel.FK_externalTransfer_lu_externalTsfrType" FromRole="lu_externalTsfrType" ToRole="externalTransfer" />
   </EntityType>
   <EntityType Name="lu_glType">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="lu_catType" Relationship="accountingModel.FK_lu_catType_lu_glType" FromRole="lu_glType" ToRole="lu_catType" />
+  </EntityType>
+  <EntityType Name="lu_invoiceActionType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="invoiceActions" Relationship="accountingModel.FK_invoiceAction_invoiceAction" FromRole="lu_invoiceActionType" ToRole="invoiceAction" />
   </EntityType>
   <EntityType Name="lu_invoiceStatus">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="invoiceActions" Relationship="accountingModel.FK_invoiceAction_lu_invoiceStatus" FromRole="lu_invoiceStatus" ToRole="invoiceAction" />
+  </EntityType>
+  <EntityType Name="lu_sysActionType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="sysActions" Relationship="accountingModel.FK_sysAction_lu_sysActionType" FromRole="lu_sysActionType" ToRole="sysAction" />
+  </EntityType>
+  <EntityType Name="lu_transferActionType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="transferActions" Relationship="accountingModel.FK_transferAction_lu_transferActionType" FromRole="lu_transferActionType" ToRole="transferAction" />
   </EntityType>
   <EntityType Name="lu_transferStatus">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="transferActions" Relationship="accountingModel.FK_transferAction_lu_transferStatus" FromRole="lu_transferStatus" ToRole="transferAction" />
   </EntityType>
   <EntityType Name="lu_transferType">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="transfers" Relationship="accountingModel.FK_transfer_lu_transferType" FromRole="lu_transferType" ToRole="transfer" />
   </EntityType>
   <EntityType Name="order">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="issuerEntityID" Type="Int32" />
-    <Property Name="receiverEntityID" Type="Int32" />
-    <Property Name="orderDate" Type="DateTime" />
-    <Property Name="shippedDate" Type="DateTime" />
-    <Property Name="carrierID" Type="Int32" />
-    <Property Name="addressID" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="issuerEntityID" />
+    <Property Type="Int32" Name="receiverEntityID" />
+    <Property Type="DateTime" Name="orderDate" />
+    <Property Type="DateTime" Name="shippedDate" />
+    <Property Type="Int32" Name="carrierID" />
+    <Property Type="Int32" Name="addressID" />
     <NavigationProperty Name="address" Relationship="accountingModel.FK_order_address" FromRole="order" ToRole="address" />
     <NavigationProperty Name="carrier" Relationship="accountingModel.FK_order_carrier" FromRole="order" ToRole="carrier" />
     <NavigationProperty Name="entity" Relationship="accountingModel.FK_order_entity" FromRole="order" ToRole="entity" />
     <NavigationProperty Name="entity1" Relationship="accountingModel.FK_order_entity1" FromRole="order" ToRole="entity" />
+    <NavigationProperty Name="entity2" Relationship="accountingModel.FK_order_entity2" FromRole="order" ToRole="entity" />
+    <NavigationProperty Name="invoices" Relationship="accountingModel.FK_invoice_order" FromRole="order" ToRole="invoice" />
+    <NavigationProperty Name="orderDetails" Relationship="accountingModel.FK_orderDetail_order" FromRole="order" ToRole="orderDetail" />
   </EntityType>
   <EntityType Name="orderDetail">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="deliverableID" Type="Int32" />
-    <Property Name="unitPrice" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="quantity" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="orderID" />
+    <Property Type="Int32" Name="deliverableID" />
+    <Property Type="Decimal" Name="unitPrice" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="quantity" />
     <NavigationProperty Name="deliverable" Relationship="accountingModel.FK_orderDetail_deliverable" FromRole="orderDetail" ToRole="deliverable" />
+    <NavigationProperty Name="order" Relationship="accountingModel.FK_orderDetail_order" FromRole="orderDetail" ToRole="order" />
   </EntityType>
   <EntityType Name="organization">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="entityID" Type="Int32" />
-    <NavigationProperty Name="carriers" Relationship="accountingModel.FK_carrier_organization" FromRole="organization" ToRole="carrier" />
-    <NavigationProperty Name="customers" Relationship="accountingModel.FK_customer_organization" FromRole="organization" ToRole="customer" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="carrier" Relationship="accountingModel.FK_carrier_organization1" FromRole="organization" ToRole="carrier" />
+    <NavigationProperty Name="customer" Relationship="accountingModel.FK_customer_organization1" FromRole="organization" ToRole="customer" />
     <NavigationProperty Name="entity" Relationship="accountingModel.FK_organization_entity" FromRole="organization" ToRole="entity" />
-    <NavigationProperty Name="suppliers" Relationship="accountingModel.FK_supplier_organization" FromRole="organization" ToRole="supplier" />
+    <NavigationProperty Name="supplier" Relationship="accountingModel.FK_supplier_organization1" FromRole="organization" ToRole="supplier" />
   </EntityType>
   <EntityType Name="person">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="firstname" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="lastname" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="entityID" Type="Int32" />
-    <NavigationProperty Name="entity" Relationship="accountingModel.FK_person_entity" FromRole="person" ToRole="entity" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="firstname" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="lastname" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="entity" Relationship="accountingModel.FK_person_entity1" FromRole="person" ToRole="entity" />
     <NavigationProperty Name="users" Relationship="accountingModel.FK_user_person" FromRole="person" ToRole="user" />
   </EntityType>
   <EntityType Name="product">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="deliverableID" Type="Int32" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="deliverable" Relationship="accountingModel.FK_product_deliverable" FromRole="product" ToRole="deliverable" />
   </EntityType>
   <EntityType Name="service">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="Int32" />
-    <Property Name="deliverableID" Type="Int32" />
-    <NavigationProperty Name="deliverable" Relationship="accountingModel.FK_service_deliverable" FromRole="service" ToRole="deliverable" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="name" />
+    <NavigationProperty Name="deliverable" Relationship="accountingModel.FK_service_entity" FromRole="service" ToRole="deliverable" />
   </EntityType>
   <EntityType Name="supplier">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="orgID" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="deliverables" Relationship="accountingModel.FK_deliverable_supplier" FromRole="supplier" ToRole="deliverable" />
-    <NavigationProperty Name="organization" Relationship="accountingModel.FK_supplier_organization" FromRole="supplier" ToRole="organization" />
+    <NavigationProperty Name="organization" Relationship="accountingModel.FK_supplier_organization1" FromRole="supplier" ToRole="organization" />
   </EntityType>
   <EntityType Name="sysAction">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-    <NavigationProperty Name="invoiceActions" Relationship="accountingModel.FK_invoiceAction_sysAction" FromRole="sysAction" ToRole="invoiceAction" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="sysActionTypeID" />
+    <NavigationProperty Name="invoiceAction" Relationship="accountingModel.FK_invoiceAction_sysAction" FromRole="sysAction" ToRole="invoiceAction" />
+    <NavigationProperty Name="lu_sysActionType" Relationship="accountingModel.FK_sysAction_lu_sysActionType" FromRole="sysAction" ToRole="lu_sysActionType" />
     <NavigationProperty Name="sysActionTransactions" Relationship="accountingModel.FK_sysActionTransaction_sysAction" FromRole="sysAction" ToRole="sysActionTransaction" />
-    <NavigationProperty Name="transferActions" Relationship="accountingModel.FK_transferAction_sysAction" FromRole="sysAction" ToRole="transferAction" />
+    <NavigationProperty Name="transferAction" Relationship="accountingModel.FK_transferAction_transfer" FromRole="sysAction" ToRole="transferAction" />
   </EntityType>
   <EntityType Name="sysActionTransaction">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="sysActionID" Type="Int32" />
-    <Property Name="transactionID" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="sysActionID" />
+    <Property Type="Int32" Name="transactionID" />
     <NavigationProperty Name="sysAction" Relationship="accountingModel.FK_sysActionTransaction_sysAction" FromRole="sysActionTransaction" ToRole="sysAction" />
     <NavigationProperty Name="transaction" Relationship="accountingModel.FK_sysActionTransaction_transaction" FromRole="sysActionTransaction" ToRole="transaction" />
   </EntityType>
@@ -674,55 +766,61 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="accountID" Type="Int32" />
-    <Property Name="amount" Type="Decimal" Precision="18" Scale="18" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="accountID" />
+    <Property Type="Decimal" Name="amount" Precision="18" Scale="18" />
     <NavigationProperty Name="account" Relationship="accountingModel.FK_transaction_account" FromRole="transaction" ToRole="account" />
+    <NavigationProperty Name="entity" Relationship="accountingModel.FK_transaction_entity" FromRole="transaction" ToRole="entity" />
     <NavigationProperty Name="sysActionTransactions" Relationship="accountingModel.FK_sysActionTransaction_transaction" FromRole="transaction" ToRole="sysActionTransaction" />
   </EntityType>
   <EntityType Name="transfer">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="issuerEntityID" Type="Int32" />
-    <Property Name="receiverEntityID" Type="Int32" />
-    <Property Name="transferTypeID" Type="Int32" />
-    <Property Name="currencyID" Type="Int32" />
-    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
-    <Property Name="description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="issuerEntityID" />
+    <Property Type="Int32" Name="receiverEntityID" />
+    <Property Type="Int32" Name="transferTypeID" />
+    <Property Type="Int32" Name="currencyID" />
+    <Property Type="Decimal" Name="amount" Precision="18" Scale="2" />
+    <Property Type="String" Name="description" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="currency" Relationship="accountingModel.FK_transfer_currency" FromRole="transfer" ToRole="currency" />
     <NavigationProperty Name="entity" Relationship="accountingModel.FK_transfer_entity" FromRole="transfer" ToRole="entity" />
     <NavigationProperty Name="entity1" Relationship="accountingModel.FK_transfer_entity1" FromRole="transfer" ToRole="entity" />
-    <NavigationProperty Name="externalTransfers" Relationship="accountingModel.FK_externalTransfer_transfer" FromRole="transfer" ToRole="externalTransfer" />
-    <NavigationProperty Name="internalTransfers" Relationship="accountingModel.FK_internalTransfer_transfer" FromRole="transfer" ToRole="internalTransfer" />
+    <NavigationProperty Name="entity2" Relationship="accountingModel.FK_transfer_entity2" FromRole="transfer" ToRole="entity" />
+    <NavigationProperty Name="externalTransfer" Relationship="accountingModel.FK_externalTransfer_transfer" FromRole="transfer" ToRole="externalTransfer" />
+    <NavigationProperty Name="internalTransfer" Relationship="accountingModel.FK_internalTransfer_transfer" FromRole="transfer" ToRole="internalTransfer" />
     <NavigationProperty Name="invoiceTransfers" Relationship="accountingModel.FK_invoiceTransfer_transfer" FromRole="transfer" ToRole="invoiceTransfer" />
     <NavigationProperty Name="lu_transferType" Relationship="accountingModel.FK_transfer_lu_transferType" FromRole="transfer" ToRole="lu_transferType" />
+    <NavigationProperty Name="transferActions" Relationship="accountingModel.FK_transferAction_transfer1" FromRole="transfer" ToRole="transferAction" />
   </EntityType>
   <EntityType Name="transferAction">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="transferStatusID" Type="Int32" />
-    <Property Name="sysActionID" Type="Int32" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="transferID" />
+    <Property Type="String" Name="name" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="transferStatusID" />
+    <Property Type="Int32" Name="transferActionTypeID" />
+    <NavigationProperty Name="lu_transferActionType" Relationship="accountingModel.FK_transferAction_lu_transferActionType" FromRole="transferAction" ToRole="lu_transferActionType" />
     <NavigationProperty Name="lu_transferStatus" Relationship="accountingModel.FK_transferAction_lu_transferStatus" FromRole="transferAction" ToRole="lu_transferStatus" />
-    <NavigationProperty Name="sysAction" Relationship="accountingModel.FK_transferAction_sysAction" FromRole="transferAction" ToRole="sysAction" />
+    <NavigationProperty Name="sysAction" Relationship="accountingModel.FK_transferAction_transfer" FromRole="transferAction" ToRole="sysAction" />
+    <NavigationProperty Name="transfer" Relationship="accountingModel.FK_transferAction_transfer1" FromRole="transferAction" ToRole="transfer" />
   </EntityType>
   <EntityType Name="user">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="personID" Type="Int32" />
-    <Property Name="username" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-    <Property Name="password" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="personID" />
+    <Property Type="String" Name="username" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="password" MaxLength="500" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="person" Relationship="accountingModel.FK_user_person" FromRole="user" ToRole="person" />
   </EntityType>
   <Association Name="FK_account_currency">
-    <End Role="currency" Type="accountingModel.currency" Multiplicity="0..1" />
-    <End Role="account" Type="accountingModel.account" Multiplicity="*" />
+    <End Type="accountingModel.currency" Role="currency" Multiplicity="0..1" />
+    <End Type="accountingModel.account" Role="account" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="currency">
         <PropertyRef Name="ID" />
@@ -733,8 +831,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_account_entity">
-    <End Role="entity" Type="accountingModel.entity" Multiplicity="0..1" />
-    <End Role="account" Type="accountingModel.account" Multiplicity="*" />
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="0..1" />
+    <End Type="accountingModel.account" Role="account" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="entity">
         <PropertyRef Name="ID" />
@@ -744,9 +842,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_account_entity1">
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="1" />
+    <End Type="accountingModel.account" Role="account" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="account">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_account_lu_catType">
-    <End Role="lu_catType" Type="accountingModel.lu_catType" Multiplicity="0..1" />
-    <End Role="account" Type="accountingModel.account" Multiplicity="*" />
+    <End Type="accountingModel.lu_catType" Role="lu_catType" Multiplicity="0..1" />
+    <End Type="accountingModel.account" Role="account" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="lu_catType">
         <PropertyRef Name="ID" />
@@ -757,8 +867,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_transaction_account">
-    <End Role="account" Type="accountingModel.account" Multiplicity="0..1" />
-    <End Role="transaction" Type="accountingModel.transaction" Multiplicity="*" />
+    <End Type="accountingModel.account" Role="account" Multiplicity="0..1" />
+    <End Type="accountingModel.transaction" Role="transaction" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="account">
         <PropertyRef Name="ID" />
@@ -769,8 +879,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_order_address">
-    <End Role="address" Type="accountingModel.address" Multiplicity="0..1" />
-    <End Role="order" Type="accountingModel.order" Multiplicity="*" />
+    <End Type="accountingModel.address" Role="address" Multiplicity="0..1" />
+    <End Type="accountingModel.order" Role="order" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="address">
         <PropertyRef Name="ID" />
@@ -780,21 +890,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_card_entity">
-    <End Role="entity" Type="accountingModel.entity" Multiplicity="0..1" />
-    <End Role="card" Type="accountingModel.card" Multiplicity="*" />
+  <Association Name="FK_card_entity1">
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="1" />
+    <End Type="accountingModel.card" Role="card" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="entity">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="card">
-        <PropertyRef Name="entityID" />
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_card_lu_cardType">
-    <End Role="lu_cardType" Type="accountingModel.lu_cardType" Multiplicity="0..1" />
-    <End Role="card" Type="accountingModel.card" Multiplicity="*" />
+    <End Type="accountingModel.lu_cardType" Role="lu_cardType" Multiplicity="0..1" />
+    <End Type="accountingModel.card" Role="card" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="lu_cardType">
         <PropertyRef Name="ID" />
@@ -804,33 +914,33 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ccCard_card">
-    <End Role="card" Type="accountingModel.card" Multiplicity="0..1" />
-    <End Role="ccCard" Type="accountingModel.ccCard" Multiplicity="*" />
+  <Association Name="FK_ccCard_card1">
+    <End Type="accountingModel.card" Role="card" Multiplicity="1" />
+    <End Type="accountingModel.ccCard" Role="ccCard" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="card">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="ccCard">
-        <PropertyRef Name="cardID" />
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_debitCard_card">
-    <End Role="card" Type="accountingModel.card" Multiplicity="0..1" />
-    <End Role="debitCard" Type="accountingModel.debitCard" Multiplicity="*" />
+  <Association Name="FK_debitCard_card1">
+    <End Type="accountingModel.card" Role="card" Multiplicity="1" />
+    <End Type="accountingModel.debitCard" Role="debitCard" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="card">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="debitCard">
-        <PropertyRef Name="cardID" />
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_entityCard_card">
-    <End Role="card" Type="accountingModel.card" Multiplicity="0..1" />
-    <End Role="entityCard" Type="accountingModel.entityCard" Multiplicity="*" />
+    <End Type="accountingModel.card" Role="card" Multiplicity="0..1" />
+    <End Type="accountingModel.entityCard" Role="entityCard" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="card">
         <PropertyRef Name="ID" />
@@ -841,8 +951,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_externalTransfer_card">
-    <End Role="card" Type="accountingModel.card" Multiplicity="0..1" />
-    <End Role="externalTransfer" Type="accountingModel.externalTransfer" Multiplicity="*" />
+    <End Type="accountingModel.card" Role="card" Multiplicity="0..1" />
+    <End Type="accountingModel.externalTransfer" Role="externalTransfer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="card">
         <PropertyRef Name="ID" />
@@ -852,21 +962,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_carrier_organization">
-    <End Role="organization" Type="accountingModel.organization" Multiplicity="0..1" />
-    <End Role="carrier" Type="accountingModel.carrier" Multiplicity="*" />
+  <Association Name="FK_carrier_organization1">
+    <End Type="accountingModel.organization" Role="organization" Multiplicity="1" />
+    <End Type="accountingModel.carrier" Role="carrier" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="organization">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="carrier">
-        <PropertyRef Name="orgID" />
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_carrierContact_carrier">
-    <End Role="carrier" Type="accountingModel.carrier" Multiplicity="0..1" />
-    <End Role="carrierContact" Type="accountingModel.carrierContact" Multiplicity="*" />
+    <End Type="accountingModel.carrier" Role="carrier" Multiplicity="0..1" />
+    <End Type="accountingModel.carrierContact" Role="carrierContact" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="carrier">
         <PropertyRef Name="ID" />
@@ -877,8 +987,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_order_carrier">
-    <End Role="carrier" Type="accountingModel.carrier" Multiplicity="0..1" />
-    <End Role="order" Type="accountingModel.order" Multiplicity="*" />
+    <End Type="accountingModel.carrier" Role="carrier" Multiplicity="0..1" />
+    <End Type="accountingModel.order" Role="order" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="carrier">
         <PropertyRef Name="ID" />
@@ -889,8 +999,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_carrierContact_contact">
-    <End Role="contact" Type="accountingModel.contact" Multiplicity="0..1" />
-    <End Role="carrierContact" Type="accountingModel.carrierContact" Multiplicity="*" />
+    <End Type="accountingModel.contact" Role="contact" Multiplicity="0..1" />
+    <End Type="accountingModel.carrierContact" Role="carrierContact" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="contact">
         <PropertyRef Name="ID" />
@@ -901,8 +1011,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ccCard_lu_ccCardType">
-    <End Role="lu_ccCardType" Type="accountingModel.lu_ccCardType" Multiplicity="0..1" />
-    <End Role="ccCard" Type="accountingModel.ccCard" Multiplicity="*" />
+    <End Type="accountingModel.lu_ccCardType" Role="lu_ccCardType" Multiplicity="0..1" />
+    <End Type="accountingModel.ccCard" Role="ccCard" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="lu_ccCardType">
         <PropertyRef Name="ID" />
@@ -913,8 +1023,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_contact_lu_contactType">
-    <End Role="lu_contactType" Type="accountingModel.lu_contactType" Multiplicity="0..1" />
-    <End Role="contact" Type="accountingModel.contact" Multiplicity="*" />
+    <End Type="accountingModel.lu_contactType" Role="lu_contactType" Multiplicity="0..1" />
+    <End Type="accountingModel.contact" Role="contact" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="lu_contactType">
         <PropertyRef Name="ID" />
@@ -925,20 +1035,20 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_creditTransfer_externalTransfer">
-    <End Role="externalTransfer" Type="accountingModel.externalTransfer" Multiplicity="0..1" />
-    <End Role="creditTransfer" Type="accountingModel.creditTransfer" Multiplicity="*" />
+    <End Type="accountingModel.externalTransfer" Role="externalTransfer" Multiplicity="1" />
+    <End Type="accountingModel.creditTransfer" Role="creditTransfer" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="externalTransfer">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="creditTransfer">
-        <PropertyRef Name="externalTransferID" />
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_currency_lu_currencyType">
-    <End Role="lu_currencyType" Type="accountingModel.lu_currencyType" Multiplicity="0..1" />
-    <End Role="currency" Type="accountingModel.currency" Multiplicity="*" />
+    <End Type="accountingModel.lu_currencyType" Role="lu_currencyType" Multiplicity="0..1" />
+    <End Type="accountingModel.currency" Role="currency" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="lu_currencyType">
         <PropertyRef Name="ID" />
@@ -949,8 +1059,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_invoice_currency">
-    <End Role="currency" Type="accountingModel.currency" Multiplicity="0..1" />
-    <End Role="invoice" Type="accountingModel.invoice" Multiplicity="*" />
+    <End Type="accountingModel.currency" Role="currency" Multiplicity="0..1" />
+    <End Type="accountingModel.invoice" Role="invoice" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="currency">
         <PropertyRef Name="ID" />
@@ -961,8 +1071,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_transfer_currency">
-    <End Role="currency" Type="accountingModel.currency" Multiplicity="0..1" />
-    <End Role="transfer" Type="accountingModel.transfer" Multiplicity="*" />
+    <End Type="accountingModel.currency" Role="currency" Multiplicity="0..1" />
+    <End Type="accountingModel.transfer" Role="transfer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="currency">
         <PropertyRef Name="ID" />
@@ -972,21 +1082,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_customer_organization">
-    <End Role="organization" Type="accountingModel.organization" Multiplicity="0..1" />
-    <End Role="customer" Type="accountingModel.customer" Multiplicity="*" />
+  <Association Name="FK_customer_organization1">
+    <End Type="accountingModel.organization" Role="organization" Multiplicity="1" />
+    <End Type="accountingModel.customer" Role="customer" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="organization">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="customer">
-        <PropertyRef Name="orgID" />
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_debitCard_lu_ccCardType">
-    <End Role="lu_ccCardType" Type="accountingModel.lu_ccCardType" Multiplicity="0..1" />
-    <End Role="debitCard" Type="accountingModel.debitCard" Multiplicity="*" />
+    <End Type="accountingModel.lu_ccCardType" Role="lu_ccCardType" Multiplicity="0..1" />
+    <End Type="accountingModel.debitCard" Role="debitCard" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="lu_ccCardType">
         <PropertyRef Name="ID" />
@@ -997,20 +1107,32 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_debitTransfer_externalTransfer">
-    <End Role="externalTransfer" Type="accountingModel.externalTransfer" Multiplicity="0..1" />
-    <End Role="debitTransfer" Type="accountingModel.debitTransfer" Multiplicity="*" />
+    <End Type="accountingModel.externalTransfer" Role="externalTransfer" Multiplicity="1" />
+    <End Type="accountingModel.debitTransfer" Role="debitTransfer" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="externalTransfer">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="debitTransfer">
-        <PropertyRef Name="externalTransferID" />
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_deliverable_entity">
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="1" />
+    <End Type="accountingModel.deliverable" Role="deliverable" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="deliverable">
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_deliverable_lu_deliverableType">
-    <End Role="lu_deliverableType" Type="accountingModel.lu_deliverableType" Multiplicity="0..1" />
-    <End Role="deliverable" Type="accountingModel.deliverable" Multiplicity="*" />
+    <End Type="accountingModel.lu_deliverableType" Role="lu_deliverableType" Multiplicity="0..1" />
+    <End Type="accountingModel.deliverable" Role="deliverable" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="lu_deliverableType">
         <PropertyRef Name="ID" />
@@ -1021,8 +1143,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_deliverable_supplier">
-    <End Role="supplier" Type="accountingModel.supplier" Multiplicity="0..1" />
-    <End Role="deliverable" Type="accountingModel.deliverable" Multiplicity="*" />
+    <End Type="accountingModel.supplier" Role="supplier" Multiplicity="0..1" />
+    <End Type="accountingModel.deliverable" Role="deliverable" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="supplier">
         <PropertyRef Name="ID" />
@@ -1033,8 +1155,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_orderDetail_deliverable">
-    <End Role="deliverable" Type="accountingModel.deliverable" Multiplicity="0..1" />
-    <End Role="orderDetail" Type="accountingModel.orderDetail" Multiplicity="*" />
+    <End Type="accountingModel.deliverable" Role="deliverable" Multiplicity="0..1" />
+    <End Type="accountingModel.orderDetail" Role="orderDetail" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="deliverable">
         <PropertyRef Name="ID" />
@@ -1045,32 +1167,44 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_product_deliverable">
-    <End Role="deliverable" Type="accountingModel.deliverable" Multiplicity="0..1" />
-    <End Role="product" Type="accountingModel.product" Multiplicity="*" />
+    <End Type="accountingModel.deliverable" Role="deliverable" Multiplicity="1" />
+    <End Type="accountingModel.product" Role="product" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="deliverable">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="product">
-        <PropertyRef Name="deliverableID" />
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_service_deliverable">
-    <End Role="deliverable" Type="accountingModel.deliverable" Multiplicity="0..1" />
-    <End Role="service" Type="accountingModel.service" Multiplicity="*" />
+  <Association Name="FK_service_entity">
+    <End Type="accountingModel.deliverable" Role="deliverable" Multiplicity="1" />
+    <End Type="accountingModel.service" Role="service" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="deliverable">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="service">
-        <PropertyRef Name="deliverableID" />
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_entity_lu_entityType">
+    <End Type="accountingModel.lu_entityType" Role="lu_entityType" Multiplicity="0..1" />
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_entityType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="entity">
+        <PropertyRef Name="entityTypeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_entityCard_entity">
-    <End Role="entity" Type="accountingModel.entity" Multiplicity="0..1" />
-    <End Role="entityCard" Type="accountingModel.entityCard" Multiplicity="*" />
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="0..1" />
+    <End Type="accountingModel.entityCard" Role="entityCard" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="entity">
         <PropertyRef Name="ID" />
@@ -1080,45 +1214,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_externalTransfer_entity">
-    <End Role="entity" Type="accountingModel.entity" Multiplicity="0..1" />
-    <End Role="externalTransfer" Type="accountingModel.externalTransfer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="entity">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="externalTransfer">
-        <PropertyRef Name="entityID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_invoice_entity">
-    <End Role="entity" Type="accountingModel.entity" Multiplicity="0..1" />
-    <End Role="invoice" Type="accountingModel.invoice" Multiplicity="*" />
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="1" />
+    <End Type="accountingModel.invoice" Role="invoice" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="entity">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="invoice">
-        <PropertyRef Name="issuerEntityID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_invoice_entity1">
-    <End Role="entity" Type="accountingModel.entity" Multiplicity="0..1" />
-    <End Role="invoice" Type="accountingModel.invoice" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="entity">
         <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="invoice">
-        <PropertyRef Name="receiverEntityID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_order_entity">
-    <End Role="entity" Type="accountingModel.entity" Multiplicity="0..1" />
-    <End Role="order" Type="accountingModel.order" Multiplicity="*" />
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="0..1" />
+    <End Type="accountingModel.order" Role="order" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="entity">
         <PropertyRef Name="ID" />
@@ -1129,8 +1239,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_order_entity1">
-    <End Role="entity" Type="accountingModel.entity" Multiplicity="0..1" />
-    <End Role="order" Type="accountingModel.order" Multiplicity="*" />
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="0..1" />
+    <End Type="accountingModel.order" Role="order" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="entity">
         <PropertyRef Name="ID" />
@@ -1140,33 +1250,57 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_order_entity2">
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="1" />
+    <End Type="accountingModel.order" Role="order" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_organization_entity">
-    <End Role="entity" Type="accountingModel.entity" Multiplicity="0..1" />
-    <End Role="organization" Type="accountingModel.organization" Multiplicity="*" />
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="1" />
+    <End Type="accountingModel.organization" Role="organization" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="entity">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="organization">
-        <PropertyRef Name="entityID" />
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_person_entity">
-    <End Role="entity" Type="accountingModel.entity" Multiplicity="0..1" />
-    <End Role="person" Type="accountingModel.person" Multiplicity="*" />
+  <Association Name="FK_person_entity1">
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="1" />
+    <End Type="accountingModel.person" Role="person" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="entity">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="person">
-        <PropertyRef Name="entityID" />
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transaction_entity">
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="1" />
+    <End Type="accountingModel.transaction" Role="transaction" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="transaction">
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_transfer_entity">
-    <End Role="entity" Type="accountingModel.entity" Multiplicity="0..1" />
-    <End Role="transfer" Type="accountingModel.transfer" Multiplicity="*" />
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="0..1" />
+    <End Type="accountingModel.transfer" Role="transfer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="entity">
         <PropertyRef Name="ID" />
@@ -1177,8 +1311,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_transfer_entity1">
-    <End Role="entity" Type="accountingModel.entity" Multiplicity="0..1" />
-    <End Role="transfer" Type="accountingModel.transfer" Multiplicity="*" />
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="0..1" />
+    <End Type="accountingModel.transfer" Role="transfer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="entity">
         <PropertyRef Name="ID" />
@@ -1188,33 +1322,81 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_transfer_entity2">
+    <End Type="accountingModel.entity" Role="entity" Multiplicity="1" />
+    <End Type="accountingModel.transfer" Role="transfer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="entity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="transfer">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_externalTransfer_lu_externalTsfrType">
+    <End Type="accountingModel.lu_externalTsfrType" Role="lu_externalTsfrType" Multiplicity="0..1" />
+    <End Type="accountingModel.externalTransfer" Role="externalTransfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_externalTsfrType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="externalTransfer">
+        <PropertyRef Name="externalTsfrTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_externalTransfer_transfer">
-    <End Role="transfer" Type="accountingModel.transfer" Multiplicity="0..1" />
-    <End Role="externalTransfer" Type="accountingModel.externalTransfer" Multiplicity="*" />
+    <End Type="accountingModel.transfer" Role="transfer" Multiplicity="1" />
+    <End Type="accountingModel.externalTransfer" Role="externalTransfer" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="transfer">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="externalTransfer">
-        <PropertyRef Name="transferID" />
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_internalTransfer_transfer">
-    <End Role="transfer" Type="accountingModel.transfer" Multiplicity="0..1" />
-    <End Role="internalTransfer" Type="accountingModel.internalTransfer" Multiplicity="*" />
+    <End Type="accountingModel.transfer" Role="transfer" Multiplicity="1" />
+    <End Type="accountingModel.internalTransfer" Role="internalTransfer" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="transfer">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="internalTransfer">
-        <PropertyRef Name="transferID" />
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_invoice_order">
+    <End Type="accountingModel.order" Role="order" Multiplicity="0..1" />
+    <End Type="accountingModel.invoice" Role="invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="invoice">
+        <PropertyRef Name="orderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_invoiceAction_invoice">
+    <End Type="accountingModel.invoice" Role="invoice" Multiplicity="0..1" />
+    <End Type="accountingModel.invoiceAction" Role="invoiceAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="invoice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="invoiceAction">
+        <PropertyRef Name="invoiceID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_invoiceTransfer_invoice">
-    <End Role="invoice" Type="accountingModel.invoice" Multiplicity="0..1" />
-    <End Role="invoiceTransfer" Type="accountingModel.invoiceTransfer" Multiplicity="*" />
+    <End Type="accountingModel.invoice" Role="invoice" Multiplicity="0..1" />
+    <End Type="accountingModel.invoiceTransfer" Role="invoiceTransfer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="invoice">
         <PropertyRef Name="ID" />
@@ -1224,9 +1406,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_invoiceAction_invoiceAction">
+    <End Type="accountingModel.lu_invoiceActionType" Role="lu_invoiceActionType" Multiplicity="0..1" />
+    <End Type="accountingModel.invoiceAction" Role="invoiceAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_invoiceActionType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="invoiceAction">
+        <PropertyRef Name="invoiceActionTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_invoiceAction_lu_invoiceStatus">
-    <End Role="lu_invoiceStatus" Type="accountingModel.lu_invoiceStatus" Multiplicity="0..1" />
-    <End Role="invoiceAction" Type="accountingModel.invoiceAction" Multiplicity="*" />
+    <End Type="accountingModel.lu_invoiceStatus" Role="lu_invoiceStatus" Multiplicity="0..1" />
+    <End Type="accountingModel.invoiceAction" Role="invoiceAction" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="lu_invoiceStatus">
         <PropertyRef Name="ID" />
@@ -1237,20 +1431,20 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_invoiceAction_sysAction">
-    <End Role="sysAction" Type="accountingModel.sysAction" Multiplicity="0..1" />
-    <End Role="invoiceAction" Type="accountingModel.invoiceAction" Multiplicity="*" />
+    <End Type="accountingModel.sysAction" Role="sysAction" Multiplicity="1" />
+    <End Type="accountingModel.invoiceAction" Role="invoiceAction" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="sysAction">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="invoiceAction">
-        <PropertyRef Name="sysActionID" />
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_invoiceTransfer_transfer">
-    <End Role="transfer" Type="accountingModel.transfer" Multiplicity="0..1" />
-    <End Role="invoiceTransfer" Type="accountingModel.invoiceTransfer" Multiplicity="*" />
+    <End Type="accountingModel.transfer" Role="transfer" Multiplicity="0..1" />
+    <End Type="accountingModel.invoiceTransfer" Role="invoiceTransfer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="transfer">
         <PropertyRef Name="ID" />
@@ -1261,8 +1455,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_lu_catType_lu_glType">
-    <End Role="lu_glType" Type="accountingModel.lu_glType" Multiplicity="0..1" />
-    <End Role="lu_catType" Type="accountingModel.lu_catType" Multiplicity="*" />
+    <End Type="accountingModel.lu_glType" Role="lu_glType" Multiplicity="0..1" />
+    <End Type="accountingModel.lu_catType" Role="lu_catType" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="lu_glType">
         <PropertyRef Name="ID" />
@@ -1272,9 +1466,33 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_sysAction_lu_sysActionType">
+    <End Type="accountingModel.lu_sysActionType" Role="lu_sysActionType" Multiplicity="0..1" />
+    <End Type="accountingModel.sysAction" Role="sysAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_sysActionType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="sysAction">
+        <PropertyRef Name="sysActionTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transferAction_lu_transferActionType">
+    <End Type="accountingModel.lu_transferActionType" Role="lu_transferActionType" Multiplicity="0..1" />
+    <End Type="accountingModel.transferAction" Role="transferAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lu_transferActionType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="transferAction">
+        <PropertyRef Name="transferActionTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_transferAction_lu_transferStatus">
-    <End Role="lu_transferStatus" Type="accountingModel.lu_transferStatus" Multiplicity="0..1" />
-    <End Role="transferAction" Type="accountingModel.transferAction" Multiplicity="*" />
+    <End Type="accountingModel.lu_transferStatus" Role="lu_transferStatus" Multiplicity="0..1" />
+    <End Type="accountingModel.transferAction" Role="transferAction" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="lu_transferStatus">
         <PropertyRef Name="ID" />
@@ -1285,8 +1503,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_transfer_lu_transferType">
-    <End Role="lu_transferType" Type="accountingModel.lu_transferType" Multiplicity="0..1" />
-    <End Role="transfer" Type="accountingModel.transfer" Multiplicity="*" />
+    <End Type="accountingModel.lu_transferType" Role="lu_transferType" Multiplicity="0..1" />
+    <End Type="accountingModel.transfer" Role="transfer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="lu_transferType">
         <PropertyRef Name="ID" />
@@ -1296,21 +1514,33 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_supplier_organization">
-    <End Role="organization" Type="accountingModel.organization" Multiplicity="0..1" />
-    <End Role="supplier" Type="accountingModel.supplier" Multiplicity="*" />
+  <Association Name="FK_orderDetail_order">
+    <End Type="accountingModel.order" Role="order" Multiplicity="0..1" />
+    <End Type="accountingModel.orderDetail" Role="orderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="orderDetail">
+        <PropertyRef Name="orderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_supplier_organization1">
+    <End Type="accountingModel.organization" Role="organization" Multiplicity="1" />
+    <End Type="accountingModel.supplier" Role="supplier" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="organization">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="supplier">
-        <PropertyRef Name="orgID" />
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_user_person">
-    <End Role="person" Type="accountingModel.person" Multiplicity="0..1" />
-    <End Role="user" Type="accountingModel.user" Multiplicity="*" />
+    <End Type="accountingModel.person" Role="person" Multiplicity="0..1" />
+    <End Type="accountingModel.user" Role="user" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="person">
         <PropertyRef Name="ID" />
@@ -1321,8 +1551,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_sysActionTransaction_sysAction">
-    <End Role="sysAction" Type="accountingModel.sysAction" Multiplicity="0..1" />
-    <End Role="sysActionTransaction" Type="accountingModel.sysActionTransaction" Multiplicity="*" />
+    <End Type="accountingModel.sysAction" Role="sysAction" Multiplicity="0..1" />
+    <End Type="accountingModel.sysActionTransaction" Role="sysActionTransaction" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="sysAction">
         <PropertyRef Name="ID" />
@@ -1332,27 +1562,39 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_transferAction_sysAction">
-    <End Role="sysAction" Type="accountingModel.sysAction" Multiplicity="0..1" />
-    <End Role="transferAction" Type="accountingModel.transferAction" Multiplicity="*" />
+  <Association Name="FK_transferAction_transfer">
+    <End Type="accountingModel.sysAction" Role="sysAction" Multiplicity="1" />
+    <End Type="accountingModel.transferAction" Role="transferAction" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="sysAction">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="transferAction">
-        <PropertyRef Name="sysActionID" />
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_sysActionTransaction_transaction">
-    <End Role="transaction" Type="accountingModel.transaction" Multiplicity="0..1" />
-    <End Role="sysActionTransaction" Type="accountingModel.sysActionTransaction" Multiplicity="*" />
+    <End Type="accountingModel.transaction" Role="transaction" Multiplicity="0..1" />
+    <End Type="accountingModel.sysActionTransaction" Role="sysActionTransaction" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="transaction">
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="sysActionTransaction">
         <PropertyRef Name="transactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_transferAction_transfer1">
+    <End Type="accountingModel.transfer" Role="transfer" Multiplicity="0..1" />
+    <End Type="accountingModel.transferAction" Role="transferAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transfer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="transferAction">
+        <PropertyRef Name="transferID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

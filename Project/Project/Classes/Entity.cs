@@ -5,30 +5,12 @@ using System.Text;
 
 using Project.Models;
 using System.Transactions;
-using Project.Structure.enumsController;
 
 namespace Project.Structure
 {
     public class Entity
     {
-        entity ENTITY;
-        public void Entity(){}
-
-        public void Entity(int entityTypeID)
-        {
-            using (var ctx = new accountingEntities())
-            {
-                var newEntity = new entity()
-                {
-                    entityTypeID = entityTypeID
-                };
-                ENTITY = newEntity;
-
-                ctx.entities.AddObject(newEntity);
-                ctx.SaveChanges();
-            }
-        }
-        
+        entity ENTITY{get;set;}
 
         public void addCard(int cardID,int entityID)
         {
@@ -65,11 +47,11 @@ namespace Project.Structure
                 //Record related transctions
                 List<transaction> transactions = new List<transaction>();
 
-                account acc_W= Account.getAccount(entityID, (int)enumsController.catType.W, currencyID);
+                account acc_W= Account.getAccount(entityID, (int)projectEnums.catType.W, currencyID);
                 var trans1 = new Transaction( +1 * (decimal)amount, acc_W);
                 transactions.Add(trans1.TXN);
 
-                account acc_CCCASH = Account.getAccount(entityID, (int)enumsController.catType.CCCASH, currencyID);
+                account acc_CCCASH = Account.getAccount(entityID, (int)projectEnums.catType.CCCASH, currencyID);
                 var trans2 = new Transaction(-1 * (decimal)amount, acc_CCCASH);
                 transactions.Add(trans2.TXN);
 
@@ -77,39 +59,34 @@ namespace Project.Structure
             }
         }
 
-        protected void payInvoiceByCC(Invoice inv, decimal amount, int cardID, enumsController.ccCardType cardType)
+        protected void payInvoiceByCC(Invoice inv, decimal amount, int cardID, projectEnums.ccCardType cardType)
         {
-            this.doCCExtPayment(amount, cardID, cardType);
+            inv.Transfer_Ext_Credit(amount, cardID, cardType);
         }
 
-        protected void payInvoiceByInterac(invoice inv, decimal amount, int cardID)
+        protected void payInvoiceByInterac(Invoice inv, decimal amount, int cardID)
         {
-            inv.doINTERACPayment(amount, cardID);
+            inv.Transfer_Ext_Debit(amount, cardID);
         }
 
-        public void payInvoiceByInternal(invoice inv, decimal amount)
+        public void payInvoiceByInternal(Invoice inv, decimal amount)
         {
-            this.doINTERNALTransfer(amount);
+            inv.Transfer_Internal(amount);
         }
 
-        /// <summary>
-        /// create invoice with services/amount dectionary
-        /// </summary>
-        /// <param name="receiverEntityID"></param>
-        /// <param name="currencyID"></param>
-        /// <param name="servicesAmt"></param>
-        public invoice issueInvoice(int receiverEntityID, int currencyID, Dictionary<deliverable, decimal> servicesAmt)
+        public Invoice issueInvoice(int receiverEntityID, int currencyID, Dictionary<deliverable, decimal> servicesAmt)
         {
-            var inv = new accounting.classes.Invoice();
-            inv.New(this.ENTITYID, receiverEntityID, currencyID);
+            var invoiceData=new invoice{};
+            var inv = new Invoice();
+            inv.New(invoiceData);
 
             foreach (var item in servicesAmt)
-                inv.addService((item.Key as classes.Service).serviceID, item.Value);
+                inv.addInvoiceOrderDetail((item.Key as deliverable));
 
             inv.finalizeInvoice();
 
             return inv;
         }
-        
+
     }
 }

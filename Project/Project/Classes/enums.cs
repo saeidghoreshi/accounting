@@ -17,7 +17,7 @@ namespace Project.Structure
         public int glTypeID { get; set; }
     }
 
-    public static class enumsController
+    public static class projectEnums
     {
         public static List<GLType> glTypes = new List<GLType>() 
         {

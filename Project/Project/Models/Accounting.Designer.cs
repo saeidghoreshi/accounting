@@ -49,46 +49,41 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_deliverable_supplier", "supplier", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.supplier), "deliverable", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.deliverable), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_orderDetail_deliverable", "deliverable", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.deliverable), "orderDetail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.orderDetail), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_product_deliverable", "deliverable", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.deliverable), "product", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.product), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_service_entity", "deliverable", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.deliverable), "service", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.service), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_entity_lu_entityType", "lu_entityType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_entityType), "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.entity), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_entityCard_entity", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.entity), "entityCard", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.entityCard), true)]
-[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoice_entity", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.entity), "invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoice), true)]
-[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoice_entity1", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.entity), "invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoice), true)]
-[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoice_entity2", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.entity), "invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.invoice), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoice_entity", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.entity), "invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.invoice), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_order_entity", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.entity), "order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.order), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_order_entity1", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.entity), "order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.order), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_order_entity2", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.entity), "order", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.order), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_organization_entity", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.entity), "organization", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.organization), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_person_entity1", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.entity), "person", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.person), true)]
-[assembly: EdmRelationshipAttribute("accountingModel", "FK_service_entity", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.entity), "service", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.service), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_transaction_entity", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.entity), "transaction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transaction), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_transfer_entity", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.entity), "transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.transfer), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_transfer_entity1", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.entity), "transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.transfer), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_transfer_entity2", "entity", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.entity), "transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transfer), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_externalTransfer_lu_externalTsfrType", "lu_externalTsfrType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_externalTsfrType), "externalTransfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.externalTransfer), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_externalTransfer_transfer", "transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.transfer), "externalTransfer", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.externalTransfer), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_internalTransfer_transfer", "transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.transfer), "internalTransfer", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.internalTransfer), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoice_order", "order", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.order), "invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoice), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceAction_invoice", "invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.invoice), "invoiceAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceAction), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceTransfer_invoice", "invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.invoice), "invoiceTransfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceTransfer), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceAction_invoiceAction", "lu_invoiceActionType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_invoiceActionType), "invoiceAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceAction), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceAction_lu_invoiceStatus", "lu_invoiceStatus", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_invoiceStatus), "invoiceAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceAction), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceAction_sysAction", "sysAction", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.sysAction), "invoiceAction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.invoiceAction), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceTransfer_transfer", "transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transfer), "invoiceTransfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceTransfer), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_lu_catType_lu_glType", "lu_glType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_glType), "lu_catType", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.lu_catType), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_sysAction_lu_sysActionType", "lu_sysActionType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_sysActionType), "sysAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.sysAction), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_transferAction_lu_transferActionType", "lu_transferActionType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_transferActionType), "transferAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.transferAction), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_transferAction_lu_transferStatus", "lu_transferStatus", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_transferStatus), "transferAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.transferAction), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_transfer_lu_transferType", "lu_transferType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_transferType), "transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.transfer), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_orderDetail_order", "order", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.order), "orderDetail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.orderDetail), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_supplier_organization1", "organization", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.organization), "supplier", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.supplier), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_user_person", "person", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.person), "user", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.user), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_sysActionTransaction_sysAction", "sysAction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.sysAction), "sysActionTransaction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.sysActionTransaction), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_transferAction_transfer", "sysAction", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.sysAction), "transferAction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transferAction), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_sysActionTransaction_transaction", "transaction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transaction), "sysActionTransaction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.sysActionTransaction), true)]
-[assembly: EdmRelationshipAttribute("accountingModel", "FK_transferAction_transfer", "transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.transfer), "transferAction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transferAction), true)]
-[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceOrder_invoice", "invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.invoice), "invoiceOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceOrder), true)]
-[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceOrder_order", "order", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.order), "invoiceOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceOrder), true)]
-[assembly: EdmRelationshipAttribute("accountingModel", "FK_service_entity1", "deliverable", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.deliverable), "service", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.service), true)]
-[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoice_order", "order", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.order), "invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoice), true)]
-[assembly: EdmRelationshipAttribute("accountingModel", "FK_transferAction_transfer1", "sysAction", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.sysAction), "transferAction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transferAction), true)]
-[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceAction_invoice", "invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.invoice), "invoiceAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceAction), true)]
-[assembly: EdmRelationshipAttribute("accountingModel", "FK_transferAction_transfer11", "transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transfer), "transferAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.transferAction), true)]
-[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceAction_invoiceAction", "lu_invoiceActionType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_invoiceActionType), "invoiceAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceAction), true)]
-[assembly: EdmRelationshipAttribute("accountingModel", "FK_transferAction_lu_transferActionType", "lu_transferActionType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_transferActionType), "transferAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.transferAction), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_transferAction_transfer1", "transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transfer), "transferAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.transferAction), true)]
 
 #endregion
 
@@ -607,6 +602,22 @@ namespace Project.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<lu_invoiceActionType> lu_invoiceActionType
+        {
+            get
+            {
+                if ((_lu_invoiceActionType == null))
+                {
+                    _lu_invoiceActionType = base.CreateObjectSet<lu_invoiceActionType>("lu_invoiceActionType");
+                }
+                return _lu_invoiceActionType;
+            }
+        }
+        private ObjectSet<lu_invoiceActionType> _lu_invoiceActionType;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<lu_invoiceStatus> lu_invoiceStatus
         {
             get
@@ -635,6 +646,22 @@ namespace Project.Models
             }
         }
         private ObjectSet<lu_sysActionType> _lu_sysActionType;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<lu_transferActionType> lu_transferActionType
+        {
+            get
+            {
+                if ((_lu_transferActionType == null))
+                {
+                    _lu_transferActionType = base.CreateObjectSet<lu_transferActionType>("lu_transferActionType");
+                }
+                return _lu_transferActionType;
+            }
+        }
+        private ObjectSet<lu_transferActionType> _lu_transferActionType;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -875,54 +902,6 @@ namespace Project.Models
             }
         }
         private ObjectSet<user> _users;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<invoiceOrder> invoiceOrders
-        {
-            get
-            {
-                if ((_invoiceOrders == null))
-                {
-                    _invoiceOrders = base.CreateObjectSet<invoiceOrder>("invoiceOrders");
-                }
-                return _invoiceOrders;
-            }
-        }
-        private ObjectSet<invoiceOrder> _invoiceOrders;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<lu_invoiceActionType> lu_invoiceActionType
-        {
-            get
-            {
-                if ((_lu_invoiceActionType == null))
-                {
-                    _lu_invoiceActionType = base.CreateObjectSet<lu_invoiceActionType>("lu_invoiceActionType");
-                }
-                return _lu_invoiceActionType;
-            }
-        }
-        private ObjectSet<lu_invoiceActionType> _lu_invoiceActionType;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<lu_transferActionType> lu_transferActionType
-        {
-            get
-            {
-                if ((_lu_transferActionType == null))
-                {
-                    _lu_transferActionType = base.CreateObjectSet<lu_transferActionType>("lu_transferActionType");
-                }
-                return _lu_transferActionType;
-            }
-        }
-        private ObjectSet<lu_transferActionType> _lu_transferActionType;
 
         #endregion
 
@@ -1161,6 +1140,14 @@ namespace Project.Models
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the lu_invoiceActionType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTolu_invoiceActionType(lu_invoiceActionType lu_invoiceActionType)
+        {
+            base.AddObject("lu_invoiceActionType", lu_invoiceActionType);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the lu_invoiceStatus EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTolu_invoiceStatus(lu_invoiceStatus lu_invoiceStatus)
@@ -1174,6 +1161,14 @@ namespace Project.Models
         public void AddTolu_sysActionType(lu_sysActionType lu_sysActionType)
         {
             base.AddObject("lu_sysActionType", lu_sysActionType);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the lu_transferActionType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTolu_transferActionType(lu_transferActionType lu_transferActionType)
+        {
+            base.AddObject("lu_transferActionType", lu_transferActionType);
         }
     
         /// <summary>
@@ -1294,30 +1289,6 @@ namespace Project.Models
         public void AddTousers(user user)
         {
             base.AddObject("users", user);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the invoiceOrders EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToinvoiceOrders(invoiceOrder invoiceOrder)
-        {
-            base.AddObject("invoiceOrders", invoiceOrder);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the lu_invoiceActionType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTolu_invoiceActionType(lu_invoiceActionType lu_invoiceActionType)
-        {
-            base.AddObject("lu_invoiceActionType", lu_invoiceActionType);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the lu_transferActionType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTolu_transferActionType(lu_transferActionType lu_transferActionType)
-        {
-            base.AddObject("lu_transferActionType", lu_transferActionType);
         }
 
         #endregion
@@ -3901,16 +3872,16 @@ namespace Project.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_service_entity1", "service")]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_service_entity", "service")]
         public service service
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<service>("accountingModel.FK_service_entity1", "service").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<service>("accountingModel.FK_service_entity", "service").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<service>("accountingModel.FK_service_entity1", "service").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<service>("accountingModel.FK_service_entity", "service").Value = value;
             }
         }
         /// <summary>
@@ -3922,13 +3893,13 @@ namespace Project.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<service>("accountingModel.FK_service_entity1", "service");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<service>("accountingModel.FK_service_entity", "service");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<service>("accountingModel.FK_service_entity1", "service", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<service>("accountingModel.FK_service_entity", "service", value);
                 }
             }
         }
@@ -4221,59 +4192,15 @@ namespace Project.Models
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoice_entity", "invoice")]
-        public EntityCollection<invoice> invoices
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<invoice>("accountingModel.FK_invoice_entity", "invoice");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<invoice>("accountingModel.FK_invoice_entity", "invoice", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoice_entity1", "invoice")]
-        public EntityCollection<invoice> invoices1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<invoice>("accountingModel.FK_invoice_entity1", "invoice");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<invoice>("accountingModel.FK_invoice_entity1", "invoice", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoice_entity2", "invoice")]
         public invoice invoice
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<invoice>("accountingModel.FK_invoice_entity2", "invoice").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<invoice>("accountingModel.FK_invoice_entity", "invoice").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<invoice>("accountingModel.FK_invoice_entity2", "invoice").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<invoice>("accountingModel.FK_invoice_entity", "invoice").Value = value;
             }
         }
         /// <summary>
@@ -4285,13 +4212,13 @@ namespace Project.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<invoice>("accountingModel.FK_invoice_entity2", "invoice");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<invoice>("accountingModel.FK_invoice_entity", "invoice");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<invoice>("accountingModel.FK_invoice_entity2", "invoice", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<invoice>("accountingModel.FK_invoice_entity", "invoice", value);
                 }
             }
         }
@@ -4450,44 +4377,6 @@ namespace Project.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<person>("accountingModel.FK_person_entity1", "person", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_service_entity", "service")]
-        public service service
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<service>("accountingModel.FK_service_entity", "service").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<service>("accountingModel.FK_service_entity", "service").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<service> serviceReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<service>("accountingModel.FK_service_entity", "service");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<service>("accountingModel.FK_service_entity", "service", value);
                 }
             }
         }
@@ -5057,6 +4946,44 @@ namespace Project.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_externalTransfer_transfer", "transfer")]
+        public transfer transfer
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transfer>("accountingModel.FK_externalTransfer_transfer", "transfer").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transfer>("accountingModel.FK_externalTransfer_transfer", "transfer").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<transfer> transferReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transfer>("accountingModel.FK_externalTransfer_transfer", "transfer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<transfer>("accountingModel.FK_externalTransfer_transfer", "transfer", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -5218,48 +5145,24 @@ namespace Project.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> issuerEntityID
+        public Nullable<global::System.Int32> orderID
         {
             get
             {
-                return _issuerEntityID;
+                return _orderID;
             }
             set
             {
-                OnissuerEntityIDChanging(value);
-                ReportPropertyChanging("issuerEntityID");
-                _issuerEntityID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("issuerEntityID");
-                OnissuerEntityIDChanged();
+                OnorderIDChanging(value);
+                ReportPropertyChanging("orderID");
+                _orderID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("orderID");
+                OnorderIDChanged();
             }
         }
-        private Nullable<global::System.Int32> _issuerEntityID;
-        partial void OnissuerEntityIDChanging(Nullable<global::System.Int32> value);
-        partial void OnissuerEntityIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> receiverEntityID
-        {
-            get
-            {
-                return _receiverEntityID;
-            }
-            set
-            {
-                OnreceiverEntityIDChanging(value);
-                ReportPropertyChanging("receiverEntityID");
-                _receiverEntityID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("receiverEntityID");
-                OnreceiverEntityIDChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _receiverEntityID;
-        partial void OnreceiverEntityIDChanging(Nullable<global::System.Int32> value);
-        partial void OnreceiverEntityIDChanged();
+        private Nullable<global::System.Int32> _orderID;
+        partial void OnorderIDChanging(Nullable<global::System.Int32> value);
+        partial void OnorderIDChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5308,30 +5211,6 @@ namespace Project.Models
         private global::System.String _note;
         partial void OnnoteChanging(global::System.String value);
         partial void OnnoteChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> orderID
-        {
-            get
-            {
-                return _orderID;
-            }
-            set
-            {
-                OnorderIDChanging(value);
-                ReportPropertyChanging("orderID");
-                _orderID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("orderID");
-                OnorderIDChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _orderID;
-        partial void OnorderIDChanging(Nullable<global::System.Int32> value);
-        partial void OnorderIDChanged();
 
         #endregion
 
@@ -5420,126 +5299,6 @@ namespace Project.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoice_entity1", "entity")]
-        public entity entity1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<entity>("accountingModel.FK_invoice_entity1", "entity").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<entity>("accountingModel.FK_invoice_entity1", "entity").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<entity> entity1Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<entity>("accountingModel.FK_invoice_entity1", "entity");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<entity>("accountingModel.FK_invoice_entity1", "entity", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoice_entity2", "entity")]
-        public entity entity2
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<entity>("accountingModel.FK_invoice_entity2", "entity").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<entity>("accountingModel.FK_invoice_entity2", "entity").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<entity> entity2Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<entity>("accountingModel.FK_invoice_entity2", "entity");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<entity>("accountingModel.FK_invoice_entity2", "entity", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceTransfer_invoice", "invoiceTransfer")]
-        public EntityCollection<invoiceTransfer> invoiceTransfers
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<invoiceTransfer>("accountingModel.FK_invoiceTransfer_invoice", "invoiceTransfer");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<invoiceTransfer>("accountingModel.FK_invoiceTransfer_invoice", "invoiceTransfer", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceOrder_invoice", "invoiceOrder")]
-        public EntityCollection<invoiceOrder> invoiceOrders
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<invoiceOrder>("accountingModel.FK_invoiceOrder_invoice", "invoiceOrder");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<invoiceOrder>("accountingModel.FK_invoiceOrder_invoice", "invoiceOrder", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoice_order", "order")]
         public order order
         {
@@ -5590,6 +5349,28 @@ namespace Project.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<invoiceAction>("accountingModel.FK_invoiceAction_invoice", "invoiceAction", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceTransfer_invoice", "invoiceTransfer")]
+        public EntityCollection<invoiceTransfer> invoiceTransfers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<invoiceTransfer>("accountingModel.FK_invoiceTransfer_invoice", "invoiceTransfer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<invoiceTransfer>("accountingModel.FK_invoiceTransfer_invoice", "invoiceTransfer", value);
                 }
             }
         }
@@ -5655,6 +5436,30 @@ namespace Project.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public Nullable<global::System.Int32> invoiceID
+        {
+            get
+            {
+                return _invoiceID;
+            }
+            set
+            {
+                OninvoiceIDChanging(value);
+                ReportPropertyChanging("invoiceID");
+                _invoiceID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("invoiceID");
+                OninvoiceIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _invoiceID;
+        partial void OninvoiceIDChanging(Nullable<global::System.Int32> value);
+        partial void OninvoiceIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String name
         {
             get
@@ -5703,30 +5508,6 @@ namespace Project.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> invoiceID
-        {
-            get
-            {
-                return _invoiceID;
-            }
-            set
-            {
-                OninvoiceIDChanging(value);
-                ReportPropertyChanging("invoiceID");
-                _invoiceID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("invoiceID");
-                OninvoiceIDChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _invoiceID;
-        partial void OninvoiceIDChanging(Nullable<global::System.Int32> value);
-        partial void OninvoiceIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public Nullable<global::System.Int32> invoiceActionTypeID
         {
             get
@@ -5750,82 +5531,6 @@ namespace Project.Models
 
     
         #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceAction_lu_invoiceStatus", "lu_invoiceStatus")]
-        public lu_invoiceStatus lu_invoiceStatus
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_invoiceStatus>("accountingModel.FK_invoiceAction_lu_invoiceStatus", "lu_invoiceStatus").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_invoiceStatus>("accountingModel.FK_invoiceAction_lu_invoiceStatus", "lu_invoiceStatus").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<lu_invoiceStatus> lu_invoiceStatusReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_invoiceStatus>("accountingModel.FK_invoiceAction_lu_invoiceStatus", "lu_invoiceStatus");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<lu_invoiceStatus>("accountingModel.FK_invoiceAction_lu_invoiceStatus", "lu_invoiceStatus", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceAction_sysAction", "sysAction")]
-        public sysAction sysAction
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<sysAction>("accountingModel.FK_invoiceAction_sysAction", "sysAction").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<sysAction>("accountingModel.FK_invoiceAction_sysAction", "sysAction").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<sysAction> sysActionReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<sysAction>("accountingModel.FK_invoiceAction_sysAction", "sysAction");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<sysAction>("accountingModel.FK_invoiceAction_sysAction", "sysAction", value);
-                }
-            }
-        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5902,115 +5607,6 @@ namespace Project.Models
                 }
             }
         }
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="accountingModel", Name="invoiceOrder")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class invoiceOrder : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new invoiceOrder object.
-        /// </summary>
-        /// <param name="id">Initial value of the ID property.</param>
-        public static invoiceOrder CreateinvoiceOrder(global::System.Int32 id)
-        {
-            invoiceOrder invoiceOrder = new invoiceOrder();
-            invoiceOrder.ID = id;
-            return invoiceOrder;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ID
-        {
-            get
-            {
-                return _ID;
-            }
-            set
-            {
-                if (_ID != value)
-                {
-                    OnIDChanging(value);
-                    ReportPropertyChanging("ID");
-                    _ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ID");
-                    OnIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _ID;
-        partial void OnIDChanging(global::System.Int32 value);
-        partial void OnIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> invoiceID
-        {
-            get
-            {
-                return _invoiceID;
-            }
-            set
-            {
-                OninvoiceIDChanging(value);
-                ReportPropertyChanging("invoiceID");
-                _invoiceID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("invoiceID");
-                OninvoiceIDChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _invoiceID;
-        partial void OninvoiceIDChanging(Nullable<global::System.Int32> value);
-        partial void OninvoiceIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> orderID
-        {
-            get
-            {
-                return _orderID;
-            }
-            set
-            {
-                OnorderIDChanging(value);
-                ReportPropertyChanging("orderID");
-                _orderID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("orderID");
-                OnorderIDChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _orderID;
-        partial void OnorderIDChanging(Nullable<global::System.Int32> value);
-        partial void OnorderIDChanged();
-
-        #endregion
-
-    
-        #region Navigation Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6018,16 +5614,16 @@ namespace Project.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceOrder_invoice", "invoice")]
-        public invoice invoice
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceAction_lu_invoiceStatus", "lu_invoiceStatus")]
+        public lu_invoiceStatus lu_invoiceStatus
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<invoice>("accountingModel.FK_invoiceOrder_invoice", "invoice").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_invoiceStatus>("accountingModel.FK_invoiceAction_lu_invoiceStatus", "lu_invoiceStatus").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<invoice>("accountingModel.FK_invoiceOrder_invoice", "invoice").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_invoiceStatus>("accountingModel.FK_invoiceAction_lu_invoiceStatus", "lu_invoiceStatus").Value = value;
             }
         }
         /// <summary>
@@ -6035,17 +5631,17 @@ namespace Project.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<invoice> invoiceReference
+        public EntityReference<lu_invoiceStatus> lu_invoiceStatusReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<invoice>("accountingModel.FK_invoiceOrder_invoice", "invoice");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_invoiceStatus>("accountingModel.FK_invoiceAction_lu_invoiceStatus", "lu_invoiceStatus");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<invoice>("accountingModel.FK_invoiceOrder_invoice", "invoice", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<lu_invoiceStatus>("accountingModel.FK_invoiceAction_lu_invoiceStatus", "lu_invoiceStatus", value);
                 }
             }
         }
@@ -6056,16 +5652,16 @@ namespace Project.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceOrder_order", "order")]
-        public order order
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceAction_sysAction", "sysAction")]
+        public sysAction sysAction
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<order>("accountingModel.FK_invoiceOrder_order", "order").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<sysAction>("accountingModel.FK_invoiceAction_sysAction", "sysAction").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<order>("accountingModel.FK_invoiceOrder_order", "order").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<sysAction>("accountingModel.FK_invoiceAction_sysAction", "sysAction").Value = value;
             }
         }
         /// <summary>
@@ -6073,17 +5669,17 @@ namespace Project.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<order> orderReference
+        public EntityReference<sysAction> sysActionReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<order>("accountingModel.FK_invoiceOrder_order", "order");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<sysAction>("accountingModel.FK_invoiceAction_sysAction", "sysAction");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<order>("accountingModel.FK_invoiceOrder_order", "order", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<sysAction>("accountingModel.FK_invoiceAction_sysAction", "sysAction", value);
                 }
             }
         }
@@ -8363,50 +7959,6 @@ namespace Project.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_orderDetail_order", "orderDetail")]
-        public EntityCollection<orderDetail> orderDetails
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<orderDetail>("accountingModel.FK_orderDetail_order", "orderDetail");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<orderDetail>("accountingModel.FK_orderDetail_order", "orderDetail", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceOrder_order", "invoiceOrder")]
-        public EntityCollection<invoiceOrder> invoiceOrders
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<invoiceOrder>("accountingModel.FK_invoiceOrder_order", "invoiceOrder");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<invoiceOrder>("accountingModel.FK_invoiceOrder_order", "invoiceOrder", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoice_order", "invoice")]
         public EntityCollection<invoice> invoices
         {
@@ -8419,6 +7971,28 @@ namespace Project.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<invoice>("accountingModel.FK_invoice_order", "invoice", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_orderDetail_order", "orderDetail")]
+        public EntityCollection<orderDetail> orderDetails
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<orderDetail>("accountingModel.FK_orderDetail_order", "orderDetail");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<orderDetail>("accountingModel.FK_orderDetail_order", "orderDetail", value);
                 }
             }
         }
@@ -9276,54 +8850,16 @@ namespace Project.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_service_entity", "entity")]
-        public entity entity
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<entity>("accountingModel.FK_service_entity", "entity").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<entity>("accountingModel.FK_service_entity", "entity").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<entity> entityReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<entity>("accountingModel.FK_service_entity", "entity");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<entity>("accountingModel.FK_service_entity", "entity", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_service_entity1", "deliverable")]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_service_entity", "deliverable")]
         public deliverable deliverable
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<deliverable>("accountingModel.FK_service_entity1", "deliverable").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<deliverable>("accountingModel.FK_service_entity", "deliverable").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<deliverable>("accountingModel.FK_service_entity1", "deliverable").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<deliverable>("accountingModel.FK_service_entity", "deliverable").Value = value;
             }
         }
         /// <summary>
@@ -9335,13 +8871,13 @@ namespace Project.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<deliverable>("accountingModel.FK_service_entity1", "deliverable");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<deliverable>("accountingModel.FK_service_entity", "deliverable");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<deliverable>("accountingModel.FK_service_entity1", "deliverable", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<deliverable>("accountingModel.FK_service_entity", "deliverable", value);
                 }
             }
         }
@@ -9680,16 +9216,16 @@ namespace Project.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_transfer1", "transferAction")]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_transfer", "transferAction")]
         public transferAction transferAction
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer1", "transferAction").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer", "transferAction").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer1", "transferAction").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer", "transferAction").Value = value;
             }
         }
         /// <summary>
@@ -9701,13 +9237,13 @@ namespace Project.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer1", "transferAction");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer", "transferAction");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer1", "transferAction", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer", "transferAction", value);
                 }
             }
         }
@@ -10467,6 +10003,44 @@ namespace Project.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_externalTransfer_transfer", "externalTransfer")]
+        public externalTransfer externalTransfer
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<externalTransfer>("accountingModel.FK_externalTransfer_transfer", "externalTransfer").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<externalTransfer>("accountingModel.FK_externalTransfer_transfer", "externalTransfer").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<externalTransfer> externalTransferReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<externalTransfer>("accountingModel.FK_externalTransfer_transfer", "externalTransfer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<externalTransfer>("accountingModel.FK_externalTransfer_transfer", "externalTransfer", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_internalTransfer_transfer", "internalTransfer")]
         public internalTransfer internalTransfer
         {
@@ -10565,56 +10139,18 @@ namespace Project.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_transfer", "transferAction")]
-        public transferAction transferAction
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer", "transferAction").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer", "transferAction").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<transferAction> transferActionReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer", "transferAction");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer", "transferAction", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_transfer11", "transferAction")]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_transfer1", "transferAction")]
         public EntityCollection<transferAction> transferActions
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<transferAction>("accountingModel.FK_transferAction_transfer11", "transferAction");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<transferAction>("accountingModel.FK_transferAction_transfer1", "transferAction");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<transferAction>("accountingModel.FK_transferAction_transfer11", "transferAction", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<transferAction>("accountingModel.FK_transferAction_transfer1", "transferAction", value);
                 }
             }
         }
@@ -10680,6 +10216,30 @@ namespace Project.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
+        public Nullable<global::System.Int32> transferID
+        {
+            get
+            {
+                return _transferID;
+            }
+            set
+            {
+                OntransferIDChanging(value);
+                ReportPropertyChanging("transferID");
+                _transferID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("transferID");
+                OntransferIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _transferID;
+        partial void OntransferIDChanging(Nullable<global::System.Int32> value);
+        partial void OntransferIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
         public global::System.String name
         {
             get
@@ -10728,30 +10288,6 @@ namespace Project.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> transferID
-        {
-            get
-            {
-                return _transferID;
-            }
-            set
-            {
-                OntransferIDChanging(value);
-                ReportPropertyChanging("transferID");
-                _transferID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("transferID");
-                OntransferIDChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _transferID;
-        partial void OntransferIDChanging(Nullable<global::System.Int32> value);
-        partial void OntransferIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
         public Nullable<global::System.Int32> transferActionTypeID
         {
             get
@@ -10775,6 +10311,44 @@ namespace Project.Models
 
     
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_lu_transferActionType", "lu_transferActionType")]
+        public lu_transferActionType lu_transferActionType
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_transferActionType>("accountingModel.FK_transferAction_lu_transferActionType", "lu_transferActionType").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_transferActionType>("accountingModel.FK_transferAction_lu_transferActionType", "lu_transferActionType").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<lu_transferActionType> lu_transferActionTypeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_transferActionType>("accountingModel.FK_transferAction_lu_transferActionType", "lu_transferActionType");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<lu_transferActionType>("accountingModel.FK_transferAction_lu_transferActionType", "lu_transferActionType", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -10820,54 +10394,16 @@ namespace Project.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_transfer", "transfer")]
-        public transfer transfer
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transfer>("accountingModel.FK_transferAction_transfer", "transfer").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transfer>("accountingModel.FK_transferAction_transfer", "transfer").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<transfer> transferReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transfer>("accountingModel.FK_transferAction_transfer", "transfer");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<transfer>("accountingModel.FK_transferAction_transfer", "transfer", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_transfer1", "sysAction")]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_transfer", "sysAction")]
         public sysAction sysAction
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<sysAction>("accountingModel.FK_transferAction_transfer1", "sysAction").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<sysAction>("accountingModel.FK_transferAction_transfer", "sysAction").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<sysAction>("accountingModel.FK_transferAction_transfer1", "sysAction").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<sysAction>("accountingModel.FK_transferAction_transfer", "sysAction").Value = value;
             }
         }
         /// <summary>
@@ -10879,13 +10415,13 @@ namespace Project.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<sysAction>("accountingModel.FK_transferAction_transfer1", "sysAction");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<sysAction>("accountingModel.FK_transferAction_transfer", "sysAction");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<sysAction>("accountingModel.FK_transferAction_transfer1", "sysAction", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<sysAction>("accountingModel.FK_transferAction_transfer", "sysAction", value);
                 }
             }
         }
@@ -10896,16 +10432,16 @@ namespace Project.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_transfer11", "transfer")]
-        public transfer transfer_1
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_transfer1", "transfer")]
+        public transfer transfer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transfer>("accountingModel.FK_transferAction_transfer11", "transfer").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transfer>("accountingModel.FK_transferAction_transfer1", "transfer").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transfer>("accountingModel.FK_transferAction_transfer11", "transfer").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transfer>("accountingModel.FK_transferAction_transfer1", "transfer").Value = value;
             }
         }
         /// <summary>
@@ -10913,55 +10449,17 @@ namespace Project.Models
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<transfer> transfer_1Reference
+        public EntityReference<transfer> transferReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transfer>("accountingModel.FK_transferAction_transfer11", "transfer");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transfer>("accountingModel.FK_transferAction_transfer1", "transfer");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<transfer>("accountingModel.FK_transferAction_transfer11", "transfer", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_lu_transferActionType", "lu_transferActionType")]
-        public lu_transferActionType lu_transferActionType
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_transferActionType>("accountingModel.FK_transferAction_lu_transferActionType", "lu_transferActionType").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_transferActionType>("accountingModel.FK_transferAction_lu_transferActionType", "lu_transferActionType").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<lu_transferActionType> lu_transferActionTypeReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_transferActionType>("accountingModel.FK_transferAction_lu_transferActionType", "lu_transferActionType");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<lu_transferActionType>("accountingModel.FK_transferAction_lu_transferActionType", "lu_transferActionType", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<transfer>("accountingModel.FK_transferAction_transfer1", "transfer", value);
                 }
             }
         }
