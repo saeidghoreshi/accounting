@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using accounting.classes.enums;
-using AccountingLib.Models;
 using System.Transactions;
 
-namespace accounting.classes
-{
+using Project.Models;
 
+namespace Project.Structure
+{
     public class dbPayment : externalPayment
     {
         public readonly int EXTPAYMENTTYPEID = (int)enums.extPaymentType.InteracPayment;

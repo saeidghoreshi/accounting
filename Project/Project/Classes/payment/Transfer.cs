@@ -8,45 +8,13 @@ using Project.Models;
 
 namespace Project.Structure
 {
-    interface ITransafer 
+    interface ITransfer 
     {
-        void Load(int transferID);
-        void New(transfer tsfr);
         List<transaction> cancelTransfer(enumsController.transferAction tsfrAction);
     }
-    public class Transfer : ITransafer
+    public abstract class Transfer:ITransfer
     {
-        transfer TRANSFER { get; set; }
-
-        public Transfer() { }
-
-        public Transfer(int transferID)
-        {
-            this.Load(transferID);
-        }
-
-        public void Load(int transferID)
-        {
-            using (var ctx = new accountingEntities())
-            {
-                var tsfr = ctx.transfers
-                    .Where(x => x.ID == transferID)
-                    .SingleOrDefault();
-
-                if (tsfr == null)
-                    throw new Exception("no such a Payment Exists");
-
-                TRANSFER = tsfr;
-            }
-        }
-
-        public void New(transfer tsfr) 
-        {
-            using (var ctx = new accountingEntities())
-            {
-                
-            }
-        }
+        public transfer TRANSFER {get;set;}
 
         public List<transaction> cancelTransfer(enumsController.transferAction tsfrAction)
         {
@@ -76,8 +44,6 @@ namespace Project.Structure
             }
             return reveresedTransactions;
         }
-
-        
     }
 
 }

@@ -135,7 +135,7 @@ namespace Project.Structure
             using (var ts = new TransactionScope())
             {
                 classes.internalPayment internalPayment = new classes.internalPayment();
-                internalPayment.createNew(this.receiverEntityID, this.issuerEntityID, amount, this.currencyID);
+                internalPayment.createNew(INV.receiverEntityID, INV.issuerEntityID, amount, INV.currencyID);
 
                 /*Record New Invoice Payment*/
                 var NewInvoicePayment = new invoicePayment()

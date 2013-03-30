@@ -67,11 +67,11 @@ namespace Project.Structure
 
                 account acc_W= Account.getAccount(entityID, (int)enumsController.catType.W, currencyID);
                 var trans1 = new Transaction( +1 * (decimal)amount, acc_W);
-                transactions.Add(trans1.txn);
+                transactions.Add(trans1.TXN);
 
                 account acc_CCCASH = Account.getAccount(entityID, (int)enumsController.catType.CCCASH, currencyID);
                 var trans2 = new Transaction(-1 * (decimal)amount, acc_CCCASH);
-                transactions.Add(trans2.txn);
+                transactions.Add(trans2.TXN);
 
                 ts.Complete();
             }
@@ -82,28 +82,14 @@ namespace Project.Structure
             this.doCCExtPayment(amount, cardID, cardType);
         }
 
-        /// <summary>
-        /// Just for entittyType {person,Organization}
-        /// </summary>
-        /// <param name="inv"></param>
-        /// <param name="amount"></param>
-        /// <param name="cardID"></param>
-        /// <param name="cardType"></param>
         protected void payInvoiceByInterac(invoice inv, decimal amount, int cardID)
         {
             inv.doINTERACPayment(amount, cardID);
         }
 
-        /// <summary>
-        /// Just for entittyType {person,Organization}
-        /// </summary>
-        /// <param name="inv"></param>
-        /// <param name="amount"></param>
-        /// <param name="cardID"></param>
-        /// <param name="cardType"></param>
-        protected void payInvoiceByInternal(invoice inv, decimal amount)
+        public void payInvoiceByInternal(invoice inv, decimal amount)
         {
-            inv.doINTERNALTransfer(amount);
+            this.doINTERNALTransfer(amount);
         }
 
         /// <summary>

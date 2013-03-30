@@ -2,63 +2,57 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using accounting.classes.enums;
-using AccountingLib.Models;
 using System.Transactions;
 
-namespace accounting.classes
-{
-    
-    public class internalPayment : Payment
-    {
-        public readonly int PAYMENTTYPEID = (int)enums.paymentType.Internal;
+using Project.Models;
 
-        public int internalPaymentID;
-        public string internalPaymentDescription;
+namespace Project.Structure
+{   
+    public class internalPayment : Transfer
+    {
+        public internalTransfer INTERNALTSFR { get; set; }
+        public const enumsController.transferType TRANSFERTYPE = enumsController.transferType.Internal;
 
         public internalPayment() { }
-        public internalPayment(int paymentID): base(paymentID)
+        public internalPayment(int transferID)
         {
-            this.loadByPaymentID(paymentID);
+            this.Load(transferID);
         }
 
-        public void createNew(int payerEntityID, int payeeEntityID, decimal amount, int currencyID)
+        public void New(int issuerEntityID, int receiverEntityID, decimal amount, int currencyID)
         {
-            using (var ctx = new AccContexts())
+            using (var ctx = new accountingEntities())
             using (var ts = new TransactionScope())
             {
-                base.createNew(payerEntityID, payeeEntityID, amount, currencyID, (int)enums.paymentType.Internal);
+                base.TRANSFER = new transfer()
+                {
+                    issuerEntityID = issuerEntityID,
+                    receiverEntityID = receiverEntityID,
+                    amount = amount,
+                    currencyID = currencyID,
+                    transferTypeID = (int)TRANSFERTYPE
+                };
+                ctx.transfers.AddObject(TRANSFER);
+                
+                INTERNALTSFR= new internalTransfer{ID = TRANSFER.ID};
 
-                var _internalPayment = new AccountingLib.Models.internalPayment()
-                 {
-                     paymentID = base.paymentID
-                 };
-                ctx.internalPayment.AddObject(_internalPayment);
+                ctx.internalTransfers.AddObject(INTERNALTSFR);
                 ctx.SaveChanges();
 
-                this.loadByPaymentID((int)_internalPayment.paymentID);
-
                 ts.Complete();
-
             }
         }
-        public new void loadByPaymentID(int paymentID)
+        public void Load(int transferID)
         {
-            using (var ctx = new AccContexts())
+            using (var ctx = new accountingEntities())
             {
-                base.loadByPaymentID(paymentID);
-
-                var internalPaymentRecord = ctx.internalPayment
-                    .Where(x => x.paymentID == paymentID)
+                INTERNALTSFR= ctx.internalTransfers
+                    .Where(x => x.ID == transferID)
                     .SingleOrDefault();
 
-                if (internalPaymentRecord == null)
+                if (INTERNALTSFR == null)
                     throw new Exception("no such a EXT Payment Exists");
-
-                this.internalPaymentID = internalPaymentRecord.ID;
-                this.internalPaymentDescription = internalPaymentRecord.description;
             }
         }
-        
     }
 }

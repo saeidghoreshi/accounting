@@ -9,7 +9,7 @@ namespace Project.Structure
 {
     public class Currency
     {
-        public void create(string CurrencyName, int currencyTypeID)
+        public void New(string CurrencyName, int currencyTypeID)
         {
             using (var ctx = new accountingEntities())
             {
@@ -28,7 +28,6 @@ namespace Project.Structure
 
                 }
             }
-
         }
     }
 }
