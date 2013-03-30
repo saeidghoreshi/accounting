@@ -10,7 +10,7 @@ namespace Project.Structure
 {
     public class Entity
     {
-        entity ENTITY{get;set;}
+        public entity ENTITY{get;set;}
 
         public void addCard(int cardID,int entityID)
         {
