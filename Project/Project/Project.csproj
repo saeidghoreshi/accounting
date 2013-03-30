@@ -51,7 +51,7 @@
     <Compile Include="Controllers\Currency.cs" />
     <Compile Include="Controllers\Entity.cs" />
     <Compile Include="Controllers\enumsController.cs" />
-    <Compile Include="Controllers\InvoiceController.cs" />
+    <Compile Include="Controllers\Invoice.cs" />
     <Compile Include="Controllers\Transaction.cs" />
     <Compile Include="Controllers\transferController.cs" />
     <Compile Include="Models\Accounting.Designer.cs">

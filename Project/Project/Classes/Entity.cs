@@ -11,7 +11,10 @@ namespace Project.Structure
 {
     public class Entity
     {
-        protected void New(int entityTypeID)
+        entity ENTITY;
+        public void Entity(){}
+
+        public void Entity(int entityTypeID)
         {
             using (var ctx = new accountingEntities())
             {
@@ -19,6 +22,8 @@ namespace Project.Structure
                 {
                     entityTypeID = entityTypeID
                 };
+                ENTITY = newEntity;
+
                 ctx.entities.AddObject(newEntity);
                 ctx.SaveChanges();
             }
@@ -58,48 +63,23 @@ namespace Project.Structure
             using (var ts = new TransactionScope())
             {
                 //Record related transctions
-                List<int> transactions = new List<int>();
-                var trans1 = new Transaction(entityID, (int)AssetCategories.W, +1 * (decimal)amount, currencyID);
-                transactions.Add(trans1);
-                var trans2 = Transaction.createNew(this.ENTITYID, (int)AssetCategories.CCCASH, -1 * (decimal)amount, currencyID);
-                transactions.Add(trans2);
+                List<transaction> transactions = new List<transaction>();
 
-                //Record Wallet entity and walletEntityTransaction
-                var entityWallet = new entityWallet()
-                {
-                    entityID = this.ENTITYID,
-                    amount = amount,
-                    title = title,
-                    currencyID = currencyID
-                };
-                ctx.entityWallet.AddObject(entityWallet);
-                ctx.SaveChanges();
+                account acc_W= Account.getAccount(entityID, (int)enumsController.catType.W, currencyID);
+                var trans1 = new Transaction( +1 * (decimal)amount, acc_W);
+                transactions.Add(trans1.txn);
 
-                foreach (var txn in transactions)
-                {
-                    var entityWalletTxn = new entityWalletTransaction()
-                    {
-                        entityWalletID = entityWallet.ID,
-                        transactionID = txn
-                    };
-                    ctx.entityWalletTransaction.AddObject(entityWalletTxn);
-                    ctx.SaveChanges();
-                }
+                account acc_CCCASH = Account.getAccount(entityID, (int)enumsController.catType.CCCASH, currencyID);
+                var trans2 = new Transaction(-1 * (decimal)amount, acc_CCCASH);
+                transactions.Add(trans2.txn);
 
                 ts.Complete();
             }
         }
 
-        /// <summary>
-        /// Just for entittyType {person,Organization}
-        /// </summary>
-        /// <param name="inv"></param>
-        /// <param name="amount"></param>
-        /// <param name="cardID"></param>
-        /// <param name="cardType"></param>
-        protected void payInvoiceByCC(invoice inv, decimal amount, int cardID, enums.ccCardType cardType)
+        protected void payInvoiceByCC(Invoice inv, decimal amount, int cardID, enumsController.ccCardType cardType)
         {
-            inv.doCCExtPayment(amount, cardID, cardType);
+            this.doCCExtPayment(amount, cardID, cardType);
         }
 
         /// <summary>
@@ -132,7 +112,7 @@ namespace Project.Structure
         /// <param name="receiverEntityID"></param>
         /// <param name="currencyID"></param>
         /// <param name="servicesAmt"></param>
-        public invoice createInvoice(int receiverEntityID, int currencyID, Dictionary<deliverable, decimal> servicesAmt)
+        public invoice issueInvoice(int receiverEntityID, int currencyID, Dictionary<deliverable, decimal> servicesAmt)
         {
             var inv = new accounting.classes.Invoice();
             inv.New(this.ENTITYID, receiverEntityID, currencyID);

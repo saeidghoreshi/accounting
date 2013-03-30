@@ -15,7 +15,21 @@ namespace Project.Structure
             account account = new account() { };
             using (var ctx = new accountingEntities())
             {
-                account = ctx.accounts.Where(x => x.catTypeID == catTypeID && x.ownerEntityID == entityID && x.currencyID == currencyID).SingleOrDefault();
+                account = ctx.accounts.Where(
+                    x => x.catTypeID == catTypeID
+                    && x.ownerEntityID.Equals(entityID)
+                    && x.currencyID.Equals(currencyID))
+                    .SingleOrDefault();
+            }
+
+            return account;
+        }
+        public static account getAccount(int accountID)
+        {
+            account account = new account() { };
+            using (var ctx = new accountingEntities())
+            {
+                account = ctx.accounts.Where(x => x.ID.Equals(accountID)).SingleOrDefault();
             }
 
             return account;

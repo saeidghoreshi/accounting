@@ -84,6 +84,11 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceOrder_order", "order", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.order), "invoiceOrder", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceOrder), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_service_entity1", "deliverable", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.deliverable), "service", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.service), true)]
 [assembly: EdmRelationshipAttribute("accountingModel", "FK_invoice_order", "order", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.order), "invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoice), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_transferAction_transfer1", "sysAction", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Project.Models.sysAction), "transferAction", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transferAction), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceAction_invoice", "invoice", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.invoice), "invoiceAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceAction), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_transferAction_transfer11", "transfer", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.transfer), "transferAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.transferAction), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_invoiceAction_invoiceAction", "lu_invoiceActionType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_invoiceActionType), "invoiceAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.invoiceAction), true)]
+[assembly: EdmRelationshipAttribute("accountingModel", "FK_transferAction_lu_transferActionType", "lu_transferActionType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Project.Models.lu_transferActionType), "transferAction", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Project.Models.transferAction), true)]
 
 #endregion
 
@@ -886,6 +891,38 @@ namespace Project.Models
             }
         }
         private ObjectSet<invoiceOrder> _invoiceOrders;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<lu_invoiceActionType> lu_invoiceActionType
+        {
+            get
+            {
+                if ((_lu_invoiceActionType == null))
+                {
+                    _lu_invoiceActionType = base.CreateObjectSet<lu_invoiceActionType>("lu_invoiceActionType");
+                }
+                return _lu_invoiceActionType;
+            }
+        }
+        private ObjectSet<lu_invoiceActionType> _lu_invoiceActionType;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<lu_transferActionType> lu_transferActionType
+        {
+            get
+            {
+                if ((_lu_transferActionType == null))
+                {
+                    _lu_transferActionType = base.CreateObjectSet<lu_transferActionType>("lu_transferActionType");
+                }
+                return _lu_transferActionType;
+            }
+        }
+        private ObjectSet<lu_transferActionType> _lu_transferActionType;
 
         #endregion
 
@@ -1265,6 +1302,22 @@ namespace Project.Models
         public void AddToinvoiceOrders(invoiceOrder invoiceOrder)
         {
             base.AddObject("invoiceOrders", invoiceOrder);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the lu_invoiceActionType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTolu_invoiceActionType(lu_invoiceActionType lu_invoiceActionType)
+        {
+            base.AddObject("lu_invoiceActionType", lu_invoiceActionType);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the lu_transferActionType EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTolu_transferActionType(lu_transferActionType lu_transferActionType)
+        {
+            base.AddObject("lu_transferActionType", lu_transferActionType);
         }
 
         #endregion
@@ -5518,6 +5571,28 @@ namespace Project.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceAction_invoice", "invoiceAction")]
+        public EntityCollection<invoiceAction> invoiceActions
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<invoiceAction>("accountingModel.FK_invoiceAction_invoice", "invoiceAction");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<invoiceAction>("accountingModel.FK_invoiceAction_invoice", "invoiceAction", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -5622,6 +5697,54 @@ namespace Project.Models
         private Nullable<global::System.Int32> _invoiceStatusID;
         partial void OninvoiceStatusIDChanging(Nullable<global::System.Int32> value);
         partial void OninvoiceStatusIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> invoiceID
+        {
+            get
+            {
+                return _invoiceID;
+            }
+            set
+            {
+                OninvoiceIDChanging(value);
+                ReportPropertyChanging("invoiceID");
+                _invoiceID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("invoiceID");
+                OninvoiceIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _invoiceID;
+        partial void OninvoiceIDChanging(Nullable<global::System.Int32> value);
+        partial void OninvoiceIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> invoiceActionTypeID
+        {
+            get
+            {
+                return _invoiceActionTypeID;
+            }
+            set
+            {
+                OninvoiceActionTypeIDChanging(value);
+                ReportPropertyChanging("invoiceActionTypeID");
+                _invoiceActionTypeID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("invoiceActionTypeID");
+                OninvoiceActionTypeIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _invoiceActionTypeID;
+        partial void OninvoiceActionTypeIDChanging(Nullable<global::System.Int32> value);
+        partial void OninvoiceActionTypeIDChanged();
 
         #endregion
 
@@ -5700,6 +5823,82 @@ namespace Project.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<sysAction>("accountingModel.FK_invoiceAction_sysAction", "sysAction", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceAction_invoice", "invoice")]
+        public invoice invoice
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<invoice>("accountingModel.FK_invoiceAction_invoice", "invoice").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<invoice>("accountingModel.FK_invoiceAction_invoice", "invoice").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<invoice> invoiceReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<invoice>("accountingModel.FK_invoiceAction_invoice", "invoice");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<invoice>("accountingModel.FK_invoiceAction_invoice", "invoice", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceAction_invoiceAction", "lu_invoiceActionType")]
+        public lu_invoiceActionType lu_invoiceActionType
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_invoiceActionType>("accountingModel.FK_invoiceAction_invoiceAction", "lu_invoiceActionType").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_invoiceActionType>("accountingModel.FK_invoiceAction_invoiceAction", "lu_invoiceActionType").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<lu_invoiceActionType> lu_invoiceActionTypeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_invoiceActionType>("accountingModel.FK_invoiceAction_invoiceAction", "lu_invoiceActionType");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<lu_invoiceActionType>("accountingModel.FK_invoiceAction_invoiceAction", "lu_invoiceActionType", value);
                 }
             }
         }
@@ -7128,6 +7327,113 @@ namespace Project.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="accountingModel", Name="lu_invoiceActionType")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class lu_invoiceActionType : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new lu_invoiceActionType object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static lu_invoiceActionType Createlu_invoiceActionType(global::System.Int32 id)
+        {
+            lu_invoiceActionType lu_invoiceActionType = new lu_invoiceActionType();
+            lu_invoiceActionType.ID = id;
+            return lu_invoiceActionType;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                OnnameChanging(value);
+                ReportPropertyChanging("name");
+                _name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("name");
+                OnnameChanged();
+            }
+        }
+        private global::System.String _name;
+        partial void OnnameChanging(global::System.String value);
+        partial void OnnameChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_invoiceAction_invoiceAction", "invoiceAction")]
+        public EntityCollection<invoiceAction> invoiceActions
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<invoiceAction>("accountingModel.FK_invoiceAction_invoiceAction", "invoiceAction");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<invoiceAction>("accountingModel.FK_invoiceAction_invoiceAction", "invoiceAction", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="accountingModel", Name="lu_invoiceStatus")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -7331,6 +7637,113 @@ namespace Project.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<sysAction>("accountingModel.FK_sysAction_lu_sysActionType", "sysAction", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="accountingModel", Name="lu_transferActionType")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class lu_transferActionType : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new lu_transferActionType object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        public static lu_transferActionType Createlu_transferActionType(global::System.Int32 id)
+        {
+            lu_transferActionType lu_transferActionType = new lu_transferActionType();
+            lu_transferActionType.ID = id;
+            return lu_transferActionType;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                OnnameChanging(value);
+                ReportPropertyChanging("name");
+                _name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("name");
+                OnnameChanged();
+            }
+        }
+        private global::System.String _name;
+        partial void OnnameChanging(global::System.String value);
+        partial void OnnameChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_lu_transferActionType", "transferAction")]
+        public EntityCollection<transferAction> transferActions
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<transferAction>("accountingModel.FK_transferAction_lu_transferActionType", "transferAction");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<transferAction>("accountingModel.FK_transferAction_lu_transferActionType", "transferAction", value);
                 }
             }
         }
@@ -9260,6 +9673,44 @@ namespace Project.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_transfer1", "transferAction")]
+        public transferAction transferAction
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer1", "transferAction").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer1", "transferAction").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<transferAction> transferActionReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer1", "transferAction");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<transferAction>("accountingModel.FK_transferAction_transfer1", "transferAction", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -10145,6 +10596,28 @@ namespace Project.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_transfer11", "transferAction")]
+        public EntityCollection<transferAction> transferActions
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<transferAction>("accountingModel.FK_transferAction_transfer11", "transferAction");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<transferAction>("accountingModel.FK_transferAction_transfer11", "transferAction", value);
+                }
+            }
+        }
 
         #endregion
 
@@ -10249,6 +10722,54 @@ namespace Project.Models
         private Nullable<global::System.Int32> _transferStatusID;
         partial void OntransferStatusIDChanging(Nullable<global::System.Int32> value);
         partial void OntransferStatusIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> transferID
+        {
+            get
+            {
+                return _transferID;
+            }
+            set
+            {
+                OntransferIDChanging(value);
+                ReportPropertyChanging("transferID");
+                _transferID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("transferID");
+                OntransferIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _transferID;
+        partial void OntransferIDChanging(Nullable<global::System.Int32> value);
+        partial void OntransferIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> transferActionTypeID
+        {
+            get
+            {
+                return _transferActionTypeID;
+            }
+            set
+            {
+                OntransferActionTypeIDChanging(value);
+                ReportPropertyChanging("transferActionTypeID");
+                _transferActionTypeID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("transferActionTypeID");
+                OntransferActionTypeIDChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _transferActionTypeID;
+        partial void OntransferActionTypeIDChanging(Nullable<global::System.Int32> value);
+        partial void OntransferActionTypeIDChanged();
 
         #endregion
 
@@ -10327,6 +10848,120 @@ namespace Project.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<transfer>("accountingModel.FK_transferAction_transfer", "transfer", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_transfer1", "sysAction")]
+        public sysAction sysAction
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<sysAction>("accountingModel.FK_transferAction_transfer1", "sysAction").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<sysAction>("accountingModel.FK_transferAction_transfer1", "sysAction").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<sysAction> sysActionReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<sysAction>("accountingModel.FK_transferAction_transfer1", "sysAction");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<sysAction>("accountingModel.FK_transferAction_transfer1", "sysAction", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_transfer11", "transfer")]
+        public transfer transfer_1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transfer>("accountingModel.FK_transferAction_transfer11", "transfer").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transfer>("accountingModel.FK_transferAction_transfer11", "transfer").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<transfer> transfer_1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<transfer>("accountingModel.FK_transferAction_transfer11", "transfer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<transfer>("accountingModel.FK_transferAction_transfer11", "transfer", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("accountingModel", "FK_transferAction_lu_transferActionType", "lu_transferActionType")]
+        public lu_transferActionType lu_transferActionType
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_transferActionType>("accountingModel.FK_transferAction_lu_transferActionType", "lu_transferActionType").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_transferActionType>("accountingModel.FK_transferAction_lu_transferActionType", "lu_transferActionType").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<lu_transferActionType> lu_transferActionTypeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lu_transferActionType>("accountingModel.FK_transferAction_lu_transferActionType", "lu_transferActionType");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<lu_transferActionType>("accountingModel.FK_transferAction_lu_transferActionType", "lu_transferActionType", value);
                 }
             }
         }

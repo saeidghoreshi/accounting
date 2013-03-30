@@ -9,17 +9,18 @@ namespace Project.Structure
 {
     public class Transaction
     {
-        public transaction txn{ get; set; }
+        public transaction TXN{ get; set; }
+
         public Transaction(decimal amount , account acc)
         {   
             using (var ctx = new accountingEntities())
             {   
-                txn = new transaction
+                TXN = new transaction
                 {
                     accountID = acc.ID,
                     amount = amount
                 };
-                ctx.transactions.AddObject(txn);
+                ctx.transactions.AddObject(TXN);
                 ctx.SaveChanges();
             }
         }    

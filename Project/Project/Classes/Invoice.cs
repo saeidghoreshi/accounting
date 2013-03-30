@@ -56,6 +56,7 @@ namespace Project.Structure
                 ts.Complete();
             }
         }
+        
         public void loadInvoiceByID(int invoiceID)
         {
             using (var ctx = new accountingEntities())
@@ -101,12 +102,12 @@ namespace Project.Structure
 
                 account acc_AP = Account.getAccount((int)INV.receiverEntityID, (int)enumsController.catType.AP, (int)INV.currencyID);
                 var trans1 = new Transaction(-1 * (decimal)invoiceServicesAmt, acc_AP);
-                transactions.Add(trans1.txn);
+                transactions.Add(trans1.TXN);
 
 
                 account acc_AR = Account.getAccount((int)INV.issuerEntityID, (int)enumsController.catType.AR, (int)INV.currencyID);
                 var trans2 = new Transaction(+1 * (decimal)invoiceServicesAmt, acc_AR);
-                transactions.Add(trans2.txn);
+                transactions.Add(trans2.TXN);
 
                 /*Record Invoice Transaction*/
                 this.RecordInvoiceTransaction(transactions, enumsController.invoiceStatus.Finalized);
@@ -124,49 +125,44 @@ namespace Project.Structure
             }
         }
 
+
+
+
         /*Payment for Invoice*/
-        public static void doINTERNALTransfer(decimal amount)
+        public void doINTERNALTransfer(decimal amount)
         {
-            try
+            using (var ctx = new accountingEntities())
+            using (var ts = new TransactionScope())
             {
-                using (var ctx = new accountingEntities())
-                using (var ts = new TransactionScope())
+                classes.internalPayment internalPayment = new classes.internalPayment();
+                internalPayment.createNew(this.receiverEntityID, this.issuerEntityID, amount, this.currencyID);
+
+                /*Record New Invoice Payment*/
+                var NewInvoicePayment = new invoicePayment()
                 {
-                    classes.internalPayment internalPayment = new classes.internalPayment();
-                    internalPayment.createNew(this.receiverEntityID, this.issuerEntityID, amount, this.currencyID);
+                    invoiceID = this.invoiceID,
+                    paymentID = internalPayment.paymentID
+                };
+                ctx.invoicePayment.AddObject(NewInvoicePayment);
+                ctx.SaveChanges();
 
-                    /*Record New Invoice Payment*/
-                    var NewInvoicePayment = new invoicePayment()
-                    {
-                        invoiceID = this.invoiceID,
-                        paymentID = internalPayment.paymentID
-                    };
-                    ctx.invoicePayment.AddObject(NewInvoicePayment);
-                    ctx.SaveChanges();
+                //Record related transctions [for invoice payment]
+                List<int> transactions = new List<int>();
+                transactions.Add(Transaction.createNew(issuerEntityID, (int)AssetCategories.W, -1 * amount, this.currencyID));
+                transactions.Add(Transaction.createNew(receiverEntityID, (int)LibCategories.AP, +1 * amount, this.currencyID));
+                transactions.Add(Transaction.createNew(receiverEntityID, (int)AssetCategories.W, +1 * amount, this.currencyID));
+                transactions.Add(Transaction.createNew(issuerEntityID, (int)AssetCategories.AR, -1 * amount, this.currencyID));
 
-                    //Record related transctions [for invoice payment]
-                    List<int> transactions = new List<int>();
-                    transactions.Add(Transaction.createNew(issuerEntityID, (int)AssetCategories.W, -1 * amount, this.currencyID));
-                    transactions.Add(Transaction.createNew(receiverEntityID, (int)LibCategories.AP, +1 * amount, this.currencyID));
-                    transactions.Add(Transaction.createNew(receiverEntityID, (int)AssetCategories.W, +1 * amount, this.currencyID));
-                    transactions.Add(Transaction.createNew(issuerEntityID, (int)AssetCategories.AR, -1 * amount, this.currencyID));
+                /*Record Invoice Payment transactions*/
+                this.RecordInvoicePaymentTransactions(transactions, internalPayment.paymentID, enums.paymentStat.PaidApproved);
 
-                    /*Record Invoice Payment transactions*/
-                    this.RecordInvoicePaymentTransactions(transactions, internalPayment.paymentID, enums.paymentStat.PaidApproved);
+                /*Record Invoice Transaction*/
+                this.RecordInvoiceTransaction(transactions, enums.invoiceStat.internalPaymant);
 
-                    /*Record Invoice Transaction*/
-                    this.RecordInvoiceTransaction(transactions, enums.invoiceStat.internalPaymant);
-
-                    ts.Complete();
-                }
+                ts.Complete();
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
         }
-        public static void doCCExtPayment(decimal amount, int cardID, enums.ccCardType ccCardType)
+        public void doCCExtPayment(decimal amount, int cardID, enumsController.ccCardType ccCardType)
         {
             //var ccFeeFor
 
