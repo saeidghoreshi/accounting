@@ -69,6 +69,7 @@
     <Compile Include="Classes\Transfer\InternalTransfer.cs" />
     <Compile Include="Classes\Transfer\Transfer.cs" />
     <Compile Include="Classes\Transaction.cs" />
+    <Compile Include="DatabaseLayer\DB.cs" />
     <Compile Include="Models\Accounting.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
