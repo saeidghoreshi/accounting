@@ -1,0 +1,7 @@
+K:\Accounting\Accounting\Definition\bin\Debug\Def2.dll.config
+K:\Accounting\Accounting\Definition\bin\Debug\Def2.dll
+K:\Accounting\Accounting\Definition\bin\Debug\Def2.pdb
+K:\Accounting\Accounting\Definition\bin\Debug\EntityFramework.dll
+K:\Accounting\Accounting\Definition\bin\Debug\EntityFramework.xml
+K:\Accounting\Accounting\Definition\obj\Debug\Def2.dll
+K:\Accounting\Accounting\Definition\obj\Debug\Def2.pdb

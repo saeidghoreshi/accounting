@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="accountingModelStoreContainer" CdmEntityContainer="accountingEntities">
+    <EntitySetMapping Name="accounts">
+      <EntityTypeMapping TypeName="accountingModel.account">
+        <MappingFragment StoreEntitySet="account">
+          <ScalarProperty Name="balance" ColumnName="balance" />
+          <ScalarProperty Name="currencyID" ColumnName="currencyID" />
+          <ScalarProperty Name="ownerEntityID" ColumnName="ownerEntityID" />
+          <ScalarProperty Name="catTypeID" ColumnName="catTypeID" />
+          <ScalarProperty Name="accountNo" ColumnName="accountNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="addresses">
+      <EntityTypeMapping TypeName="accountingModel.address">
+        <MappingFragment StoreEntitySet="address">
+          <ScalarProperty Name="postalcode" ColumnName="postalcode" />
+          <ScalarProperty Name="aptNo" ColumnName="aptNo" />
+          <ScalarProperty Name="streetNo" ColumnName="streetNo" />
+          <ScalarProperty Name="cityID" ColumnName="cityID" />
+          <ScalarProperty Name="provinceID" ColumnName="provinceID" />
+          <ScalarProperty Name="countryID" ColumnName="countryID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cards">
+      <EntityTypeMapping TypeName="accountingModel.card">
+        <MappingFragment StoreEntitySet="card">
+          <ScalarProperty Name="cardTypeID" ColumnName="cardTypeID" />
+          <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
+          <ScalarProperty Name="cardNo" ColumnName="cardNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carriers">
+      <EntityTypeMapping TypeName="accountingModel.carrier">
+        <MappingFragment StoreEntitySet="carrier">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carrierContacts">
+      <EntityTypeMapping TypeName="accountingModel.carrierContact">
+        <MappingFragment StoreEntitySet="carrierContact">
+          <ScalarProperty Name="contactID" ColumnName="contactID" />
+          <ScalarProperty Name="carrierID" ColumnName="carrierID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ccCards">
+      <EntityTypeMapping TypeName="accountingModel.ccCard">
+        <MappingFragment StoreEntitySet="ccCard">
+          <ScalarProperty Name="ccCardTypeID" ColumnName="ccCardTypeID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contacts">
+      <EntityTypeMapping TypeName="accountingModel.contact">
+        <MappingFragment StoreEntitySet="contact">
+          <ScalarProperty Name="contactTypeID" ColumnName="contactTypeID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="creditTransfers">
+      <EntityTypeMapping TypeName="accountingModel.creditTransfer">
+        <MappingFragment StoreEntitySet="creditTransfer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="currencies">
+      <EntityTypeMapping TypeName="accountingModel.currency">
+        <MappingFragment StoreEntitySet="currency">
+          <ScalarProperty Name="currencyTypeID" ColumnName="currencyTypeID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="accountingModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="debitCards">
+      <EntityTypeMapping TypeName="accountingModel.debitCard">
+        <MappingFragment StoreEntitySet="debitCard">
+          <ScalarProperty Name="ccCardTypeID" ColumnName="ccCardTypeID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="debitTransfers">
+      <EntityTypeMapping TypeName="accountingModel.debitTransfer">
+        <MappingFragment StoreEntitySet="debitTransfer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="deliverables">
+      <EntityTypeMapping TypeName="accountingModel.deliverable">
+        <MappingFragment StoreEntitySet="deliverable">
+          <ScalarProperty Name="supplierID" ColumnName="supplierID" />
+          <ScalarProperty Name="deliverableTypeID" ColumnName="deliverableTypeID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="entities">
+      <EntityTypeMapping TypeName="accountingModel.entity">
+        <MappingFragment StoreEntitySet="entity">
+          <ScalarProperty Name="entityTypeID" ColumnName="entityTypeID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="entityCards">
+      <EntityTypeMapping TypeName="accountingModel.entityCard">
+        <MappingFragment StoreEntitySet="entityCard">
+          <ScalarProperty Name="cardID" ColumnName="cardID" />
+          <ScalarProperty Name="entityID" ColumnName="entityID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="externalTransfers">
+      <EntityTypeMapping TypeName="accountingModel.externalTransfer">
+        <MappingFragment StoreEntitySet="externalTransfer">
+          <ScalarProperty Name="externalTsfrTypeID" ColumnName="externalTsfrTypeID" />
+          <ScalarProperty Name="cardID" ColumnName="cardID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="internalTransfers">
+      <EntityTypeMapping TypeName="accountingModel.internalTransfer">
+        <MappingFragment StoreEntitySet="internalTransfer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="invoices">
+      <EntityTypeMapping TypeName="accountingModel.invoice">
+        <MappingFragment StoreEntitySet="invoice">
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="currencyID" ColumnName="currencyID" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="invoiceActions">
+      <EntityTypeMapping TypeName="accountingModel.invoiceAction">
+        <MappingFragment StoreEntitySet="invoiceAction">
+          <ScalarProperty Name="invoiceActionTypeID" ColumnName="invoiceActionTypeID" />
+          <ScalarProperty Name="invoiceStatusID" ColumnName="invoiceStatusID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="invoiceID" ColumnName="invoiceID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="invoiceTransfers">
+      <EntityTypeMapping TypeName="accountingModel.invoiceTransfer">
+        <MappingFragment StoreEntitySet="invoiceTransfer">
+          <ScalarProperty Name="transferID" ColumnName="transferID" />
+          <ScalarProperty Name="invoiceID" ColumnName="invoiceID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lu_cardType">
+      <EntityTypeMapping TypeName="accountingModel.lu_cardType">
+        <MappingFragment StoreEntitySet="lu_cardType">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lu_catType">
+      <EntityTypeMapping TypeName="accountingModel.lu_catType">
+        <MappingFragment StoreEntitySet="lu_catType">
+          <ScalarProperty Name="glTypeID" ColumnName="glTypeID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lu_ccCardType">
+      <EntityTypeMapping TypeName="accountingModel.lu_ccCardType">
+        <MappingFragment StoreEntitySet="lu_ccCardType">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lu_contactType">
+      <EntityTypeMapping TypeName="accountingModel.lu_contactType">
+        <MappingFragment StoreEntitySet="lu_contactType">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lu_currencyType">
+      <EntityTypeMapping TypeName="accountingModel.lu_currencyType">
+        <MappingFragment StoreEntitySet="lu_currencyType">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lu_deliverableType">
+      <EntityTypeMapping TypeName="accountingModel.lu_deliverableType">
+        <MappingFragment StoreEntitySet="lu_deliverableType">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lu_entityType">
+      <EntityTypeMapping TypeName="accountingModel.lu_entityType">
+        <MappingFragment StoreEntitySet="lu_entityType">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lu_externalTsfrType">
+      <EntityTypeMapping TypeName="accountingModel.lu_externalTsfrType">
+        <MappingFragment StoreEntitySet="lu_externalTsfrType">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lu_glType">
+      <EntityTypeMapping TypeName="accountingModel.lu_glType">
+        <MappingFragment StoreEntitySet="lu_glType">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lu_invoiceActionType">
+      <EntityTypeMapping TypeName="accountingModel.lu_invoiceActionType">
+        <MappingFragment StoreEntitySet="lu_invoiceActionType">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lu_invoiceStatus">
+      <EntityTypeMapping TypeName="accountingModel.lu_invoiceStatus">
+        <MappingFragment StoreEntitySet="lu_invoiceStatus">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lu_sysActionType">
+      <EntityTypeMapping TypeName="accountingModel.lu_sysActionType">
+        <MappingFragment StoreEntitySet="lu_sysActionType">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lu_transferActionType">
+      <EntityTypeMapping TypeName="accountingModel.lu_transferActionType">
+        <MappingFragment StoreEntitySet="lu_transferActionType">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lu_transferStatus">
+      <EntityTypeMapping TypeName="accountingModel.lu_transferStatus">
+        <MappingFragment StoreEntitySet="lu_transferStatus">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lu_transferType">
+      <EntityTypeMapping TypeName="accountingModel.lu_transferType">
+        <MappingFragment StoreEntitySet="lu_transferType">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="accountingModel.order">
+        <MappingFragment StoreEntitySet="order">
+          <ScalarProperty Name="addressID" ColumnName="addressID" />
+          <ScalarProperty Name="carrierID" ColumnName="carrierID" />
+          <ScalarProperty Name="shippedDate" ColumnName="shippedDate" />
+          <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+          <ScalarProperty Name="receiverEntityID" ColumnName="receiverEntityID" />
+          <ScalarProperty Name="issuerEntityID" ColumnName="issuerEntityID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orderDetails">
+      <EntityTypeMapping TypeName="accountingModel.orderDetail">
+        <MappingFragment StoreEntitySet="orderDetail">
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="unitPrice" ColumnName="unitPrice" />
+          <ScalarProperty Name="deliverableID" ColumnName="deliverableID" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="organizations">
+      <EntityTypeMapping TypeName="accountingModel.organization">
+        <MappingFragment StoreEntitySet="organization">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="people">
+      <EntityTypeMapping TypeName="accountingModel.person">
+        <MappingFragment StoreEntitySet="person">
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="accountingModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="services">
+      <EntityTypeMapping TypeName="accountingModel.service">
+        <MappingFragment StoreEntitySet="service">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="suppliers">
+      <EntityTypeMapping TypeName="accountingModel.supplier">
+        <MappingFragment StoreEntitySet="supplier">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysActions">
+      <EntityTypeMapping TypeName="accountingModel.sysAction">
+        <MappingFragment StoreEntitySet="sysAction">
+          <ScalarProperty Name="sysActionTypeID" ColumnName="sysActionTypeID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysActionTransactions">
+      <EntityTypeMapping TypeName="accountingModel.sysActionTransaction">
+        <MappingFragment StoreEntitySet="sysActionTransaction">
+          <ScalarProperty Name="transactionID" ColumnName="transactionID" />
+          <ScalarProperty Name="sysActionID" ColumnName="sysActionID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transactions">
+      <EntityTypeMapping TypeName="accountingModel.transaction">
+        <MappingFragment StoreEntitySet="transaction">
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="accountID" ColumnName="accountID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transfers">
+      <EntityTypeMapping TypeName="accountingModel.transfer">
+        <MappingFragment StoreEntitySet="transfer">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="currencyID" ColumnName="currencyID" />
+          <ScalarProperty Name="transferTypeID" ColumnName="transferTypeID" />
+          <ScalarProperty Name="receiverEntityID" ColumnName="receiverEntityID" />
+          <ScalarProperty Name="issuerEntityID" ColumnName="issuerEntityID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transferActions">
+      <EntityTypeMapping TypeName="accountingModel.transferAction">
+        <MappingFragment StoreEntitySet="transferAction">
+          <ScalarProperty Name="transferActionTypeID" ColumnName="transferActionTypeID" />
+          <ScalarProperty Name="transferStatusID" ColumnName="transferStatusID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="transferID" ColumnName="transferID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="accountingModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="personID" ColumnName="personID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

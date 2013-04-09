@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bcebf6b7-be0c-43a5-84ab-46784cabb1cd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/Accounting/Host.svc/Metadatas/meta1?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="meta1.xsd" MetadataType="Schema" ID="150f212a-6928-4d84-bf75-7c1405a555f1" SourceId="1" SourceUrl="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd3" />
+    <MetadataFile FileName="meta11.xsd" MetadataType="Schema" ID="5202c0de-1aff-40f8-ad91-d18513e5f71f" SourceId="1" SourceUrl="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd4" />
+    <MetadataFile FileName="meta12.xsd" MetadataType="Schema" ID="d0b6f075-6d30-4df0-aaf4-26a974f77c66" SourceId="1" SourceUrl="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd5" />
+    <MetadataFile FileName="meta13.xsd" MetadataType="Schema" ID="acb6da16-8ef7-4ce8-bc71-d6f5275c2e35" SourceId="1" SourceUrl="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd6" />
+    <MetadataFile FileName="meta14.xsd" MetadataType="Schema" ID="b5b5b303-2e69-4d86-bde6-dd429f218594" SourceId="1" SourceUrl="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd0" />
+    <MetadataFile FileName="meta15.xsd" MetadataType="Schema" ID="223b3799-f4ea-4091-8e60-bd656448a199" SourceId="1" SourceUrl="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd1" />
+    <MetadataFile FileName="meta16.xsd" MetadataType="Schema" ID="5f5a3fe7-66ed-4866-a73a-b8c0a45e6257" SourceId="1" SourceUrl="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd2" />
+    <MetadataFile FileName="Contract1.wsdl" MetadataType="Wsdl" ID="3d474202-4cb8-46ba-9ad8-1d42c564976a" SourceId="1" SourceUrl="http://localhost/Accounting/Host.svc/Metadatas/meta1?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

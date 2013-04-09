@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Service="Accounting.Definition.Contracts.v1.Contract1" %>

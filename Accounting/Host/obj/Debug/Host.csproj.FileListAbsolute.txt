@@ -1,0 +1,11 @@
+K:\Accounting\Accounting\Host\bin\Host.dll
+K:\Accounting\Accounting\Host\bin\Host.pdb
+K:\Accounting\Accounting\Host\obj\Debug\Host.dll
+K:\Accounting\Accounting\Host\obj\Debug\Host.pdb
+K:\Accounting\Accounting\Host\bin\Service.dll
+K:\Accounting\Accounting\Host\bin\Service.pdb
+K:\Accounting\Accounting\Host\obj\Debug\Host.csprojResolveAssemblyReference.cache
+K:\Accounting\Accounting\Host\bin\EntityFramework.dll
+K:\Accounting\Accounting\Host\bin\EntityFramework.xml
+K:\Accounting\Accounting\Host\bin\Def2.dll
+K:\Accounting\Accounting\Host\bin\Def2.pdb

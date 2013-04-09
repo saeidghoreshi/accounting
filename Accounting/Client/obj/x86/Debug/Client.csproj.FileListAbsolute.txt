@@ -1,0 +1,7 @@
+K:\Accounting\Accounting\Client\bin\Debug\Client.exe.config
+K:\Accounting\Accounting\Client\bin\Debug\Client.exe
+K:\Accounting\Accounting\Client\bin\Debug\Client.pdb
+K:\Accounting\Accounting\Client\bin\Debug\Newtonsoft.Json.dll
+K:\Accounting\Accounting\Client\bin\Debug\Newtonsoft.Json.xml
+K:\Accounting\Accounting\Client\obj\x86\Debug\Client.exe
+K:\Accounting\Accounting\Client\obj\x86\Debug\Client.pdb

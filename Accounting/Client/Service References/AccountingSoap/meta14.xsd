@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd2" namespace="accounting" />
+  <xs:import schemaLocation="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Accounting.Definition.Structure" />
+  <xs:element name="newCustomer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="accounting" minOccurs="0" name="I" nillable="true" type="q1:A_customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="newCustomerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Accounting.Definition.Structure" minOccurs="0" name="newCustomerResult" nillable="true" type="q2:Person" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createDeliverable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="accounting" minOccurs="0" name="I" nillable="true" type="q3:A_service" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createDeliverableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Accounting.Definition.Structure" minOccurs="0" name="createDeliverableResult" nillable="true" type="q4:Deliverable" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createinvoice">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="accounting" minOccurs="0" name="I" nillable="true" type="q5:A_invoice" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createinvoiceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Accounting.Definition.Structure" minOccurs="0" name="createinvoiceResult" nillable="true" type="q6:Invoice" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createInvoiceService">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="accounting" minOccurs="0" name="I" nillable="true" type="q7:A_InvoiceService" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createInvoiceServiceResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="finalizeInvoice">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="accounting" minOccurs="0" name="I" nillable="true" type="q8:A_finalizeInvoice" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="finalizeInvoiceResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createBank">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="accounting" minOccurs="0" name="I" nillable="true" type="q9:A_newbank" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createBankResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setFeeForIntracCardType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="accounting" minOccurs="0" name="I" nillable="true" type="q10:A_setBankInteracFee" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setFeeForIntracCardTypeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setFeeForCreditCardType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="accounting" minOccurs="0" name="I" nillable="true" type="q11:A_setBankCreditcardFee" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setFeeForCreditCardTypeResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createMasterCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="accounting" minOccurs="0" name="I" nillable="true" type="q12:A_newCard" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createMasterCardResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createVisaCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="accounting" minOccurs="0" name="I" nillable="true" type="q13:A_newCard" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createVisaCardResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createDebitCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="accounting" minOccurs="0" name="I" nillable="true" type="q14:A_newCard" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createDebitCardResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="assignCardToBank">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="accounting" minOccurs="0" name="I" nillable="true" type="q15:A_assignCardToBank" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="assignCardToBankResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="assignCardToPerson">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="accounting" minOccurs="0" name="I" nillable="true" type="q16:A_assignCardToPerson" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="assignCardToPersonResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addWalletMoney">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="accounting" minOccurs="0" name="I" nillable="true" type="q17:A_addWallet" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addWalletMoneyResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getInvoiceServicesSumAmt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="accounting" minOccurs="0" name="I" nillable="true" type="q18:A_invoiceSum" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getInvoiceServicesSumAmtResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getInvoiceServicesSumAmtResult" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="payInvoiceByCC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="accounting" minOccurs="0" name="I" nillable="true" type="q19:A_payInvoiceCredit" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="payInvoiceByCCResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="payInvoiceByInterac">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="accounting" minOccurs="0" name="I" nillable="true" type="q20:A_payInvoiceInterac" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="payInvoiceByInteracResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="payInvoiceByInternal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="accounting" minOccurs="0" name="I" nillable="true" type="q21:A_payInvoiceInternal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="payInvoiceByInternalResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cancelInvoicePaymentEXT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="accounting" minOccurs="0" name="I" nillable="true" type="q22:A_cancelInvoicePayExt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cancelInvoicePaymentEXTResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cancelInvoicePaymentINTERNAL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="accounting" minOccurs="0" name="I" nillable="true" type="q23:A_cancelInvoicePayInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cancelInvoicePaymentINTERNALResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cancelInvoice">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="accounting" minOccurs="0" name="I" nillable="true" type="q24:A_cancelInvoice" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cancelInvoiceResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="test">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="accounting" minOccurs="0" name="x" nillable="true" type="q25:A_customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="testResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="accounting" minOccurs="0" name="testResult" nillable="true" type="q26:A_customer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

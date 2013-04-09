@@ -1,0 +1,16 @@
+K:\Accounting\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
+K:\Accounting\Service\bin\Debug\Service.dll.config
+K:\Accounting\Service\bin\Debug\Service.dll
+K:\Accounting\Service\bin\Debug\Service.pdb
+K:\Accounting\Service\bin\Debug\Project.exe
+K:\Accounting\Service\bin\Debug\Project.pdb
+K:\Accounting\Service\obj\Debug\Service.dll
+K:\Accounting\Service\obj\Debug\Service.pdb
+K:\Accounting\Accounting\Service\bin\Debug\Service.dll.config
+K:\Accounting\Accounting\Service\bin\Debug\Service.dll
+K:\Accounting\Accounting\Service\bin\Debug\Service.pdb
+K:\Accounting\Accounting\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
+K:\Accounting\Accounting\Service\obj\Debug\Service.dll
+K:\Accounting\Accounting\Service\obj\Debug\Service.pdb
+K:\Accounting\Accounting\Service\bin\Debug\Def2.dll
+K:\Accounting\Accounting\Service\bin\Debug\Def2.pdb

@@ -1,0 +1,13 @@
+K:\Accounting\Accounting1\Accounting\bin\Debug\Project.exe.config
+K:\Accounting\Accounting1\Accounting\obj\x86\Debug\Project.exe
+K:\Accounting\Accounting1\Accounting\obj\x86\Debug\Project.pdb
+K:\Accounting\Accounting1\Accounting\bin\Debug\Project.exe
+K:\Accounting\Accounting1\Accounting\bin\Debug\Project.pdb
+K:\Accounting\Accounting\Accounting\bin\Debug\Project.exe.config
+K:\Accounting\Accounting\Accounting\obj\x86\Debug\Project.exe
+K:\Accounting\Accounting\Accounting\obj\x86\Debug\Project.pdb
+K:\Accounting\Accounting\Definition\bin\Debug\Definition.dll.config
+K:\Accounting\Accounting\Definition\bin\Debug\Definition.dll
+K:\Accounting\Accounting\Definition\bin\Debug\Definition.pdb
+K:\Accounting\Accounting\Definition\obj\x86\Debug\Definition.dll
+K:\Accounting\Accounting\Definition\obj\x86\Debug\Definition.pdb

@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Contract1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd2" namespace="accounting" />
+      <xsd:import schemaLocation="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Accounting.Definition.Structure" />
+      <xsd:import schemaLocation="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Accounting.Definition.Models" />
+      <xsd:import schemaLocation="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" />
+      <xsd:import schemaLocation="http://localhost/Accounting/Host.svc/Metadatas/meta1?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IContracts_newCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:newCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_newCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:newCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_createDeliverable_InputMessage">
+    <wsdl:part name="parameters" element="tns:createDeliverable" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_createDeliverable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createDeliverableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_createinvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:createinvoice" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_createinvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createinvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_createInvoiceService_InputMessage">
+    <wsdl:part name="parameters" element="tns:createInvoiceService" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_createInvoiceService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createInvoiceServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_finalizeInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:finalizeInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_finalizeInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:finalizeInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_createBank_InputMessage">
+    <wsdl:part name="parameters" element="tns:createBank" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_createBank_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createBankResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_setFeeForIntracCardType_InputMessage">
+    <wsdl:part name="parameters" element="tns:setFeeForIntracCardType" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_setFeeForIntracCardType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:setFeeForIntracCardTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_setFeeForCreditCardType_InputMessage">
+    <wsdl:part name="parameters" element="tns:setFeeForCreditCardType" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_setFeeForCreditCardType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:setFeeForCreditCardTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_createMasterCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:createMasterCard" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_createMasterCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createMasterCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_createVisaCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:createVisaCard" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_createVisaCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createVisaCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_createDebitCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:createDebitCard" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_createDebitCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createDebitCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_assignCardToBank_InputMessage">
+    <wsdl:part name="parameters" element="tns:assignCardToBank" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_assignCardToBank_OutputMessage">
+    <wsdl:part name="parameters" element="tns:assignCardToBankResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_assignCardToPerson_InputMessage">
+    <wsdl:part name="parameters" element="tns:assignCardToPerson" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_assignCardToPerson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:assignCardToPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_addWalletMoney_InputMessage">
+    <wsdl:part name="parameters" element="tns:addWalletMoney" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_addWalletMoney_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addWalletMoneyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_getInvoiceServicesSumAmt_InputMessage">
+    <wsdl:part name="parameters" element="tns:getInvoiceServicesSumAmt" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_getInvoiceServicesSumAmt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getInvoiceServicesSumAmtResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_payInvoiceByCC_InputMessage">
+    <wsdl:part name="parameters" element="tns:payInvoiceByCC" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_payInvoiceByCC_OutputMessage">
+    <wsdl:part name="parameters" element="tns:payInvoiceByCCResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_payInvoiceByInterac_InputMessage">
+    <wsdl:part name="parameters" element="tns:payInvoiceByInterac" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_payInvoiceByInterac_OutputMessage">
+    <wsdl:part name="parameters" element="tns:payInvoiceByInteracResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_payInvoiceByInternal_InputMessage">
+    <wsdl:part name="parameters" element="tns:payInvoiceByInternal" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_payInvoiceByInternal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:payInvoiceByInternalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_cancelInvoicePaymentEXT_InputMessage">
+    <wsdl:part name="parameters" element="tns:cancelInvoicePaymentEXT" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_cancelInvoicePaymentEXT_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cancelInvoicePaymentEXTResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_cancelInvoicePaymentINTERNAL_InputMessage">
+    <wsdl:part name="parameters" element="tns:cancelInvoicePaymentINTERNAL" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_cancelInvoicePaymentINTERNAL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cancelInvoicePaymentINTERNALResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_cancelInvoice_InputMessage">
+    <wsdl:part name="parameters" element="tns:cancelInvoice" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_cancelInvoice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cancelInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_test_InputMessage">
+    <wsdl:part name="parameters" element="tns:test" />
+  </wsdl:message>
+  <wsdl:message name="IContracts_test_OutputMessage">
+    <wsdl:part name="parameters" element="tns:testResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IContracts">
+    <wsdl:operation name="newCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/newCustomer" message="tns:IContracts_newCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/newCustomerResponse" message="tns:IContracts_newCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createDeliverable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/createDeliverable" message="tns:IContracts_createDeliverable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/createDeliverableResponse" message="tns:IContracts_createDeliverable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createinvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/createinvoice" message="tns:IContracts_createinvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/createinvoiceResponse" message="tns:IContracts_createinvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createInvoiceService">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/createInvoiceService" message="tns:IContracts_createInvoiceService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/createInvoiceServiceResponse" message="tns:IContracts_createInvoiceService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="finalizeInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/finalizeInvoice" message="tns:IContracts_finalizeInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/finalizeInvoiceResponse" message="tns:IContracts_finalizeInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createBank">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/createBank" message="tns:IContracts_createBank_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/createBankResponse" message="tns:IContracts_createBank_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="setFeeForIntracCardType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/setFeeForIntracCardType" message="tns:IContracts_setFeeForIntracCardType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/setFeeForIntracCardTypeResponse" message="tns:IContracts_setFeeForIntracCardType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="setFeeForCreditCardType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/setFeeForCreditCardType" message="tns:IContracts_setFeeForCreditCardType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/setFeeForCreditCardTypeResponse" message="tns:IContracts_setFeeForCreditCardType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createMasterCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/createMasterCard" message="tns:IContracts_createMasterCard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/createMasterCardResponse" message="tns:IContracts_createMasterCard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createVisaCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/createVisaCard" message="tns:IContracts_createVisaCard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/createVisaCardResponse" message="tns:IContracts_createVisaCard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createDebitCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/createDebitCard" message="tns:IContracts_createDebitCard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/createDebitCardResponse" message="tns:IContracts_createDebitCard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="assignCardToBank">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/assignCardToBank" message="tns:IContracts_assignCardToBank_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/assignCardToBankResponse" message="tns:IContracts_assignCardToBank_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="assignCardToPerson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/assignCardToPerson" message="tns:IContracts_assignCardToPerson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/assignCardToPersonResponse" message="tns:IContracts_assignCardToPerson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addWalletMoney">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/addWalletMoney" message="tns:IContracts_addWalletMoney_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/addWalletMoneyResponse" message="tns:IContracts_addWalletMoney_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceServicesSumAmt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/getInvoiceServicesSumAmt" message="tns:IContracts_getInvoiceServicesSumAmt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/getInvoiceServicesSumAmtResponse" message="tns:IContracts_getInvoiceServicesSumAmt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="payInvoiceByCC">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/payInvoiceByCC" message="tns:IContracts_payInvoiceByCC_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/payInvoiceByCCResponse" message="tns:IContracts_payInvoiceByCC_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="payInvoiceByInterac">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/payInvoiceByInterac" message="tns:IContracts_payInvoiceByInterac_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/payInvoiceByInteracResponse" message="tns:IContracts_payInvoiceByInterac_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="payInvoiceByInternal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/payInvoiceByInternal" message="tns:IContracts_payInvoiceByInternal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/payInvoiceByInternalResponse" message="tns:IContracts_payInvoiceByInternal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelInvoicePaymentEXT">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/cancelInvoicePaymentEXT" message="tns:IContracts_cancelInvoicePaymentEXT_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/cancelInvoicePaymentEXTResponse" message="tns:IContracts_cancelInvoicePaymentEXT_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelInvoicePaymentINTERNAL">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/cancelInvoicePaymentINTERNAL" message="tns:IContracts_cancelInvoicePaymentINTERNAL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/cancelInvoicePaymentINTERNALResponse" message="tns:IContracts_cancelInvoicePaymentINTERNAL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelInvoice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/cancelInvoice" message="tns:IContracts_cancelInvoice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/cancelInvoiceResponse" message="tns:IContracts_cancelInvoice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <wsdl:input wsaw:Action="http://tempuri.org/IContracts/test" message="tns:IContracts_test_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IContracts/testResponse" message="tns:IContracts_test_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IContracts" type="tns:IContracts">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="newCustomer">
+      <soap:operation soapAction="http://tempuri.org/IContracts/newCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createDeliverable">
+      <soap:operation soapAction="http://tempuri.org/IContracts/createDeliverable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createinvoice">
+      <soap:operation soapAction="http://tempuri.org/IContracts/createinvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createInvoiceService">
+      <soap:operation soapAction="http://tempuri.org/IContracts/createInvoiceService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="finalizeInvoice">
+      <soap:operation soapAction="http://tempuri.org/IContracts/finalizeInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createBank">
+      <soap:operation soapAction="http://tempuri.org/IContracts/createBank" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setFeeForIntracCardType">
+      <soap:operation soapAction="http://tempuri.org/IContracts/setFeeForIntracCardType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setFeeForCreditCardType">
+      <soap:operation soapAction="http://tempuri.org/IContracts/setFeeForCreditCardType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createMasterCard">
+      <soap:operation soapAction="http://tempuri.org/IContracts/createMasterCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createVisaCard">
+      <soap:operation soapAction="http://tempuri.org/IContracts/createVisaCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createDebitCard">
+      <soap:operation soapAction="http://tempuri.org/IContracts/createDebitCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="assignCardToBank">
+      <soap:operation soapAction="http://tempuri.org/IContracts/assignCardToBank" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="assignCardToPerson">
+      <soap:operation soapAction="http://tempuri.org/IContracts/assignCardToPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addWalletMoney">
+      <soap:operation soapAction="http://tempuri.org/IContracts/addWalletMoney" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInvoiceServicesSumAmt">
+      <soap:operation soapAction="http://tempuri.org/IContracts/getInvoiceServicesSumAmt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="payInvoiceByCC">
+      <soap:operation soapAction="http://tempuri.org/IContracts/payInvoiceByCC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="payInvoiceByInterac">
+      <soap:operation soapAction="http://tempuri.org/IContracts/payInvoiceByInterac" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="payInvoiceByInternal">
+      <soap:operation soapAction="http://tempuri.org/IContracts/payInvoiceByInternal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelInvoicePaymentEXT">
+      <soap:operation soapAction="http://tempuri.org/IContracts/cancelInvoicePaymentEXT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelInvoicePaymentINTERNAL">
+      <soap:operation soapAction="http://tempuri.org/IContracts/cancelInvoicePaymentINTERNAL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelInvoice">
+      <soap:operation soapAction="http://tempuri.org/IContracts/cancelInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <soap:operation soapAction="http://tempuri.org/IContracts/test" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Contract1">
+    <wsdl:port name="BasicHttpBinding_IContracts" binding="tns:BasicHttpBinding_IContracts">
+      <soap:address location="http://localhost/Accounting/Host.svc/I1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
