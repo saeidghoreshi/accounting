@@ -1,0 +1,368 @@
+﻿Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Committing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Committing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Uninstalling assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Committing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Uninstalling assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Committing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Committing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Uninstalling assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Uninstalling assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Removing EventLog source .
+Warning: The source  is not registered on the local machine.
+Service  is being removed from the system...
+An exception occurred during the uninstallation of the System.ServiceProcess.ServiceInstaller installer.
+System.ComponentModel.Win32Exception: Access is denied
+An exception occurred while uninstalling. This exception will be ignored and the uninstall will continue. However, the application might not be fully uninstalled after the uninstall is complete.
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service ...
+Creating EventLog source  in log Application...
+Rolling back assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Restoring event log to previous state for source .
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service ...
+Creating EventLog source  in log Application...
+Rolling back assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Restoring event log to previous state for source .
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service ...
+Creating EventLog source  in log Application...
+Rolling back assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Restoring event log to previous state for source .
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service ...
+Creating EventLog source  in log Application...
+Rolling back assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Restoring event log to previous state for source .
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service ...
+Creating EventLog source  in log Application...
+Rolling back assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Restoring event log to previous state for source .
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service ...
+Creating EventLog source  in log Application...
+Rolling back assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Restoring event log to previous state for source .
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service AService...
+Service AService has been successfully installed.
+Creating EventLog source AService in log Application...
+Committing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Uninstalling assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Removing EventLog source AService.
+Service AService is being removed from the system...
+Service AService was successfully removed from the system.
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service AService...
+Creating EventLog source AService in log Application...
+Rolling back assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Restoring event log to previous state for source AService.
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service AService...
+Creating EventLog source AService in log Application...
+Rolling back assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Restoring event log to previous state for source AService.
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service AService...
+Creating EventLog source AService in log Application...
+Rolling back assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Restoring event log to previous state for source AService.
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service AService...
+Creating EventLog source AService in log Application...
+Rolling back assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Restoring event log to previous state for source AService.
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service AService2...
+Service AService2 has been successfully installed.
+Creating EventLog source AService2 in log Application...
+Committing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service AService3...
+Service AService3 has been successfully installed.
+Creating EventLog source AService3 in log Application...
+Committing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service AService4...
+Service AService4 has been successfully installed.
+Creating EventLog source AService4 in log Application...
+Committing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service AService5...
+Service AService5 has been successfully installed.
+Creating EventLog source AService5 in log Application...
+Committing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Uninstalling assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Removing EventLog source AService5.
+Service AService5 is being removed from the system...
+Service AService5 was successfully removed from the system.
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service AService6...
+Service AService6 has been successfully installed.
+Creating EventLog source AService6 in log Application...
+Committing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service AService6...
+Creating EventLog source AService6 in log Application...
+Rolling back assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Restoring event log to previous state for source AService6.
+Uninstalling assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Removing EventLog source AService6.
+Service AService6 is being removed from the system...
+Service AService6 was successfully removed from the system.
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service AService6...
+Creating EventLog source AService6 in log Application...
+Rolling back assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Restoring event log to previous state for source AService6.
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service AService6...
+Service AService6 has been successfully installed.
+Creating EventLog source AService6 in log Application...
+Committing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Uninstalling assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Removing EventLog source AService6.
+Service AService6 is being removed from the system...
+Service AService6 was successfully removed from the system.
+Installing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+Installing service AService6...
+Service AService6 has been successfully installed.
+Creating EventLog source AService6 in log Application...
+Committing assembly 'K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.InstallLog
+   assemblypath = K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe

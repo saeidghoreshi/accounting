@@ -8,8 +8,8 @@
     <ProjectGuid>{D54FEC72-33D7-4B64-97E2-ED47B9953552}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Def2</RootNamespace>
-    <AssemblyName>Def2</AssemblyName>
+    <RootNamespace>Accounting.Definition</RootNamespace>
+    <AssemblyName>Definition</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

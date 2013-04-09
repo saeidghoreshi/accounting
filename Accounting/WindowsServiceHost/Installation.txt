@@ -1,0 +1,6 @@
+﻿1-add service librarry to installer project
+2-add 2 required files for installation
+3-add serviceInstaller and serviceProcessInstaller by choosing Items
+4-Account = LocalService  
+5-Give the service a name
+6-in VS command prompt run installutil.exe in administrator mode

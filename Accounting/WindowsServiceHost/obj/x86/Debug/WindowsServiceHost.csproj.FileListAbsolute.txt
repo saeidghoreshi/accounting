@@ -1,0 +1,13 @@
+K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe.config
+K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.exe
+K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\WindowsServiceHost.pdb
+K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\Service.dll
+K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\Service.pdb
+K:\Accounting\Accounting\WindowsServiceHost\obj\x86\Debug\WindowsServiceHost.csprojResolveAssemblyReference.cache
+K:\Accounting\Accounting\WindowsServiceHost\obj\x86\Debug\WindowsServiceHost.exe
+K:\Accounting\Accounting\WindowsServiceHost\obj\x86\Debug\WindowsServiceHost.pdb
+K:\Accounting\Accounting\WindowsServiceHost\obj\x86\Debug\WindowsServiceHost.csproj.GenerateResource.Cache
+K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\Definition.dll
+K:\Accounting\Accounting\WindowsServiceHost\bin\Debug\Definition.pdb
+K:\Accounting\Accounting\WindowsServiceHost\obj\x86\Debug\WindowsServiceHost.Installer1.resources
+K:\Accounting\Accounting\WindowsServiceHost\obj\x86\Debug\WindowsServiceHost.AService6.resources
